@@ -17,7 +17,7 @@ Avant de commencer, vérifie que tu as installé :
 Pour vérifier :
 
 ```bash
-node -v    # doit afficher v18.x.x ou supérieur
+node -v    # doit afficher v24.11.1
 npm -v     # doit afficher une version
 docker -v  # doit afficher une version
 ```
