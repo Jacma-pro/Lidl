@@ -15,7 +15,6 @@ Tâches :
 - **Rôle** : UX/UI Design
 
 Tâches :
-- Personas (voir avec Marketing)
 - Workflow utilisateur
 - Maquettes UX/UI
 - rédaction dossier pôle Technique (avec Dorian)
@@ -53,9 +52,10 @@ Tâches :
 - **Rôle** : Administrateur réseaux
 
 Tâches :
-- Réfelxion sur l'hébergement de l'application
-- optimisation
-- maintenance
+- Conception d'une potentielle infrastructure réseau de click&collect
+    - Analyse
+    - Schémas départemental
+    - détail sur celui de SMH
 
 ## Alex
 - **Rôle** : Dev Frontend
