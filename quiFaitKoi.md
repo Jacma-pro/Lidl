@@ -1,6 +1,8 @@
 # QuiFaitKOI
 
-## Leo
+## Jour 0 
+
+### Leo
 - **Rôle** : Cybersecurity
 
 Tâches :
@@ -11,7 +13,7 @@ Tâches :
 - Modélisation des menaces
 - Soutien maquettage IA
 
-## Gwen
+### Gwen
 - **Rôle** : UX/UI Design
 
 Tâches :
@@ -19,7 +21,7 @@ Tâches :
 - Maquettes UX/UI
 - rédaction dossier pôle Technique (avec Dorian)
 
-## Willy
+### Willy
 
 - **Rôle** : Cyber/Résaux
 
@@ -30,7 +32,7 @@ Tâches :
     - ...
 - partie théorique pour le paiement en ligne
 
-## David 
+### David 
 - **Rôle** : Infra/réseaux
 
 Tâches :
@@ -38,7 +40,7 @@ Tâches :
 - CI/CD
 - Déploiement automatisé etc.
 
-## Sabry 
+### Sabry 
 - **Rôle** : BDD
 
 Tâches :
@@ -48,7 +50,7 @@ Tâches :
 - Optimisation des requêtes SQL
 - Sécurité de la base de données (Voir avec cyber/infra)
 
-## Patrice
+### Patrice
 - **Rôle** : Administrateur réseaux
 
 Tâches :
@@ -57,7 +59,7 @@ Tâches :
     - Schémas départemental
     - détail sur celui de SMH
 
-## Alex
+### Alex
 - **Rôle** : Dev Frontend
 
 Tâches :
@@ -66,7 +68,7 @@ Tâches :
 - Intégration avec le backend (Dorian)
 - Tests frontend (Bonus)
 
-## Dorian
+### Dorian
 - **Rôle** : Dev Backend & Responsable de pôle
 
 Tâches :
@@ -75,4 +77,116 @@ Tâches :
 - Tests backend (Bonus)
 - Intégration avec le frontend (Alex)
 - Rédaction dossier pôle Technique (avec Gwen)
+
+
+
+## Jour 1 :
+
+## Leo
+
+réalisé :
+
+- persona
+- point BDD (partie cyber)
+- commencer matrice RBAC
+- vu global RGPD
+
+demain : 
+- continuer matrice RBAC
+- continuer RGDP
+- formation gwen
+
+t'es chi*nt mais t'es gentil quand même
+
+## Gwen
+
+réalisé :
+
+- persona
+- récap vision Lidl
+- finir V2 userflow (client)
+
+demain :
+
+- validation global userflow (client)
+- formationd de Leo
+- init maquettes
+
+chouette
+
+## Willy
+
+réalisé :
+
+- débuts de docs sur l'authentification
+- benchmark politiques d'authentification
+- commencer structure du doc sur l'authentification
+
+demain :
+
+- finir l'authentification
+
+choquey
+
+## David
+
+réalisé :
+
+- veille sur dockerisation
+- choix des stacks techniques et organisation du projet
+
+demain :
+
+- choix images
+- DockerFiles
+- docker-compose
+- commencer CI/CD
+
+chaud
+
+## Sabry
+
+réalisé :
+
+- familliarisation avec supabase
+- besoin lidl bdd
+- début de la modélisation de la base de données (avec leo et dorian)
+
+demain :
+
+- terminer la modélisation de la base de données
+- commencer implémentation de la base de données
+
+Joyeux anniversaire
+
+## Patrice
+
+réalisé :
+
+- recherche sur les infrastructures d'organisation privée
+- reconstitution d'une infra
+- commencer le schéma de l'infrastructure départementale
+
+demain :
+
+- terminer le schéma de l'infrastructure départementale
+- voir les serveurs salle 2, comme si tout était à faire (intéréssant pour David aussi)
+
+Zzz...
+
+## Alex
+
+réalisé :
+
+- persona
+
+- cahier des charges
+- configurer le PWA
+
+demain :
+
+- structure
+
+ça va
+
 
