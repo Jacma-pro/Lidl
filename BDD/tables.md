@@ -57,3 +57,21 @@
 - mot de passe (hashé)
 - teléphone_pro
 
+## Magasin
+- id (PK)
+- id_stock (FK)
+- nom
+- mail
+- tel
+- adresse
+- code_postal
+- ville
+- pays
+- géolocalisation (latitude, longitude)
+- horaires d'ouverture
+- créneaux de retrait disponibles (ex: 9h-10h, 10h-11h, etc.)
+- maximum de commandes par créneau horaire
+- moyenne de temps de préparation d'une commande
+- drive disponible (boolean)
+- click&collect disponible (boolean)
+
