@@ -37,13 +37,13 @@ Le registre RGPD : recenser tous les traitements de données (clients et employ�
 
 La matrice RBAC : définir précisément les droits de chaque rôle (`CLIENT`, `OPERATEUR`, `ADMIN`) sur chaque ressource de l'API.
 
-La modélisation des menaces : identifier les vecteurs d'attaque prioritaires sur le périmètre du projet (authentification, gestion des commandes, interface admin) et les transmettre à Willy et Patrice.
+La modélisation des menaces : identifier et prioriser les vecteurs d'attaque sur le périmètre du projet (authentification, gestion des commandes, interface admin). Ce livrable se limite à l'identification et la priorisation des risques (ex : brute force, vol de token, élévation de privilèges) — Leo ne définit pas les contre-mesures techniques. Les risques identifiés sont transmis à Willy (qui en déduira la politique JWT et le besoin éventuel de 2FA) et à Patrice (qui en tiendra compte pour la segmentation réseau).
 
 ### Willy : Authentification et Sécurité des Flux
 
 Willy produit 2 livrables :
 
-Willy définit la politique d'authentification JWT : durée de vie des access tokens et refresh tokens, mécanisme de révocation, règles de renouvellement.
+Willy définit la politique d'authentification JWT : durée de vie des access tokens et refresh tokens, mécanisme de révocation, règles de renouvellement. Il s'appuie sur les risques identifiés par Leo (modélisation des menaces) pour justifier ses choix de politique.
 
 Il étudie également la mise en place d'une double authentification (2FA) pour les comptes `OPERATEUR` et `ADMIN`, et cherche comment il serait possible d'intégrer un moyen de paiment.
 
