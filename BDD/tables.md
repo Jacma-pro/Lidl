@@ -78,11 +78,11 @@
 
 - id (PK)
 - id_preparateur (FK) — référence vers Préparateur
-- nb_commandes_preparees (integer)
-- temps_moyen_preparation (float) — en minutes
-- taux_erreur (float) — pourcentage de commandes avec anomalie signalée
-- nb_ruptures_signalees (integer)
-- note_globale (float) — score calculé sur la période
+- nb_commandes_preparees (integer) — nombre total de commandes traitées sur la période
+- temps_moyen_preparation (float) — temps moyen en minutes entre la prise en charge et le passage en statut PRETE
+- taux_erreur (float) — pourcentage de commandes ayant généré une anomalie (mauvais produit, quantité incorrecte, commande non remise…)
+- nb_ruptures_signalees (integer) — nombre de fois où le préparateur a signalé qu'un produit commandé était absent en rayon au moment de la préparation
+- note_globale (float) — score synthétique calculé par le backend à partir des 4 indicateurs ci-dessus, consultable par le Manager pour avoir une vue rapide sans lire chaque chiffre
 - date_debut_periode (date)
 - date_fin_periode (date)
 - created_at
