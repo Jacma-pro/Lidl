@@ -66,8 +66,8 @@
 
 - id (PK)
 - role (enum : CLIENT / OPERATOR / MANAGER / ADMIN)
-- created_at
-- updated_at
+- created_at — date et heure à laquelle le rôle a été attribué à l'acteur
+- updated_at — date et heure de la dernière modification du rôle (ex : passage OPERATOR → MANAGER)
 
 ---
 
@@ -85,7 +85,7 @@
 - note_globale (float) — score synthétique calculé par le backend à partir des 4 indicateurs ci-dessus, consultable par le Manager pour avoir une vue rapide sans lire chaque chiffre
 - date_debut_periode (date)
 - date_fin_periode (date)
-- created_at
+- created_at — date et heure à laquelle l'entrée de performance a été générée
 
 ---
 
@@ -102,6 +102,6 @@
 - heure_fin (time)
 - statut (enum : PLANIFIE / CONFIRME / ABSENT / ANNULE)
 - commentaire (varchar) — optionnel, ex : "remplacement congé"
-- created_at
-- updated_at
+- created_at — date et heure à laquelle le créneau a été créé dans le planning
+- updated_at — date et heure de la dernière modification (ex : changement de statut PLANIFIE → ABSENT)
 
