@@ -47,11 +47,16 @@ Pour éviter de vous demander de vous reconnecter en permanence, un second jeton
 
 La durée de ce second jeton est plus longue, mais elle est adaptée selon le niveau de sensibilité du compte. Pour un client, la session peut être maintenue jusqu’à **7 jours**, afin de garantir une expérience utilisateur confortable. En revanche, pour les utilisateurs internes, cette durée est réduite à **8 heures pour les opérateurs et managers**, et à **4 heures pour les administrateurs**, conformément aux recommandations de sécurité renforcée pour les accès sensibles.
 
+
 Ce mécanisme permet de trouver un équilibre entre simplicité d’utilisation et niveau de protection élevé, en accord avec les bonnes pratiques recommandées notamment par l’OWASP et l’ANSSI.
 
 
 ![Cycle Sécurisé des Sessions JWT](schéma.png)
 ***
+## **Sécurisation des sessions côté navigateur**
+
+Afin de renforcer la sécurité côté utilisateur, les jetons d’authentification sont stockés de manière sécurisée dans des cookies protégés (httpOnly, Secure). Ce mécanisme empêche leur accès par des scripts malveillants exécutés dans le navigateur et limite ainsi les risques d’attaques de type XSS (Cross-Site Scripting), conformément aux bonnes pratiques recommandées par OWASP.
+
 
 ### **Analyse visuelle du cycle de vie des sessions**
 
@@ -95,6 +100,15 @@ Les tentatives de fraude, comme le phishing, sont limitées grâce à l’utilis
 Enfin, les sessions sont sécurisées grâce à des durées limitées et des mécanismes de renouvellement. Cela réduit fortement les risques liés au vol de session.
 
 
+## **Gestion des incidents de sécurité**
+
+En cas de suspicion de compromission d’un compte, Lidl Collect met en place des mécanismes de réaction immédiats.
+
+Les jetons d’accès actifs peuvent être révoqués à tout moment, ce qui entraîne la déconnexion instantanée de l’utilisateur sur l’ensemble de ses appareils. Le système est également capable de bloquer temporairement un compte et de forcer une réinitialisation du mot de passe.
+
+Ces mesures permettent de limiter l’impact d’une attaque et de reprendre rapidement le contrôle du compte, conformément aux bonnes pratiques recommandées par OWASP.
+
+
 ## **Votre rôle dans la sécurité**
 
 La sécurité du système Lidl Collect ne repose pas uniquement sur la technologie, mais aussi sur la vigilance de ses utilisateurs. Pour garantir une protection optimale, chacun doit respecter des règles de prudence fondamentales.
@@ -127,7 +141,7 @@ Notre approche repose sur un principe simple : rendre la sécurité invisible po
 ## **Sources**
 
 Recommandations de ANSSI
-
 Recommandations de CNIL
-
 Bonnes pratiques de OWASP
+Norme IETF
+Norme IETF
