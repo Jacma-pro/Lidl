@@ -82,7 +82,7 @@ Tâches :
 
 ## Jour 1 :
 
-## Leo
+### Leo
 
 réalisé :
 
@@ -92,13 +92,14 @@ réalisé :
 - vu global RGPD
 
 demain : 
+
 - continuer matrice RBAC
 - continuer RGDP
 - formation gwen
 
 t'es chi*nt mais t'es gentil quand même
 
-## Gwen
+### Gwen
 
 réalisé :
 
@@ -114,7 +115,7 @@ demain :
 
 chouette
 
-## Willy
+### Willy
 
 réalisé :
 
@@ -128,7 +129,7 @@ demain :
 
 choquey
 
-## David
+### David
 
 réalisé :
 
@@ -144,7 +145,7 @@ demain :
 
 chaud
 
-## Sabry
+### Sabry
 
 réalisé :
 
@@ -159,7 +160,7 @@ demain :
 
 Joyeux anniversaire
 
-## Patrice
+### Patrice
 
 réalisé :
 
@@ -174,7 +175,7 @@ demain :
 
 Zzz...
 
-## Alex
+### Alex
 
 réalisé :
 
@@ -189,4 +190,15 @@ demain :
 
 ça va
 
+### Dorian
+
+réalisé :
+
+- persona
+- BDD
+
+demain :
+
+- finir la BDD
+- commencer l'implémentation de l'API
 
