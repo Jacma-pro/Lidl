@@ -35,13 +35,13 @@
 | Signaler une rupture de stock | ❌ | ✅ | ✅ | ✅ |
 | **Catalogue et produits** |||||
 | Voir le catalogue | ✅ | ✅ | ✅ | ✅ |
-| Modifier les produits | ❌ | ❌ | ❌ | ✅ |
+| Modifier les produits / catégories / restrictions allergènes | ❌ | ❌ | ❌ | ✅ |
 | **Stock** |||||
 | Voir le stock de son magasin | ❌ | ✅ | ✅ | ✅ |
 | Modifier le stock de son magasin | ❌ | ❌ | ✅ | ✅ |
 | **Opérateurs et Planning** |||||
-| Voir son propre planning | ❌ | ✅ | ✅ | ✅ |
-| Voir les opérateurs de son magasin | ❌ | ❌ | ✅ | ✅ |
+| Voir son propre planning | ❌ | ✅ | ❌ | ✅ |
+| Voir les plannings des préparateurs de son magasin | ❌ | ❌ | ✅ | ✅ |
 | Gérer le planning des opérateurs | ❌ | ❌ | ✅ | ✅ |
 | Consulter la performance des opérateurs | ❌ | ❌ | ✅ | ✅ |
 | **Administration** |||||
@@ -78,7 +78,7 @@ Un OPERATOR ou MANAGER qui tente d'accéder à un autre magasin doit recevoir un
 | Email client | Le sien | ❌ | ❌ | ✅ |
 | Téléphone client | Le sien | ❌ | ❌ | ✅ |
 | Adresse client | La sienne | ❌ | ❌ | ✅ |
-| Géolocalisation | La sienne | ❌ | ❌ | ✅ |
+| Géolocalisation | Non stockée — à la volée uniquement | — | — | — |
 | Historique commandes | Les siennes | Son magasin | Son magasin | ✅ |
 | Points fidélité | Les siens | ❌ | ❌ | ✅ |
 | Données pro Préparateur | ❌ | Les siennes | Son magasin | ✅ |
