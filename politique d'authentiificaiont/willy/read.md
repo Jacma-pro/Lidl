@@ -1,3 +1,9 @@
+C'est parfait, j'ai repris l'intégralité de ton texte initial sans aucune suppression, en insérant le schéma et son analyse détaillée exactement là où ils sont les plus pertinents (après la gestion des sessions).
+
+Voici ton document final complet :
+
+***
+
 # **Politique d’authentification - Lidl Collect**
 
 
@@ -47,6 +53,17 @@ La durée de ce second jeton est plus longue, mais elle est adaptée selon le ni
 Ce mécanisme permet de trouver un équilibre entre simplicité d’utilisation et niveau de protection élevé, en accord avec les bonnes pratiques recommandées notamment par l’OWASP et l’ANSSI.
 
 
+***
+![Cycle Sécurisé des Sessions JWT](./jwt-cycle.png)
+***
+
+### **Analyse visuelle du cycle de vie des sessions**
+
+Le schéma ci-dessus illustre la synergie entre l'interface utilisateur développée sous React et l'infrastructure serveur de Lidl Collect. Ce cycle garantit que l'accès aux services reste fluide pour l'utilisateur légitime tout en maintenant une barrière de sécurité constante. Le processus débute par une connexion via un tunnel sécurisé HTTPS, protégeant les identifiants contre toute interception. Une fois la vérification effectuée par le serveur à l'aide du hachage Bcrypt, deux jetons sont émis pour segmenter les responsabilités de sécurité et de confort.
+
+Le premier jeton, le Jeton d’Accès (Access Token), est le garant de la sécurité immédiate avec une validité courte de 15 minutes. Il accompagne chaque requête de l'utilisateur pour valider ses droits en temps réel. Le second, le Jeton de Renouvellement (Refresh Token), assure la continuité de l'expérience sur 7 jours. Comme le montre la boucle de "Renouvellement Automatique", l'application utilise ce second jeton pour obtenir un nouvel accès de manière transparente dès que le premier expire. Cette architecture permet de déconnecter instantanément un utilisateur en cas d'anomalie tout en offrant une navigation sans interruption lors d'un usage normal.
+
+
 ## **Comment vos mots de passe sont protégés**
 
 La sécurité de votre compte commence dès la création de votre mot de passe.
@@ -81,30 +98,26 @@ Les tentatives de fraude, comme le phishing, sont limitées grâce à l’utilis
 
 Enfin, les sessions sont sécurisées grâce à des durées limitées et des mécanismes de renouvellement. Cela réduit fortement les risques liés au vol de session.
 
+
 ## **Votre rôle dans la sécurité**
 
 La sécurité du système Lidl Collect ne repose pas uniquement sur la technologie, mais aussi sur la vigilance de ses utilisateurs. Pour garantir une protection optimale, chacun doit respecter des règles de prudence fondamentales.
 
-1. Pour nos clients : les bonnes pratiques d'hygiène numérique
-Unicité du mot de passe : Nous recommandons l'utilisation d'un mot de passe unique, non utilisé sur d'autres sites. Cela évite l'effet "domino" : si l'un de vos comptes est piraté ailleurs, votre compte Lidl Collect reste protégé.
+**1. Pour nos clients : les bonnes pratiques d'hygiène numérique**
+* **Unicité du mot de passe :** Nous recommandons l'utilisation d'un mot de passe unique, non utilisé sur d'autres sites. Cela évite l'effet "domino" : si l'un de vos comptes est piraté ailleurs, votre compte Lidl Collect reste protégé.
+* **Vigilance face aux codes de validation :** Si vous recevez un code de connexion ou une notification de double authentification (MFA) par SMS ou e-mail sans avoir initié de demande, ne le validez sous aucun prétexte. C'est le signe d'une tentative de fraude.
+* **Détection du Phishing :** Lidl ne vous demandera jamais votre mot de passe par e-mail ou par téléphone. Vérifiez toujours que vous êtes sur l'application officielle ou sur le domaine lidl.fr avant de saisir vos identifiants.
 
-Vigilance face aux codes de validation : Si vous recevez un code de connexion ou une notification de double authentification (MFA) par SMS ou e-mail sans avoir initié de demande, ne le validez sous aucun prétexte. C'est le signe d'une tentative de fraude.
-
-Détection du Phishing : Lidl ne vous demandera jamais votre mot de passe par e-mail ou par téléphone. Vérifiez toujours que vous êtes sur l'application officielle ou sur le domaine lidl.fr avant de saisir vos identifiants.
-
-2. Pour les utilisateurs internes : la charte de comportement professionnel
+**2. Pour les utilisateurs internes : la charte de comportement professionnel**
 En tant qu'acteur du réseau Lidl Collect, votre accès est une porte d'entrée vers nos systèmes. Des règles strictes s'appliquent :
+* **Gestion des accès personnels :** Vos identifiants sont strictement personnels. Le partage de compte entre préparateurs ou managers, même pour "gagner du temps", est une faille majeure et est formellement interdit.
+* **Sécurisation immédiate du poste :** Le verrouillage de session (raccourci Windows + L) est obligatoire dès que vous vous éloignez de votre terminal de préparation ou de votre ordinateur, afin d'empêcher toute manipulation par un tiers.
+* **Utilisation des outils homologués :** L'accès aux interfaces d'administration et de gestion des commandes doit se faire exclusivement via les appareils fournis et sécurisés par Lidl (PDT, terminaux mobiles, PC fixes de l'entrepôt).
+* **Remontée d'incidents :** Tout comportement anormal du système (lenteur inhabituelle, fenêtres surgissantes, demandes de droits administrateur) doit être immédiatement signalé au responsable d'infrastructure ou au pôle sécurité.
 
-Gestion des accès personnels : Vos identifiants sont strictement personnels. Le partage de compte entre préparateurs ou managers, même pour "gagner du temps", est une faille majeure et est formellement interdit.
+**3. Engagement et Confidentialité**
+Tout manquement à ces règles peut compromettre l'intégrité des données de milliers de clients. Le respect de ces consignes est un gage de professionnalisme et une condition sine qua non pour l'utilisation des services Lidl Collect.
 
-Sécurisation immédiate du poste : Le verrouillage de session (raccourci Windows + L) est obligatoire dès que vous vous éloignez de votre terminal de préparation ou de votre ordinateur, afin d'empêcher toute manipulation par un tiers.
-
-Utilisation des outils homologués : L'accès aux interfaces d'administration et de gestion des commandes doit se faire exclusivement via les appareils fournis et sécurisés par Lidl (PDT, terminaux mobiles, PC fixes de l'entrepôt).
-
-Remontée d'incidents : Tout comportement anormal du système (lenteur inhabituelle, fenêtres surgissantes, demandes de droits administrateur) doit être immédiatement signalé au responsable d'infrastructure ou au pôle sécurité.
-
-3. Engagement et Confidentialité
-Tout manquement à ces règles peut compromettre l'intégrité des données de milliers de clients. Le respect de ces consignes est un gage de professionnalisme et une condition sine qua non pour l'utilisation des services Lidl Collect
 
 ## **Conclusion : une sécurité simple et efficace**
 
