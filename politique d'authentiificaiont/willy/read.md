@@ -1,6 +1,5 @@
 # **Politique d’authentification - Lidl Collect**
 
----
 
 ## **Introduction : une sécurité pensée pour tous**
 
@@ -10,7 +9,6 @@ Que vous soyez client, préparateur de commandes ou administrateur, chaque accè
 
 Pour construire cette architecture, nous nous appuyons sur les recommandations d’organismes reconnus comme ANSSI, CNIL et OWASP.
 
----
 
 ## **Comprendre comment vous vous connectez**
 
@@ -20,7 +18,6 @@ Le premier est votre mot de passe, que vous seul connaissez. C’est ce qu’on 
 
 Le fait de combiner ces éléments s’appelle l’authentification forte, ou MFA. Elle est recommandée par l’ANSSI pour protéger les accès sensibles, notamment pour les comptes internes.
 
----
 
 ## **Pourquoi nous utilisons les tokens (JWT)**
 
@@ -34,7 +31,6 @@ D’abord, il permet une navigation rapide et fluide, notamment sur mobile. Ensu
 
 Cette approche est aujourd’hui largement utilisée et recommandée dans les architectures modernes, notamment par les bonnes pratiques de l’OWASP.
 
----
 
 ## **Une sécurité renforcée grâce à la gestion des sessions**
 
@@ -50,7 +46,6 @@ La durée de ce second jeton est plus longue, mais elle est adaptée selon le ni
 
 Ce mécanisme permet de trouver un équilibre entre simplicité d’utilisation et niveau de protection élevé, en accord avec les bonnes pratiques recommandées notamment par l’OWASP et l’ANSSI.
 
----
 
 ## **Comment vos mots de passe sont protégés**
 
@@ -64,7 +59,6 @@ Il existe également un algorithme plus récent appelé Argon2, recommandé par 
 
 En complément, nous ajoutons une donnée aléatoire unique appelée “sel” à chaque mot de passe. Cela empêche deux mots de passe identiques d’avoir le même résultat, renforçant encore la sécurité.
 
----
 
 ## **Des accès adaptés à chaque utilisateur**
 
@@ -76,7 +70,6 @@ Plus le niveau de responsabilité est élevé, plus les mesures de sécurité so
 
 Cette approche suit le principe du moindre privilège recommandé par l’ANSSI et les bonnes pratiques de l’OWASP.
 
----
 
 ## **Une protection contre les principales menaces**
 
@@ -96,7 +89,6 @@ Nous vous recommandons d’utiliser un mot de passe unique pour votre compte Lid
 
 Pour les utilisateurs internes, certaines règles supplémentaires s’appliquent, notamment l’utilisation d’outils sécurisés et le respect des procédures en cas de doute.
 
----
 
 ## **Conclusion : une sécurité simple et efficace**
 
@@ -106,7 +98,6 @@ Grâce à l’utilisation de technologies reconnues comme les JWT, le hachage Bc
 
 Notre approche repose sur un principe simple : rendre la sécurité invisible pour l’utilisateur légitime, tout en restant robuste face aux menaces.
 
----
 
 ## **Sources**
 
