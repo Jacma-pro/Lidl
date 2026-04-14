@@ -1,6 +1,3 @@
-C'est parfait, j'ai repris l'intégralité de ton texte initial sans aucune suppression, en insérant le schéma et son analyse détaillée exactement là où ils sont les plus pertinents (après la gestion des sessions).
-
-Voici ton document final complet :
 
 ***
 
@@ -53,8 +50,7 @@ La durée de ce second jeton est plus longue, mais elle est adaptée selon le ni
 Ce mécanisme permet de trouver un équilibre entre simplicité d’utilisation et niveau de protection élevé, en accord avec les bonnes pratiques recommandées notamment par l’OWASP et l’ANSSI.
 
 
-***
-![Cycle Sécurisé des Sessions JWT](./jwt-cycle.png)
+![Cycle Sécurisé des Sessions JWT](politique%20d'authentiificaiont/willy/Cycle%20s%C3%A9curis%C3%A9%20des%20sessions%20JWT.png)
 ***
 
 ### **Analyse visuelle du cycle de vie des sessions**
