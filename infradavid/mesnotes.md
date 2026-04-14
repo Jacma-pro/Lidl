@@ -29,8 +29,21 @@ plutôt de montrer ce qui est fesable mais quand même tout en disant qu'il pour
 >de gérer l'aspect performance 
 > Si ca peut être utilise C'est la doc du site de Nginx https://docs.nginx.com/nginx/admin-guide/monitoring/logging/
 
+# Logs et Cache
 
-# Choix des images et créations des dockerfiles
+---
+# Logs
+```
+En France la CNIL impose aux opérateurs et hébergeurs (ce qui inclut les entreprises gérant un site web) de conserver les données de connexion pendant 1 an. Pourquoi Fraude à la carte bancaire : Si un client conteste une commande 3 mois plus tard, tu dois pouvoir prouver via les logs l'adresse IP et le parcours de l'utilisateur.
+Source :Legifrance : Article L34-1 (Obligation de conservation d'un an) et CNIL
+```
+---
+# Cache
+```
+On utilise deux types de cache :
+- Cache (Statique) côté client : stocke les données sur le navigateur de l'utilisateur pour accélérer les temps de chargement des pages ( Généralement utilisé pour les ressources statiques comme les images, les fichiers CSS et JavaScript etc...) durée de vie : 1 ans.
+- Cache côté serveur : stocke les données sur le serveur pour réduire la charge et améliorer les performances de l'application. durée de vie : 5 à 10min.
+```
 
 ---
 # Frontend 
