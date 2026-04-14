@@ -58,6 +58,9 @@
 
 > Informations personnelles et de contact du client. Représente l'identité civile.
 > Séparée de Client_Account pour distinguer les données personnelles des données de connexion.
+> La géolocalisation n'est PAS stockée en base — elle est utilisée à la volée côté frontend
+> pour détecter le magasin le plus proche, puis jetée. Décision RGPD : évite tout consentement
+> explicite de géolocalisation et toute obligation de conservation.
 
 - id (PK)
 - permission_id (FK → Permission)
@@ -67,9 +70,7 @@
 - mot_de_passe (hashé)
 - telephone
 - adresse
-- preferred_store_id (FK → Magasin, nullable) — magasin préféré du client
-- latitude (decimal, nullable)
-- longitude (decimal, nullable)
+- preferred_store_id (FK → Magasin, nullable) — magasin préféré du client (défini après sélection, pas depuis la géoloc)
 - created_at
 - updated_at
 
