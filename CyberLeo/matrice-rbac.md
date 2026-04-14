@@ -35,13 +35,13 @@
 | Signaler une rupture de stock | ❌ | ✅ | ✅ | ✅ |
 | **Catalogue et produits** |||||
 | Voir le catalogue | ✅ | ✅ | ✅ | ✅ |
-| Modifier les produits | ❌ | ❌ | ❌ | ✅ |
+| Modifier les produits / catégories / restrictions allergènes | ❌ | ❌ | ❌ | ✅ |
 | **Stock** |||||
 | Voir le stock de son magasin | ❌ | ✅ | ✅ | ✅ |
 | Modifier le stock de son magasin | ❌ | ❌ | ✅ | ✅ |
 | **Opérateurs et Planning** |||||
-| Voir son propre planning | ❌ | ✅ | ✅ | ✅ |
-| Voir les opérateurs de son magasin | ❌ | ❌ | ✅ | ✅ |
+| Voir son propre planning | ❌ | ✅ | ❌ | ✅ |
+| Voir les plannings des préparateurs de son magasin | ❌ | ❌ | ✅ | ✅ |
 | Gérer le planning des opérateurs | ❌ | ❌ | ✅ | ✅ |
 | Consulter la performance des opérateurs | ❌ | ❌ | ✅ | ✅ |
 | **Administration** |||||
