@@ -49,6 +49,30 @@
 | Gérer les magasins | ❌ | ❌ | ❌ | ✅ |
 | Gérer les permissions | ❌ | ❌ | ❌ | ✅ |
 | Voir les logs d'audit | ❌ | ❌ | ❌ | ✅ |
+| **Panier** |||||
+| Créer / modifier son panier | ✅ | ❌ | ❌ | ✅ |
+| Vider son panier | ✅ | ❌ | ❌ | ✅ |
+| Voir les paniers abandonnés | ❌ | ❌ | ❌ | ✅ |
+| **Créneaux de retrait** |||||
+| Voir les créneaux disponibles d'un magasin | ✅ | ✅ | ✅ | ✅ |
+| Réserver un créneau (via commande) | ✅ | ❌ | ❌ | ✅ |
+| Créer / gérer les créneaux de son magasin | ❌ | ❌ | ✅ | ✅ |
+| **Substitutions** |||||
+| Proposer une substitution de produit | ❌ | ✅ | ✅ | ✅ |
+| Accepter / refuser une substitution | ✅ | ❌ | ❌ | ✅ |
+| Voir les substitutions d'une commande | ✅ | ✅ | ✅ | ✅ |
+| **Paiement** *(table théorique — hors MVP)* |||||
+| Voir le statut de son paiement | ✅ | ❌ | ❌ | ✅ |
+| Voir les paiements du magasin | ❌ | ✅ | ✅ | ✅ |
+| Rembourser une commande | ❌ | ❌ | ❌ | ✅ |
+| **Fidélité** |||||
+| Voir ses points fidélité | ✅ | ❌ | ❌ | ✅ |
+| Modifier les points d'un client | ❌ | ❌ | ❌ | ✅ |
+| **Notifications** |||||
+| Recevoir des notifications (confirmation, prête, substitution) | ✅ | ❌ | ❌ | ❌ |
+| Déclencher une notification manuellement | ❌ | ❌ | ❌ | ✅ |
+| **Magasins** |||||
+| Voir la liste des magasins disponibles | ✅ | ✅ | ✅ | ✅ |
 | **Droits RGPD** |||||
 | Demander l'effacement de son compte (Art. 17) | ✅ | ✅ | ✅ | ✅ |
 | Exporter ses données (Art. 20) | ✅ | ✅ | ✅ | ✅ |
@@ -79,9 +103,19 @@ Un OPERATOR ou MANAGER qui tente d'accéder à un autre magasin doit recevoir un
 | Téléphone client | Le sien | ❌ | ❌ | ✅ |
 | Adresse client | La sienne | ❌ | ❌ | ✅ |
 | Géolocalisation | Non stockée — à la volée uniquement | — | — | — |
+| Statut du compte (is_verified, is_active) | Le sien | ❌ | ❌ | ✅ |
+| Date de création / dernière connexion | Les siennes | ❌ | ❌ | ✅ |
 | Historique commandes | Les siennes | Son magasin | Son magasin | ✅ |
+| Paniers abandonnés | ❌ | ❌ | ❌ | ✅ |
+| Créneaux réservés | Les siens | Son magasin | Son magasin | ✅ |
 | Points fidélité | Les siens | ❌ | ❌ | ✅ |
 | Données pro Préparateur | ❌ | Les siennes | Son magasin | ✅ |
+| Données pro Manager | ❌ | ❌ | Les siennes | ✅ |
 | Performance Préparateur | ❌ | Les siennes | Son magasin | ✅ |
-| Planning | ❌ | Le sien | Son magasin | ✅ |
+| Planning (Schedule) | ❌ | Le sien | Son magasin | ✅ |
+| Notifications reçues | Les siennes | ❌ | ❌ | ✅ |
+| Consentements enregistrés | Les siens | ❌ | ❌ | ✅ |
+| Mot de passe hashé | Jamais exposé | Jamais exposé | Jamais exposé | Jamais exposé |
+| Adresse IP (AuditLog) | ❌ | ❌ | ❌ | ✅ |
 | Logs d'audit | ❌ | ❌ | ❌ | ✅ |
+| Tokens JWT | Non stockés — expiration automatique | — | — | — |
