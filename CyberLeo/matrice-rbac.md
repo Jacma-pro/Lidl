@@ -78,7 +78,7 @@ Un OPERATOR ou MANAGER qui tente d'accéder à un autre magasin doit recevoir un
 | Email client | Le sien | ❌ | ❌ | ✅ |
 | Téléphone client | Le sien | ❌ | ❌ | ✅ |
 | Adresse client | La sienne | ❌ | ❌ | ✅ |
-| Géolocalisation | La sienne | ❌ | ❌ | ✅ |
+| Géolocalisation | Non stockée — à la volée uniquement | — | — | — |
 | Historique commandes | Les siennes | Son magasin | Son magasin | ✅ |
 | Points fidélité | Les siens | ❌ | ❌ | ✅ |
 | Données pro Préparateur | ❌ | Les siennes | Son magasin | ✅ |
