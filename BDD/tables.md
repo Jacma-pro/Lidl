@@ -58,6 +58,8 @@
 
 > Informations personnelles et de contact du client. Représente l'identité civile.
 > Séparée de Client_Account pour distinguer les données personnelles des données de connexion.
+> La géolocalisation n'est PAS stockée — utilisée à la volée côté frontend pour détecter
+> le magasin le plus proche, puis jetée. Décision RGPD : pas de consentement géoloc requis.
 
 - id (PK)
 - permission_id (FK → Permission)
@@ -67,9 +69,7 @@
 - mot_de_passe (hashé)
 - telephone
 - adresse
-- preferred_store_id (FK → Magasin, nullable) — magasin préféré du client
-- latitude (decimal, nullable)
-- longitude (decimal, nullable)
+- preferred_store_id (FK → Magasin, nullable) — magasin préféré du client (défini après sélection manuelle)
 - created_at
 - updated_at
 
@@ -344,9 +344,10 @@
 
 ### Planning
 
-> Visibility opérationnelle du manager sur la présence des préparateurs et managers au magasin.
-> Permet au manager de savoir combien de ressources humaines sont disponibles à chaque créneau horaire
-> pour estimer la capacité de préparation et valider les créneaux de retrait (PickupSlot).
+> Suivi de la présence des Préparateurs sur site, par magasin et par créneau horaire.
+> Permet au Manager de savoir quels préparateurs sont disponibles à un moment donné,
+> afin d'estimer la capacité de préparation et d'organiser les créneaux de retrait (PickupSlot).
+> Le Manager consulte en lecture seule — il ne saisit pas son propre planning dans cette table.
 
 - id (PK)
 - preparateur_id (FK → Préparateur)
@@ -366,11 +367,16 @@
 > Suivi des indicateurs de performance des Préparateurs uniquement.
 > Les Managers supervisent mais ne sont pas eux-mêmes évalués sur ces critères.
 > Les entrées sont générées par période (semaine, mois) par le backend.
+> La note_globale est un score synthétique calculé automatiquement à partir des 4 indicateurs —
+> permet au Manager d'avoir une vue rapide sans lire chaque chiffre individuellement.
 
 - id (PK)
 - preparateur_id (FK → Préparateur)
 - nb_commandes_preparees (integer) — nombre total de commandes traitées sur la période
-- temps_moyen_preparation (float) — temps moyen en minutes entre prise en charge et statut PRETE
+- temps_moyen_preparation (float) — temps moyen en minutes entre prise en charge et passage au statut PRETE
+- taux_erreur (float) — part des commandes ayant généré un problème : mauvais produit, quantité incorrecte, commande non remise au bon client, etc. Exprimé en pourcentage.
+- nb_ruptures_signalees (integer) — nombre de fois où le préparateur a constaté qu'un produit commandé était absent en rayon au moment de la préparation
+- note_globale (float) — score synthétique calculé par le backend à partir des 4 indicateurs ci-dessus (nb_commandes, temps_moyen, taux_erreur, nb_ruptures). Consultable directement par le Manager.
 - date_debut_periode (date)
 - date_fin_periode (date)
 - created_at
