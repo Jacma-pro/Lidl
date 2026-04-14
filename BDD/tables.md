@@ -175,12 +175,11 @@
 
 > Catégories de produits (ex : Fruits & Légumes, Produits laitiers, Surgelés).
 > Permet d'organiser le catalogue et de proposer des filtres côté client.
-> Supporte les sous-catégories via parent_id.
 
 - id (PK)
 - nom
+- restrictions (json, nullable) — ex : {"gluten": true, "arachides": false}
 - description (nullable)
-- parent_id (FK → Category, nullable) — pour les sous-catégories
 
 ---
 
@@ -200,6 +199,7 @@
 - hauteur (decimal, nullable)
 - image_url (nullable)
 - barcode (varchar, nullable) — code-barres EAN
+- nutriscore (varchar, nullable) — A, B, C, D ou E
 - is_active (boolean) — produit visible ou archivé
 - created_at
 - updated_at
@@ -321,6 +321,9 @@
 
 ### Payment
 
+> IMPORTANT ! : Ne pas intégrer dans la webapp du MVP, mais juste avoir la table prête pour la partie théorique du projet.
+> Donc pour l'ajout du système de paiement, on peut se contenter d'une simulation ou d'une simple validation au retrait.
+
 > Suivi du règlement d'une commande.
 > Dans le MVP, le paiement peut être simulé ou prévu au retrait.
 > La table reste utile pour tracer le statut et permettre un remboursement même basique.
@@ -341,18 +344,17 @@
 
 ### Planning
 
-> Gestion des créneaux de travail des Préparateurs et Managers par magasin.
-> Permet de savoir quels employés sont présents sur quel créneau,
-> et de détecter les absences ou modifications de planning.
+> Visibility opérationnelle du manager sur la présence des préparateurs et managers au magasin.
+> Permet au manager de savoir combien de ressources humaines sont disponibles à chaque créneau horaire
+> pour estimer la capacité de préparation et valider les créneaux de retrait (PickupSlot).
 
 - id (PK)
-- employe_id (FK) — référence vers Préparateur ou Manager
-- type_employe (enum : PREPARATEUR / MANAGER)
+- preparateur_id (FK → Préparateur)
 - store_id (FK → Magasin)
 - date (date)
 - heure_debut (time)
 - heure_fin (time)
-- statut (enum : PLANIFIE / CONFIRME / ABSENT / ANNULE)
+- statut (enum : PRESENT / ABSENT / CONGE)
 - commentaire (varchar, nullable) — ex : "remplacement congé"
 - created_at
 - updated_at
@@ -369,9 +371,6 @@
 - preparateur_id (FK → Préparateur)
 - nb_commandes_preparees (integer) — nombre total de commandes traitées sur la période
 - temps_moyen_preparation (float) — temps moyen en minutes entre prise en charge et statut PRETE
-- taux_erreur (float) — pourcentage de commandes ayant généré une anomalie
-- nb_ruptures_signalees (integer) — nombre de ruptures signalées lors des préparations
-- note_globale (float) — score synthétique calculé par le backend à partir des 4 indicateurs
 - date_debut_periode (date)
 - date_fin_periode (date)
 - created_at
@@ -400,8 +399,6 @@
 ---
 
 ### AuditLog
-
-> TODO: Voir avec Léo si besoin
 
 > Journal des actions sensibles réalisées sur le système.
 > Indispensable pour la traçabilité et la détection d'anomalies (accès non autorisé,
