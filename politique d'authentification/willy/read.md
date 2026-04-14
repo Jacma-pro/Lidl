@@ -15,11 +15,39 @@ Pour construire cette architecture, nous nous appuyons sur les recommandations d
 
 ## **Comprendre comment vous vous connectez**
 
-Lorsque vous vous connectez à Lidl Collect, plusieurs éléments permettent de vérifier votre identité.
+Lorsque vous vous connectez à Lidl Collect, plusieurs éléments permettent de vérifier votre identité. Le premier est votre mot de passe, que vous seul connaissez. C’est ce qu’on appelle un facteur de connaissance.
 
-Le premier est votre mot de passe, que vous seul connaissez. C’est ce qu’on appelle un facteur de connaissance. Dans certains cas, nous demandons également un second élément, comme un code généré sur votre téléphone. Cela correspond à un facteur de possession.
+Authentification multi-facteur (MFA) – Renforcement de sécurité
+Afin de renforcer la sécurité des comptes utilisateurs, Lidl Collect met en place un mécanisme d’authentification multi-facteur (MFA), conformément aux recommandations de l’ANSSI et de l’OWASP. Ce dispositif repose sur la combinaison de plusieurs facteurs d’authentification indépendants :
 
-Le fait de combiner ces éléments s’appelle l’authentification forte, ou MFA. Elle est recommandée par l’ANSSI pour protéger les accès sensibles, notamment pour les comptes internes.
+Facteur de connaissance : mot de passe personnel de l’utilisateur.
+
+Facteur de possession : code temporaire à usage unique (OTP) envoyé par SMS, e-mail ou généré via une application d’authentification.
+
+Processus d’authentification
+Lors de la connexion à la plateforme, le processus est le suivant :
+
+L’utilisateur saisit son identifiant et son mot de passe.
+
+Le système vérifie la validité des informations.
+
+Un code temporaire à usage unique (OTP) est généré et transmis à l’utilisateur.
+
+L’utilisateur saisit ce code afin de confirmer son identité.
+
+Une fois la vérification validée, un JWT est émis (Access Token et Refresh Token).
+
+Périmètre d’application
+L’authentification multi-facteur est appliquée dans les cas suivants :
+
+Comptes administrateurs.
+
+Comptes internes (opérateurs, managers).
+
+Actions sensibles telles que : modification de mot de passe, accès aux données critiques, opérations d’administration.
+
+Apports en matière de sécurité
+La mise en place du MFA permet de réduire le risque lié au vol d’identifiants, de limiter l’impact des attaques de type phishing, de renforcer la protection des accès sensibles et de répondre aux exigences de sécurité recommandées par l’ANSSI et l’OWASP.
 
 
 ## **Pourquoi nous utilisons les tokens (JWT)**
