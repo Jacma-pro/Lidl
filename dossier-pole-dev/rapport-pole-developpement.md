@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="./_cyberleo-style.css">
+<link rel="stylesheet" href="./_style.css">
 
 # Rapport de pôle — Développement
 ## Application Lidl Collect · Drive & Click and Collect
@@ -18,9 +18,9 @@ L'équipe livre une application sécurisée, conforme RGPD, déployée sur une i
 
 ## 1. Compréhension du contexte et de l'enjeu
 
-### 1.1 Ce que le Drive représente réellement pour Lidl
+### 1.1 Ce que le Drive/Click&Collect représente réellement pour Lidl
 
-La demande de Drive alimentaire chez Lidl ne naît pas d'une opportunité digitale abstraite. Elle répond à une pression concurrentielle concrète et à un comportement client en rupture avec le modèle historique de l'enseigne. Les profils identifiés: familles avec contrainte de temps, jeunes actifs avec liste préparée, retraités habitués au numérique depuis le Covid partagent un point commun : ils ont développé une pratique du Drive chez la concurrence qu'aucune action marketing ne remplacera tant qu'une solution équivalente n'existera pas chez Lidl.
+La demande de Drive et de click&collect alimentaire chez Lidl ne naît pas d'une opportunité digitale abstraite. Elle répond à une pression concurrentielle concrète et à un comportement client en rupture avec le modèle historique de l'enseigne. Les profils identifiés: familles avec contrainte de temps, jeunes actifs avec liste préparée, retraités habitués au numérique depuis le Covid partagent un point commun : ils ont développé une pratique du Drive chez la concurrence qu'aucune action marketing ne remplacera tant qu'une solution équivalente n'existera pas chez Lidl.
 
 Le magasin de Saint-Martin-d'Hères illustre bien cette tension. Avec 35 % de 15-29 ans dans sa zone de chalandise, 20 000 étudiants sur le campus UGA et un taux de pauvreté de 19 %, il dessert une clientèle structurellement sensible au prix mais exigeante sur la fluidité du service. Cette clientèle fréquente le Lidl pour ses prix ; elle fréquentera l'Intermarché Hyper voisin pour son Drive, à moins que Lidl Collect existe.
 
@@ -48,11 +48,11 @@ La gestion des ruptures de stock fait partie du flux nominal, pas de l'exception
 
 ### 2.2 Parcours opérationnel magasin
 
-L'interface préparateur est conçue pour l'efficacité en conditions réelles : écran vertical, lecture rapide des listes de préparation, scan produit pour validation, signalement des ruptures en un geste. Les commandes arrivent par ordre de créneau de retrait et sont priorisées automatiquement. Le préparateur n'a pas à gérer la logique métier il exécute une liste structurée que le système a déjà ordonnancée.
+L'interface préparateur est conçue pour l'efficacité en conditions réelles : écran vertical, lecture rapide des listes de préparation, scan produit pour validation, signalement des ruptures en un geste. Les commandes arrivent par ordre de créneau de retrait et sont priorisées automatiquement. Le préparateur n'a pas à gérer la logique métier, il exécute une liste structurée que le système a déjà ordonnancée.
 
 L'interface manager donne une vision en temps réel : nombre de commandes en cours, taux de préparation, alertes sur les créneaux saturés, gestion du planning des préparateurs. Les KPIs sont accessibles sans manipulation complexe, le manager de magasin n'est pas un analyste data.
 
-La distinction entre ces deux interfaces n'est pas cosmétique : elles répondent à des besoins métier différents, avec des droits d'accès distincts et des données exposées différemment. Cette séparation est intégrée dès la conception du modèle de données et de la matrice des rôles.
+La distinction entre ces deux interfaces n'est pas esthétique : elles répondent à des besoins métier différents, avec des droits d'accès distincts et des données exposées différemment. Cette séparation est intégrée dès la conception du modèle de données et de la matrice des rôles.
 
 ### 2.3 Les deux modes de retrait et leurs contraintes distinctes
 
@@ -90,13 +90,13 @@ Le schéma d'architecture applicative global distingue trois couches : l'interfa
 
 ### 2.4.1 Les personas comme socle des décisions d'interface
 
-La conception de l'interface repose sur six profils construits à partir du cahier des charges. Trois d'entre eux posent les tensions structurantes : Emrick (19 ans, étudiant, petites courses rapides depuis mobile), Jean et Monique (65 ans, retraités, interface lisible avec peu d'étapes), et Lucas (préparateur sous pression, outil de travail où chaque geste compte). Ces profils coexistent dans la même application — les décisions d'interface doivent satisfaire simultanément des usages aussi distincts que la commande express et la supervision métier. Cette cartographie précède tout choix de composant.
+La conception de l'interface repose sur six profils construits à partir du cahier des charges. Trois d'entre eux posent les tensions structurantes : Emrick (19 ans, étudiant, petites courses rapides depuis mobile), Jean et Monique (65 ans, retraités, interface lisible avec peu d'étapes), et Lucas (préparateur sous pression, outil de travail où chaque geste compte). Ces profils coexistent dans la même application : les décisions d'interface doivent satisfaire simultanément des usages aussi distincts que la commande express et la supervision métier. Cette cartographie précède tout choix de composant. C'est ce qui a didcté l'approche UX axée sur la bienveillance, la fluidité, et la clarté à chaque étape du parcours. Les éléments d'interface sont pensés pour réduire la charge cognitive de tous les profils.
 
 ### 2.4.2 Userflows et maquettes
 
-Le travail démarre par la formalisation des parcours selon les rôles. Le parcours client couvre sept étapes authentification, choix du magasin, catalogue, panier, créneau, validation, confirmation — avec identification des points de friction (ruptures en cours de panier, créneau saturé au paiement) résolus dans le flux avant d'être codés. Le parcours préparateur est cartographié séparément : plus court mais plus dense en états simultanés.
+Le travail démarre par la formalisation des parcours selon les rôles. Le parcours client couvre sept étapes : authentification, choix du magasin, catalogue, panier, créneau, validation, confirmation, avec identification des points de friction (ruptures en cours de panier, créneau saturé au paiement) résolus dans le flux avant d'être codés. Le parcours préparateur est cartographié séparément : plus court mais plus dense en états simultanés tout en mettant en avant une valorisation de son expertise.
 
-Les maquettes sont produites en alignement avec la Direction Artistique du Pôle Création : palette orange (#F97A0A), bleu (#114FCB), fond blanc cassé (#FFFBE2), typographies Climate Crisis et Montserrat. L'application est conçue en Desktop-first, conformément au cahier des charges, avec déclinaison responsive en adaptation secondaire. Les livrables comprennent wireframes basse fidélité, maquettes haute fidélité écran par écran, et spécifications de comportement (états hover, erreur, chargement) remises à Alex pour l'intégration.
+Les maquettes sont produites en alignement avec la Direction Artistique du Pôle Création : palette orange (#F97A0A), bleu (#114FCB), fond blanc cassé (#FFFBE2), typographies Antique Olive Nord D et Montserrat. L'application est conçue en Desktop-first, avec déclinaison responsive en adaptation secondaire. Les livrables comprennent un cahier des charges fonctionnel pour la création de la webapp, des inspiration, des userflows, et des maquettes détaillées pour chaque écran. 
 
 ---
 
@@ -104,14 +104,15 @@ Les maquettes sont produites en alignement avec la Direction Artistique du Pôle
 
 ### 3.1 Frontend — React
 
-React est retenu pour le frontend de Lidl Collect. Face aux alternatives principales que sont Vue.js et Angular, le choix s'appuie sur deux contraintes spécifiques au projet.
+React est retenu comme socle frontend face aux deux alternatives principales du marché, Vue.js et Angular. Ce choix découle de deux contraintes propres au projet.
 
-La première est la complexité des états applicatifs. Le panier, le suivi de commande en temps réel, les notifications d'état et la gestion des substitutions génèrent des états concurrents qui doivent rester cohérents sur l'ensemble de l'interface. L'écosystème React notamment via des librairies de gestion d'état matures — est éprouvé sur ce type de complexité. Vue.js aurait été viable sur une application plus simple ; sur Lidl Collect, la richesse de l'outillage React justifie le choix.
+La première est la complexité des états. Le panier, le suivi de commande, les notifications… génèrent des informations simultanées qui doivent rester cohérentes sur l'ensemble de l'interface. L'écosystème React, s'appuie sur des outils de gestion d'état éprouvés à grande échelle, et est aujourd'hui la référence sur ce type de complexité. Ainsi, la richesse de l'outillage React justifie le choix sur Lidl Collect.
 
-La deuxième est la maintenabilité dans un contexte multi-développeurs avec des interfaces distinctes (client, préparateur, manager). La séparation par composants de React permet à chaque interface d'être développée et testée indépendamment, avec des contrats d'interface API définis en amont. Les maquettes produites par Gwen sont structurées écran par écran avec leurs spécifications de comportement — le modèle de composants React s'aligne naturellement sur cette organisation.
+La seconde est la scalabilité dans un contexte multi-développeurs. Les trois interfaces : client, préparateur et manager sont développées et testées indépendamment, sans qu'une modification de l'une ne puisse impacter les autres. Le modèle de composants React s'aligne naturellement sur l'organisation des maquettes produites avec leurs spécifications : chaque écran correspond à des composants, testable sans démarrer l'application complète. TypeScript vient renforcer cette logique de fiabilité. Là où JavaScript tolère des erreurs, TypeScript les détecte dès la phase de développement. Concrètement, chaque composant expose un contrat explicite quant aux données qu'il attend, leur format, leur caractère obligatoire ou optionnel, ce qui rend impossible l'intégration d'un composant avec des données mal formées. Sur une application à trois interfaces et plusieurs développeurs, cette garantie réduit de ce fait le risque d'anomalies en production.
 
-L'outillage complète le choix du framework : Vite est retenu comme environnement de build pour ses temps de compilation quasi-instantanés en développement (Hot Module Replacement natif) et son optimisation du bundle en production. La bibliothèque de composants est structurée en couches — composants atomiques génériques, composants métier spécifiques à Lidl Collect, pages — ce qui rend chaque interface indépendante du point de vue du développement et testable isolément sans nécessiter le démarrage complet de l'application.
+L'environnement de build retenu est Vite. Son principal avantage est la rapidité : les modifications apportées sont répercutées quasi instantanément dans le navigateur pendant la phase de développement, sans recompilation complète de l'application. En production, Vite optimise automatiquement le poids des fichiers livrés à l'utilisateur, ce qui contribue directement aux temps de chargement de l'application.
 
+La web-app intègre également une fonctionnalité PWA (Progressive Web App). Concrètement, cela permet à un utilisateur d'installer Lidl Collect directement depuis son navigateur, comme une application native, sans passer par l'App Store ou le Google Play Store. Ce levier réduit la friction à l'adoption et adresse en particulier les usages mobiles de la génération Z, pour laquelle l'instantanéité de l'accès conditionne l'engagement.
 ### 3.2 Backend — API REST
 
 L'architecture API REST est retenue face à GraphQL et au monolithe. Les raisons sont fonctionnelles avant d'être idéologiques.
@@ -122,11 +123,11 @@ Le monolithe a été écarté pour une raison de maintenabilité : les interface
 
 Les endpoints critiques en termes de charge liste catalogue, vérification de disponibilité, sont conçus avec une stratégie de cache explicite (TTL court, invalidation sur mise à jour de stock) pour absorber les pics de fréquentation sans solliciter la base de données à chaque requête.
 
-Le framework retenu côté serveur est NestJS, qui structure l'API en modules indépendants alignés sur les domaines métier : authentification, catalogue, commandes, utilisateurs. Cette organisation permet d'isoler les périmètres de responsabilité, de tester chaque domaine séparément, et de faire évoluer un module sans risque de régression sur les autres. Les middlewares globaux — logging, gestion des exceptions, validation des corps de requête via class-validator — sont configurés au niveau de l'application pour garantir un comportement uniforme sur l'ensemble des endpoints.
+Le framework retenu côté serveur est NestJS, qui structure l'API en modules indépendants alignés sur les domaines métier : authentification, catalogue, commandes, utilisateurs. Cette organisation permet d'isoler les périmètres de responsabilité, de tester chaque domaine séparément, et de faire évoluer un module sans risque de régression sur les autres. Les middlewares globaux logging, gestion des exceptions, validation des corps de requête via class-validator sont configurés au niveau de l'application pour garantir un comportement uniforme sur l'ensemble des endpoints.
 
 ### 3.3 Base de données — PostgreSQL
 
-Le modèle relationnel est le seul adapté aux contraintes transactionnelles de Lidl Collect. La gestion d'une commande implique des opérations ACID sur plusieurs tables simultanément : décrémentation du stock, création de la commande, enregistrement du paiement. Une rupture de cohérence dans cette séquence commande enregistrée mais stock non décrémenté, ou paiement validé mais commande absente — est un incident opérationnel majeur.
+Le modèle relationnel est le seul adapté aux contraintes transactionnelles de Lidl Collect. La gestion d'une commande implique des opérations ACID sur plusieurs tables simultanément : décrémentation du stock, création de la commande, enregistrement du paiement. Une rupture de cohérence dans cette séquence commande enregistrée mais stock non décrémenté, ou paiement validé mais commande absente est un incident opérationnel majeur.
 
 PostgreSQL est retenu pour sa conformité ACID native, ses performances sur les requêtes analytiques nécessaires à l'interface manager, et sa robustesse documentée en production sur des charges comparables à celle d'un service de Drive. La modélisation (MCD, MLD, MPD) est documentée et optimisée pour les requêtes critiques : recherche catalogue, récupération d'une commande par QR code, agrégats KPI manager.
 
@@ -134,7 +135,7 @@ L'instance est hébergée sur Supabase (région Frankfurt, Union Européenne), c
 
 ### 3.4 Authentification et sécurité des accès
 
-**Gestion des sessions — JWT.** La gestion des sessions repose sur deux niveaux de tokens. L'Access Token (15 min pour les clients et opérateurs, 10 min pour les administrateurs) accompagne chaque requête et valide les droits en temps réel. Le Refresh Token différencie la durée par rôle : 7 jours pour un client, 8 heures pour un opérateur ou manager, 4 heures pour un administrateur — calibrage qui reflète le niveau de risque associé à chaque profil. Les tokens sont stockés en cookies `httpOnly` et `Secure`, inaccessibles aux scripts côté navigateur. La révocation est immédiate en cas de compromission, avec déconnexion sur tous les appareils.
+**Gestion des sessions JWT.** La gestion des sessions repose sur deux niveaux de tokens. L'Access Token (15 min pour les clients et opérateurs, 10 min pour les administrateurs) accompagne chaque requête et valide les droits en temps réel. Le Refresh Token différencie la durée par rôle : 7 jours pour un client, 8 heures pour un opérateur ou manager, 4 heures pour un administrateur calibrage qui reflète le niveau de risque associé à chaque profil. Les tokens sont stockés en cookies `httpOnly` et `Secure`, inaccessibles aux scripts côté navigateur. La révocation est immédiate en cas de compromission, avec déconnexion sur tous les appareils.
 
 **Authentification multi-facteurs (MFA).** La MFA est obligatoire pour les rôles opérateur, manager et administrateur, et déclenchée sur les actions critiques des comptes clients (modification de mot de passe, accès aux données personnelles). Elle repose sur un OTP transmis par SMS ou application d'authentification.
 
@@ -142,13 +143,13 @@ L'instance est hébergée sur Supabase (région Frankfurt, Union Européenne), c
 
 **Politique de mot de passe et verrouillage de compte.** La politique impose un minimum de douze caractères avec combinaison de majuscules, minuscules, chiffres et caractères spéciaux. Un mécanisme de verrouillage temporaire est activé après cinq tentatives d'authentification échouées consécutives, avec notification par email au titulaire du compte. Cette fenêtre de verrouillage est calibrée pour rendre les attaques par force brute économiquement inviables sans pénaliser les utilisateurs légitimes victimes d'erreurs de saisie.
 
-**Paiement.** Le traitement de la carte bancaire est délégué à un prestataire certifié PCI-DSS. L'application ne manipule que des tokens opaques transmis après autorisation — aucune donnée bancaire brute ne transite par l'infrastructure Lidl Collect.
+**Paiement.** Le traitement de la carte bancaire est délégué à un prestataire certifié PCI-DSS. L'application ne manipule que des tokens opaques transmis après autorisation aucune donnée bancaire brute ne transite par l'infrastructure Lidl Collect.
 
 ### 3.5 Cybersécurité
 
 La surface d'attaque de Lidl Collect est large : données personnelles de clients, transactions financières, accès multi-rôles à des données de commandes et de stock. L'approche retenue repose sur une modélisation des menaces STRIDE conduite en amont du développement, couvrant les trois flux applicatifs critiques : authentification, passage de commande, et accès opérateur et administration.
 
-Cette modélisation identifie, pour chaque flux, les vecteurs d'usurpation d'identité, d'altération des données, de répudiation, de divulgation d'information, de déni de service et d'élévation de privilèges. Elle produit une liste de contre-mesures assignées par responsable et priorisées par criticité — les risques classés critiques doivent être traités avant mise en production, les risques élevés avant la version 1.0.
+Cette modélisation identifie, pour chaque flux, les vecteurs d'usurpation d'identité, d'altération des données, de répudiation, de divulgation d'information, de déni de service et d'élévation de privilèges. Elle produit une liste de contre-mesures assignées par responsable et priorisées par criticité les risques classés critiques doivent être traités avant mise en production, les risques élevés avant la version 1.0.
 
 Parmi les points de vigilance structurants : la protection contre les accès croisés entre clients (isolation des ressources par identifiant utilisateur), la prévention des élévations de privilèges par injection de paramètres dans les requêtes (mass assignment, storeId injecté), le rate limiting sur les endpoints d'authentification, et la robustesse de la configuration des tokens face aux attaques de forge de signature.
 
@@ -158,19 +159,25 @@ Le référent cybersécurité intervient en transverse sur tous les modules mani
 
 ### 3.6 CI/CD — Docker et GitHub Actions
 
-La conteneurisation via Docker répond à une contrainte concrète : garantir que l'environnement d'exécution en production est identique à celui de développement et de staging. Les dérives de configuration entre environnements sont une source documentée d'incidents en production un comportement différent sur la gestion des sessions JWT selon l'environnement, par exemple, peut ouvrir une faille invisible en développement.
+Le premier pilier de cette stratégie est la conteneurisation avec Docker. L'idée est simple : on enferme l'application dans une "boîte" étanche qui contient tout ce dont elle a besoin pour fonctionner. Cela garantit que le logiciel se comportera exactement de la même manière sur l'ordinateur d'un développeur que sur le serveur final. Cette uniformité est une sécurité majeure, car elle évite des erreurs imprévisibles, comme un système de connexion qui fonctionnerait en test mais présenterait une faille une fois en ligne.
 
-Le pipeline GitHub Actions est structuré en quatre étapes séquentielles : build de l'image Docker, exécution des tests unitaires et d'intégration, déploiement automatique sur l'environnement de staging, déploiement en production sur validation manuelle. Cette dernière étape de validation reste humaine : un déploiement automatique en production sans revue sur un service de paiement actif est un risque opérationnel disproportionné.
+Pour gérer les échanges entre l'utilisateur et l'application, nous avons mis en place un serveur Nginx qui fait office de tour de contrôle. Il assure deux rôles essentiels : la rapidité et la protection des données. D'un côté, il mémorise les éléments visuels lourds (images, mise en page) pour que le site s'affiche instantanément. De l'autre, il interdit strictement la mise en mémoire des informations sensibles, comme les données bancaires ou les profils utilisateurs. Cette distinction empêche ce qu'on appelle les "attaques par rejeu", où un pirate tenterait de réutiliser une ancienne connexion pour usurper l'identité d'un client. Enfin, pour répondre aux obligations légales de la CNIL, ce serveur conserve un journal d'activité pendant un an, permettant de tracer l'origine d'une transaction en cas de litige.
 
-La stratégie de rollback est définie avant le premier déploiement : chaque image Docker est taguée avec le hash du commit, permettant un retour en arrière en moins de cinq minutes sur n'importe quelle version stable.
+Le déploiement de l'application est entièrement piloté par un pipeline automatisé via GitHub Actions. Dès qu'une modification est validée, une série de tests de sécurité se déclenche sans intervention humaine. Si tout est conforme, le système prépare une nouvelle version prête à être installée. Pour limiter tout risque sur un service gérant des paiements, nous avons choisi de conserver une validation humaine avant la mise en ligne définitive. En complément, chaque version est marquée par un identifiant unique lié à son historique. Cette précaution est capitale : elle constitue notre bouton "annulation", nous permettant de revenir à une version précédente stable en moins de cinq minutes en cas d'imprévu.
 
-La stratégie d'environnements distingue trois niveaux : développement local sur Docker Compose, staging avec déploiement automatique sur chaque merge en branche principale, production sur validation manuelle. L'environnement de staging reproduit la configuration de production à l'identique, y compris les variables d'environnement sensibles gérées via des secrets GitHub Actions. Cette parité staging/production est la condition qui rend les tests d'intégration en staging réellement prédictifs du comportement en production et qui justifie d'y exécuter les tests de charge avant tout déploiement.
+Enfin, pour l'hébergement de ce prototype, nous avons sélectionné la plateforme Render pour sa simplicité et sa réactivité. Elle nous permet de tester l'application dans des conditions réelles avec une gestion automatique de la sécurité (certificats SSL). Cependant, l'architecture a été pensée pour être évolutive. Si le projet prend de l'ampleur, l'utilisation de Docker nous permettrait de basculer très facilement vers des infrastructures plus puissantes, comme Amazon Web Services, capables de supporter des milliers d'utilisateurs simultanés sans interruption de service.
 
 ### 3.7 Infrastructure réseau magasin
 
-La fiabilité de la zone Drive dépend directement de la qualité de l'infrastructure réseau physique. L'architecture retenue sépare les flux par VLAN : terminaux de caisse et bornes Drive sont isolés du réseau d'usage général du magasin, garantissant une bande passante dédiée sans contention.
+L’infrastructure réseau de Lidl Collect a été pensée pour proposer un service national cohérent, tout en restant exploitable dans un magasin en situation réelle. Le choix retenu repose donc sur une architecture centralisée pour les services critiques, complétée par une exécution locale en magasin pour les opérations de retrait et de préparation.
 
-Les bornes extérieures sont couvertes par des points d'accès WiFi 6 industriels (résistants aux intempéries) avec redondance sur deux accès points distincts. En cas de perte de la connexion WAN, un mode dégradé bascule le retrait vers la caisse standard sans interruption visible pour le client.
+Cette orientation s’appuie sur l’étude de l’environnement numérique déjà utilisé par Lidl. Les informations publiques de l’enseigne montrent en effet un fonctionnement basé sur des services centralisés, avec un hébergement réparti entre Microsoft Azure, Google Cloud Platform et Schwarz IT KG, ainsi qu’un compte unique Mon Compte Lidl permettant d’unifier l’accès à plusieurs services Lidl. Ce fonctionnement nous a conduits à concevoir Lidl Collect dans la continuité de cette logique existante, plutôt que comme une infrastructure indépendante magasin par magasin.
+
+Le principe retenu sont les éléments structurants le service : gestion des comptes, commandes, suivi, notifications et supervision - sont pilotés depuis une infrastructure centrale, tandis que le magasin dispose uniquement des accès et outils nécessaires à l’exécution opérationnelle. Ce modèle présente un avantage direct : il garantit une expérience homogène sur l’ensemble du réseau Lidl, tout en simplifiant le déploiement, la maintenance et l’évolution du service.
+
+D’une part, elle améliore la fiabilité globale du service, car le système repose sur un socle commun et maîtrisé, plus facile à superviser et à sécuriser. D’autre part, elle rend le projet réaliste à l’échelle nationale : une même architecture peut être reproduite dans tous les magasins sans reconstruire un système différent à chaque implantation.
+
+Ce choix répond aussi directement aux contraintes du Drive. Dans ce contexte, la performance du service ne dépend pas seulement de l’application, mais de sa capacité à fonctionner rapidement dans un environnement magasin parfois plus contraint, notamment pour les bornes extérieures et les validations de retrait. L’infrastructure réseau a donc été pensée pour soutenir l’exploitation terrain, et non uniquement pour héberger l’application.
 
 ---
 
@@ -182,11 +189,11 @@ L'organisation de l'équipe n'est pas une répartition de tâches arbitraire ell
 
 | Domaine | Responsable | Criticité | Dépendances principales |
 |---------|-------------|-----------|------------------------|
-| UX/UI | Gwen | Élevée — bloque le Frontend | Direction artistique Lidl 2.0 |
-| Frontend React | Alex | Élevée | Maquettes (Gwen) + contrats API (Dorian) |
+| UX/UI | Gwendoline | Élevée — bloque le Frontend | Direction artistique Lidl 2.0 |
+| Frontend React | Alexandre-Philippe | Élevée | Maquettes (Gwen) + contrats API (Dorian) |
 | Backend API REST | Dorian | Critique | BDD (Sabry), Auth (Willy), Sécu (Leo) |
 | Base de données | Sabry | Critique | Backend (Dorian), Sécu (Leo) |
-| Cybersécurité | Leo | Transverse | Tous les modules |
+| Cybersécurité | Léo | Transverse | Tous les modules |
 | Auth & Paiement | Willy | Critique | Backend (Dorian), Sécu (Leo) |
 | Infra CI/CD | David | Élevée | Backend (Dorian), BDD (Sabry) |
 | Réseau magasin | Patrice | Élevée | Indépendant applicatif |
@@ -197,7 +204,7 @@ La cybersécurité et l'authentification ont un statut transverse : Leo et Willy
 
 La méthode retenue est Scrum avec des sprints de deux semaines. Ce choix répond à une contrainte de parallélisation : les modules frontend, backend et infrastructure peuvent avancer simultanément à condition que les contrats d'interface soient définis et figés au sprint 1. Un contrat d'API modifié en cours de développement sans coordination génère des régressions coûteuses.
 
-La convention adoptée est la suivante : les endpoints API sont définis et documentés (Swagger) avant le début du sprint de développement frontend correspondant. Toute modification de contrat passe par une revue d'impact formelle. Les maquettes de Gwen sont validées avant le début du sprint d'intégration d'Alex.
+La convention adoptée est la suivante : les endpoints API sont définis et documentés (Swagger) avant le début du sprint de développement frontend correspondant. Toute modification de contrat passe par une revue d'impact formelle. Les maquettes sont validées avant le début du sprint d'intégration.
 
 Les rituels de synchronisation daily de 15 minutes, rétrospective en fin de sprint ont pour seul objectif de détecter les dépendances bloquantes au plus tôt. Ils ne remplacent pas la communication bilatérale entre modules couplés.
 
@@ -254,8 +261,8 @@ Un registre des traitements est tenu à jour pour chaque catégorie de donnée, 
 L'équipe s'engage sur les livrables suivants, dans les conditions décrites dans ce rapport :
 
 - Une WebApp fonctionnelle couvrant l'intégralité du périmètre fonctionnel défini en section 2, déployée sur infrastructure conteneurisée avec pipeline CI/CD opérationnel.
-- Un système d'authentification sécurisé : JWT différencié par rôle, MFA obligatoire sur les comptes métier, hachage Bcrypt, révocation immédiate des sessions. Le paiement sera délégué à un prestataire certifié PCI-DSS — aucune donnée bancaire brute ne transitera par l'infrastructure.
+- Un système d'authentification sécurisé : JWT différencié par rôle, MFA obligatoire sur les comptes métier, hachage Bcrypt, révocation immédiate des sessions. Le paiement sera délégué à un prestataire certifié PCI-DSS aucune donnée bancaire brute ne transitera par l'infrastructure.
 - Une conformité RGPD documentée : registre des traitements, politique d'effacement implémentée, durées de conservation définies et appliquées.
 - Une documentation technique complète : Swagger API, MCD/MLD/MPD, Dockerfiles, schéma réseau, matrice RBAC.
 
-Les choix techniques présentés dans ce rapport sont argumentés mais discutables. Plusieurs arbitrages — notamment le choix du prestataire de paiement, la politique de cache catalogue ou la stratégie de déploiement — peuvent être révisés en fonction des contraintes opérationnelles ou contractuelles de Lidl. L'équipe est disponible pour défendre et, si nécessaire, ajuster ses décisions face aux retours du jury.
+Les choix techniques présentés dans ce rapport sont argumentés mais discutables. Plusieurs arbitrages notamment le choix du prestataire de paiement, la politique de cache catalogue ou la stratégie de déploiement peuvent être révisés en fonction des contraintes opérationnelles ou contractuelles de Lidl. L'équipe est disponible pour défendre et, si nécessaire, ajuster ses décisions face aux retours du jury.

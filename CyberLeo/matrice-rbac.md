@@ -1,7 +1,9 @@
-# Matrice RBAC — Webapp Drive Lidl
+<link rel="stylesheet" href="./_cyberleo-style.css">
+
+# Matrice RBAC — Webapp Lidl Collect
 
 > Ce document trace les droits de chaque rôle pour le rapport RGPD (Art. 30) et la documentation cybersécurité.
-> Les droits sont implémentés dans le backend — ce fichier en est la référence documentaire.
+> Les droits sont implémentés dans le backend ce fichier en est la référence documentaire.
 > 4 niveaux hiérarchiques : CLIENT < OPERATOR < MANAGER < ADMIN.
 
 ---
@@ -102,7 +104,7 @@ Un OPERATOR ou MANAGER qui tente d'accéder à un autre magasin doit recevoir un
 | Email client | Le sien | ❌ | ❌ | ✅ |
 | Téléphone client | Le sien | ❌ | ❌ | ✅ |
 | Adresse client | La sienne | ❌ | ❌ | ✅ |
-| Géolocalisation | Non stockée — à la volée uniquement | — | — | — |
+| Géolocalisation | Non stockée (à la volée uniquement) | — | — | — |
 | Statut du compte (is_verified, is_active) | Le sien | ❌ | ❌ | ✅ |
 | Date de création / dernière connexion | Les siennes | ❌ | ❌ | ✅ |
 | Historique commandes | Les siennes | Son magasin | Son magasin | ✅ |
@@ -118,7 +120,7 @@ Un OPERATOR ou MANAGER qui tente d'accéder à un autre magasin doit recevoir un
 | Mot de passe hashé | Jamais exposé | Jamais exposé | Jamais exposé | Jamais exposé |
 | Adresse IP (AuditLog) | ❌ | ❌ | ❌ | ✅ |
 | Logs d'audit | ❌ | ❌ | ❌ | ✅ |
-| Tokens JWT | Non stockés — expiration automatique | — | — | — |
+| Tokens JWT | Non stockés (expiration automatique) | — | — | — |
 | Consentements cookies | Les siens | ❌ | ❌ | ✅ |
 
 ---
@@ -126,7 +128,7 @@ Un OPERATOR ou MANAGER qui tente d'accéder à un autre magasin doit recevoir un
 ## Configuration JWT — Référence pour Dorian (NestJS)
 
 > Source : politique d'authentification Willy.
-> Ces valeurs doivent être imposées côté backend — non négociables.
+> Ces valeurs doivent être imposées côté backend (non négociables)
 
 ### Durées de session par rôle
 
@@ -139,10 +141,10 @@ Un OPERATOR ou MANAGER qui tente d'accéder à un autre magasin doit recevoir un
 
 ### Contraintes de configuration
 
-- **Algorithme imposé :** HS256 ou RS256 — au choix de Dorian selon l'architecture
-- **Rejet de `alg: none` obligatoire** — à configurer explicitement dans le guard JWT
-- **Payload minimal :** `userId`, `role`, `storeId` — aucune donnée personnelle dans le token
-- **MFA obligatoire** pour OPERATOR, MANAGER, ADMIN — géré par Willy, à coordonner avec Dorian
+- **Algorithme imposé :** HS256
+- **Rejet de `alg: none` obligatoire** à configurer explicitement dans le guard JWT
+- **Reponse minimal :** `userId`, `role`, `storeId` aucune donnée personnelle dans le token
+- **MFA obligatoire** pour OPERATOR, MANAGER, ADMIN géré par Willy, à coordonner avec Dorian
 
 ---
 

@@ -1,7 +1,9 @@
+<link rel="stylesheet" href="./_cyberleo-style.css">
+
 # Politique d'effacement & Droits des personnes — Lidl Collect
 
 > Référence : RGPD Art. 17 (droit à l'effacement), Art. 20 (droit à la portabilité), Art. 12 (délais de réponse)
-> Base de données : PostgreSQL via Supabase — région Frankfurt (EU) — pas de transfert hors UE
+> Base de données : PostgreSQL via Supabase — région Frankfurt (Union européenne) — aucun transfert hors de l'Union européenne
 > Redis : abandonné — aucune purge de session à prévoir
 
 ---
@@ -21,16 +23,18 @@
 
 ### Tables pseudonymisées (conservation légale obligatoire)
 
-| Table | Champ pseudonymisé | Base légale de conservation | Durée |
-|---|---|---|---|
-| `Order` | client_id → token anonyme | Art. L123-22 Code de commerce (obligation comptable) | 10 ans |
-| `OrderItem` | via order_id | Art. L123-22 Code de commerce | 10 ans |
-| `Payment` | via order_id | Art. L123-22 Code de commerce + directive TVA | 10 ans |
-| `SubstitutionProposal` | via order_item_id | Art. L123-22 Code de commerce | 10 ans |
-| `AuditLog` | actor_id → token anonyme | Art. 6.1.f RGPD — intérêt légitime (démonstration de conformité) | 5 ans |
-| `Consent` | client_id → token anonyme | Art. 6.1.f RGPD — preuve de consentement (jamais supprimée) | Durée indéterminée |
-| `Schedule` | preparer_id → token anonyme | Code du travail Art. L3243-4 | 5 ans après départ |
-| `Performance` | preparer_id → token anonyme | Code du travail Art. L3243-4 | 5 ans après départ |
+> **Note juridique importante** — La pseudonymisation est une mesure de réduction du risque (Art. 32 RGPD), **pas un effacement** au sens de l'Art. 17. Les données ci-dessous ne sont pas effacées parce qu'une exception à l'Art. 17.3 s'applique — la pseudonymisation vient en complément pour minimiser le risque résiduel. L'exception Art. 17.3 applicable est identifiée colonne par colonne.
+
+| Table | Champ pseudonymisé | Exception Art. 17.3 applicable | Base légale de conservation | Durée |
+|---|---|---|---|---|
+| `Order` | client_id → token anonyme | Art. 17.3.b — obligation légale (Art. L123-22 Code de commerce) | Art. 6.1.c — Obligation légale comptable | 10 ans |
+| `OrderItem` | via order_id | Art. 17.3.b — même base | Art. 6.1.c | 10 ans |
+| `Payment` | via order_id | Art. 17.3.b — même base + directive TVA 2006/112/CE | Art. 6.1.c | 10 ans |
+| `SubstitutionProposal` | via order_item_id | Art. 17.3.b — même base | Art. 6.1.c | 10 ans |
+| `AuditLog` | actor_id → token anonyme | Art. 17.3.e — constatation, exercice ou défense de droits en justice | Art. 6.1.f — intérêt légitime (sécurité Art. 32) | 1 an |
+| `Consent` | client_id → token anonyme | Art. 17.3.e — preuve de conformité réglementaire (accountability Art. 5.2) | Art. 6.1.f — intérêt légitime | Durée indéterminée |
+| `Schedule` | preparer_id → token anonyme | Art. 17.3.b — obligation légale (Art. L3243-4 Code du travail) | Art. 6.1.c | 5 ans après départ |
+| `Performance` | preparer_id → token anonyme | Art. 17.3.b — même base | Art. 6.1.c | 5 ans après départ |
 
 ### Emplacements hors base de données
 
@@ -207,19 +211,19 @@ Ce qui a été supprimé :
 - Votre panier et vos préférences
 
 Ce qui est conservé (obligation légale) :
-- Vos historiques de commandes sous forme anonymisée — 10 ans
+- Vos historiques de commandes sous forme pseudonymisée — 10 ans
   (Art. L123-22 du Code de commerce)
-- Les traces de sécurité anonymisées — 5 ans
+- Les traces de sécurité pseudonymisées — 1 an
   (Art. 6.1.f RGPD — démonstration de conformité)
-- Les enregistrements de consentement anonymisés — durée indéterminée
+- Les enregistrements de consentement pseudonymisés — durée indéterminée
   (preuve légale de consentement)
 
 Note sur les sauvegardes :
 Vos données peuvent subsister dans nos sauvegardes chiffrées
-pendant une durée maximale de 7 jours après suppression.
+pendant une durée maximale de sept jours après suppression.
 Ces sauvegardes sont chiffrées et hébergées en Europe (Frankfurt).
 
-Votre identité n'est plus associée à ces données conservées.
+Votre identité directe n'est plus associée à ces données conservées ; elles sont pseudonymisées et ne permettent pas votre identification sans recours à une clé de correspondance détenue par le responsable du traitement.
 
 Pour toute question, vous pouvez contacter la CNIL :
 https://www.cnil.fr/fr/plaintes
@@ -232,11 +236,23 @@ L'équipe Lidl Collect
 
 ## 6. Politique de traitement des sauvegardes Supabase
 
-- Sauvegardes automatiques chiffrées AES-256 — hébergées région Frankfurt (EU)
-- **Durée de rétention : 7 jours** (plan Supabase actuel)
-- Supabase ne permet pas la suppression manuelle d'un enregistrement dans les backups
-- **Risque résiduel documenté et accepté :** une donnée supprimée peut subsister dans les backups pendant 7 jours maximum
-- **Mesure compensatoire :** l'utilisateur est informé de ce délai dans l'email de confirmation (voir section 5)
+- Sauvegardes chiffrées AES-256, hébergées région Frankfurt (Union européenne)
+- **Stratégie de sauvegarde (prototype académique) :** exports manuels hebdomadaires via CLI Supabase, stockés sur le Google Drive du groupe. Aucune sauvegarde automatique activée (plan Free).
+- **Stratégie recommandée en production réelle :** PITR 7 jours (~130 €/mois). Restauration à la seconde près via les fichiers WAL (Write-Ahead Log) enregistrés en continu vers AWS S3, même région Frankfurt.
+- Supabase ne permet pas la suppression manuelle d'un enregistrement dans les sauvegardes.
+- **Risque résiduel documenté et accepté :** une donnée supprimée de la base principale peut subsister dans les fichiers WAL et les sauvegardes physiques pendant toute la durée de rétention souscrite.
+
+### Conditions de tolérance du risque résiduel (RGPD)
+
+Le risque résiduel lié aux sauvegardes est légalement toléré sous trois conditions cumulatives :
+
+1. La durée de rétention des sauvegardes est documentée et raisonnable (sept jours).
+2. Ces sauvegardes sont sécurisées et réservées à la seule reprise sur incident. Aucun accès opérationnel aux données pseudonymisées n'est autorisé depuis les sauvegardes.
+3. En cas de restauration depuis un point antérieur à une ou plusieurs demandes d'effacement au titre de l'article 17, toutes les suppressions et pseudonymisations réalisées entre ce point et la date de restauration doivent être ré-appliquées manuellement par l'équipe avant toute remise en service.
+
+> **Point d'attention opérationnel :** une restauration d'urgence peut techniquement réintroduire les données d'un compte supprimé. La procédure de restauration doit systématiquement inclure une consultation de l'AuditLog (action `DELETION_COMPLETED`) afin d'identifier les comptes supprimés dans la fenêtre temporelle concernée.
+
+- **Mesure compensatoire :** l'utilisateur est informé du risque résiduel de sept jours dans l'email de confirmation (voir section 5).
 
 ---
 
@@ -249,8 +265,10 @@ L'équipe Lidl Collect
 | `DELETION_FAILED` | ROLLBACK sur une étape | actor_id (pseudonymisé), étape échouée, timestamp — aucune donnée personnelle dans le contexte d'erreur |
 | `EXPORT_REQUESTED` | Appel GET /api/user/export | actor_id (valide), timestamp |
 
-**Durée de conservation des AuditLogs : 5 ans**
-Base légale : Art. 6.1.f RGPD — intérêt légitime (démonstration de conformité RGPD en cas de contrôle CNIL)
+**Durée de conservation des AuditLogs : 1 an**
+Base légale : Art. 6.1.f RGPD — intérêt légitime (sécurité du traitement, Art. 32 RGPD) + Art. L34-1 (obligation sectorielle de conservation des données de connexion).
+
+> Note sur la ligne `DELETION_REQUESTED` : cette entrée est insérée avec `actor_id` valide *avant* pseudonymisation. Elle doit être pseudonymisée immédiatement dans la même transaction, à l'étape 1 (calcul du token HMAC), et non après les suppressions. Sans cette précaution, l'`actor_id` réel subsiste dans les logs le temps de l'exécution de la transaction.
 
 ---
 
@@ -263,5 +281,5 @@ Base légale : Art. 6.1.f RGPD — intérêt légitime (démonstration de confor
 | Droit à l'effacement | Art. 17 | `DELETE /api/user/me` | Spécifié — section 4 |
 | Droit à la limitation | Art. 18 | Flag `processing_restricted` en base — gel des traitements pendant contestation | À implémenter |
 | Droit à la portabilité | Art. 20 | `GET /api/user/export` | Spécifié — section 4 |
-| Droit d'opposition | Art. 21 | Applicable aux traitements fondés sur Art. 6.1.f (intérêt légitime) — procédure à définir | À documenter |
+| Droit d'opposition | Art. 21 | Applicable aux traitements fondés sur Art. 6.1.f : T05 (fidélité), T08 (AuditLog), T12 (performance préparateurs). Procédure : réception de l'opposition → vérification que le motif est légitime → suspension du traitement concerné → réponse sous 1 mois (Art. 12). Pour T12 : opposition d'un préparateur à la surveillance de ses performances → gel de la table Performance pour ce `preparer_id`, notification au Manager. Aucune opposition ne peut être opposée aux traitements fondés sur Art. 6.1.b ou 6.1.c. | ⚠️ À implémenter |
 | Droit de réclamation CNIL | Art. 77 | Information à inclure dans la politique de confidentialité : https://www.cnil.fr/fr/plaintes | À mentionner |

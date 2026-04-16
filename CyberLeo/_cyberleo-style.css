@@ -1,0 +1,306 @@
+/* ============================================================
+   CyberLeo — Design System "The Precise Artisan"
+   Lidl Collect — Export PDF A4
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap');
+
+/* --- Variables -------------------------------------------- */
+:root {
+  --color-primary:        #F47C1A;
+  --color-secondary:      #1B1B6E;
+  --color-bg:             #F5F0E8;
+  --color-surface:        #FFFFFF;
+  --color-surface-low:    #F8F3EB;
+  --color-surface-mid:    #F2EDE3;
+  --color-text:           #1a1a2e;
+  --color-text-light:     #5a5a7a;
+  --color-ghost-border:   rgba(222, 193, 176, 0.35);
+  --color-accent-border:  rgba(222, 193, 176, 0.6);
+  --shadow-whisper:       0 1px 4px rgba(0, 0, 0, 0.08);
+  --shadow-card:          0 2px 8px rgba(27, 27, 110, 0.07);
+  --radius-card:          12px;
+  --font-main: 'Montserrat', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+}
+
+/* --- Base -------------------------------------------------- */
+html {
+  background: var(--color-bg);
+}
+
+body {
+  font-family:  var(--font-main);
+  font-size:    10.5pt;
+  font-weight:  500;
+  line-height:  1.7;
+  color:        var(--color-text);
+  background:   var(--color-bg);
+  max-width:    168mm;
+  margin:       0 auto;
+  padding:      14mm 0 20mm;
+}
+
+/* --- Titres ------------------------------------------------ */
+h1 {
+  font-size:    20pt;
+  font-weight:  800;
+  color:        var(--color-secondary);
+  letter-spacing: -0.3px;
+  margin:       0 0 6px 0;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--color-primary);
+  page-break-after: avoid;
+}
+
+h2 {
+  font-size:    12.5pt;
+  font-weight:  800;
+  color:        var(--color-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin:       32px 0 14px 0;
+  padding:      10px 14px;
+  background:   var(--color-surface-low);
+  border-radius: 6px;
+  border-left:  3px solid var(--color-primary);
+  page-break-before: always;
+  page-break-after:  avoid;
+}
+
+/* Premier h2 : pas de saut de page */
+h1 ~ h2:first-of-type,
+blockquote + h2 {
+  page-break-before: avoid;
+}
+
+h3 {
+  font-size:    10.5pt;
+  font-weight:  700;
+  color:        var(--color-secondary);
+  margin:       20px 0 8px 0;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--color-ghost-border);
+  page-break-after: avoid;
+}
+
+h4 {
+  font-size:    10pt;
+  font-weight:  700;
+  color:        var(--color-text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size:    8.5pt;
+  margin:       16px 0 6px 0;
+  page-break-after: avoid;
+}
+
+/* --- Paragraphes ------------------------------------------ */
+p {
+  margin:  0 0 10px 0;
+  orphans: 3;
+  widows:  3;
+}
+
+/* --- Bloc intro (> sous le h1) ---------------------------- */
+h1 + blockquote {
+  background:   var(--color-surface-low);
+  border-left:  3px solid var(--color-secondary);
+  border-radius: 0 8px 8px 0;
+  padding:      10px 16px;
+  font-size:    9pt;
+  font-weight:  500;
+  color:        var(--color-text-light);
+  margin:       0 0 24px 0;
+  box-shadow:   none;
+}
+
+h1 + blockquote p {
+  margin: 0;
+}
+
+/* --- Blockquotes standard --------------------------------- */
+blockquote {
+  background:   var(--color-surface-low);
+  border-left:  3px solid var(--color-primary);
+  border-radius: 0 8px 8px 0;
+  padding:      12px 16px;
+  margin:       14px 0;
+  font-size:    9.5pt;
+  color:        var(--color-text);
+  box-shadow:   var(--shadow-whisper);
+  page-break-inside: avoid;
+}
+
+blockquote p {
+  margin: 0;
+}
+
+/* --- Tableaux --------------------------------------------- */
+table {
+  width:             100%;
+  border-collapse:   separate;
+  border-spacing:    0;
+  font-size:         9pt;
+  margin:            12px 0 20px 0;
+  page-break-inside: avoid;
+  background:        var(--color-surface);
+  border-radius:     var(--radius-card);
+  box-shadow:        var(--shadow-card);
+  overflow:          hidden;
+}
+
+thead tr {
+  background: var(--color-secondary);
+}
+
+th {
+  font-weight:    800;
+  font-size:      8pt;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color:          #FFFFFF;
+  padding:        8px 12px;
+  text-align:     left;
+  border-bottom:  none;
+}
+
+td {
+  padding:        7px 12px;
+  vertical-align: top;
+  line-height:    1.5;
+  border-top:     1px solid var(--color-ghost-border);
+}
+
+tr:nth-child(even) td {
+  background: var(--color-surface-low);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* --- Code inline ------------------------------------------ */
+code {
+  font-family:  var(--font-mono);
+  font-size:    8.5pt;
+  background:   var(--color-surface);
+  color:        var(--color-primary);
+  padding:      1px 6px;
+  border-radius: 4px;
+  box-shadow:   0 0 0 1px var(--color-ghost-border);
+  white-space:  nowrap;
+  font-weight:  500;
+}
+
+/* --- Blocs de code ---------------------------------------- */
+pre {
+  background:        var(--color-surface);
+  border-radius:     var(--radius-card);
+  border-left:       3px solid var(--color-secondary);
+  padding:           14px 18px;
+  font-size:         8.5pt;
+  line-height:       1.6;
+  margin:            10px 0 18px 0;
+  box-shadow:        var(--shadow-card);
+  page-break-inside: avoid;
+  overflow-x:        auto;
+}
+
+pre code {
+  background:  none;
+  color:       var(--color-text);
+  padding:     0;
+  box-shadow:  none;
+  white-space: pre;
+  font-weight: 400;
+}
+
+/* --- Listes ----------------------------------------------- */
+ul, ol {
+  padding-left: 20px;
+  margin:       6px 0 12px 0;
+}
+
+li {
+  margin:      4px 0;
+  line-height: 1.65;
+}
+
+li > ul,
+li > ol {
+  margin: 2px 0;
+}
+
+/* --- Séparateurs ------------------------------------------ */
+hr {
+  border:     none;
+  background: var(--color-surface-mid);
+  height:     2px;
+  margin:     24px 0;
+  border-radius: 2px;
+}
+
+/* --- Liens ------------------------------------------------ */
+a {
+  color:           var(--color-primary);
+  font-weight:     600;
+  text-decoration: none;
+}
+
+/* --- Strong / em ------------------------------------------ */
+strong {
+  font-weight: 700;
+  color:       var(--color-secondary);
+}
+
+em {
+  font-style: italic;
+  color:      var(--color-text-light);
+}
+
+/* --- Impression / PDF ------------------------------------- */
+@media print {
+  @page {
+    size:       A4 portrait;
+    margin:     18mm 20mm 18mm 20mm;
+    background: #F5F0E8;
+  }
+
+  html, body {
+    background: #F5F0E8;
+  }
+
+  body {
+    max-width: 100%;
+    padding:   0;
+    font-size: 10pt;
+  }
+
+  h1 { font-size: 18pt; }
+  h2 { font-size: 11.5pt; page-break-before: always; }
+  h3 { font-size: 10.5pt; }
+
+  h1, h2, h3, h4 {
+    page-break-after: avoid;
+  }
+
+  table, pre, blockquote {
+    page-break-inside: avoid;
+  }
+
+  p {
+    orphans: 3;
+    widows:  3;
+  }
+
+  /* Conserver les couleurs de fond à l'impression */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust:         exact !important;
+  }
+
+  a[href]::after {
+    content: none;
+  }
+}
