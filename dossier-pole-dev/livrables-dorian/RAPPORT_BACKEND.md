@@ -5,7 +5,10 @@
 **École** : My Digital School  
 **Date** : Avril 2026
 
-**Lien GitHub** : [github.com/Jacma-pro/back-lidl](https://github.com/Jacma-pro/back-lidl)
+**Lien GitHub** : 
+
+- pour le backend : [github.com/Jacma-pro/back-lidl](https://github.com/Jacma-pro/back-lidl)
+- pour le frontend : [github.com/Alexandre74739/Lidl](https://github.com/Alexandre74739/Lidl)
 
 ---
 
