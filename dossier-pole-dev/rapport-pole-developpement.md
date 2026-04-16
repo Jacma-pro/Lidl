@@ -18,9 +18,9 @@ L'équipe livre une application sécurisée, conforme RGPD, déployée sur une i
 
 ## 1. Compréhension du contexte et de l'enjeu
 
-### 1.1 Ce que le Drive représente réellement pour Lidl
+### 1.1 Ce que le Drive/Click&Collect représente réellement pour Lidl
 
-La demande de Drive alimentaire chez Lidl ne naît pas d'une opportunité digitale abstraite. Elle répond à une pression concurrentielle concrète et à un comportement client en rupture avec le modèle historique de l'enseigne. Les profils identifiés: familles avec contrainte de temps, jeunes actifs avec liste préparée, retraités habitués au numérique depuis le Covid partagent un point commun : ils ont développé une pratique du Drive chez la concurrence qu'aucune action marketing ne remplacera tant qu'une solution équivalente n'existera pas chez Lidl.
+La demande de Drive et de click&collect alimentaire chez Lidl ne naît pas d'une opportunité digitale abstraite. Elle répond à une pression concurrentielle concrète et à un comportement client en rupture avec le modèle historique de l'enseigne. Les profils identifiés: familles avec contrainte de temps, jeunes actifs avec liste préparée, retraités habitués au numérique depuis le Covid partagent un point commun : ils ont développé une pratique du Drive chez la concurrence qu'aucune action marketing ne remplacera tant qu'une solution équivalente n'existera pas chez Lidl.
 
 Le magasin de Saint-Martin-d'Hères illustre bien cette tension. Avec 35 % de 15-29 ans dans sa zone de chalandise, 20 000 étudiants sur le campus UGA et un taux de pauvreté de 19 %, il dessert une clientèle structurellement sensible au prix mais exigeante sur la fluidité du service. Cette clientèle fréquente le Lidl pour ses prix ; elle fréquentera l'Intermarché Hyper voisin pour son Drive, à moins que Lidl Collect existe.
 
@@ -182,11 +182,11 @@ L'organisation de l'équipe n'est pas une répartition de tâches arbitraire ell
 
 | Domaine | Responsable | Criticité | Dépendances principales |
 |---------|-------------|-----------|------------------------|
-| UX/UI | Gwen | Élevée — bloque le Frontend | Direction artistique Lidl 2.0 |
-| Frontend React | Alex | Élevée | Maquettes (Gwen) + contrats API (Dorian) |
+| UX/UI | Gwendoline | Élevée — bloque le Frontend | Direction artistique Lidl 2.0 |
+| Frontend React | Alexandre-Philippe | Élevée | Maquettes (Gwen) + contrats API (Dorian) |
 | Backend API REST | Dorian | Critique | BDD (Sabry), Auth (Willy), Sécu (Leo) |
 | Base de données | Sabry | Critique | Backend (Dorian), Sécu (Leo) |
-| Cybersécurité | Leo | Transverse | Tous les modules |
+| Cybersécurité | Léo | Transverse | Tous les modules |
 | Auth & Paiement | Willy | Critique | Backend (Dorian), Sécu (Leo) |
 | Infra CI/CD | David | Élevée | Backend (Dorian), BDD (Sabry) |
 | Réseau magasin | Patrice | Élevée | Indépendant applicatif |
