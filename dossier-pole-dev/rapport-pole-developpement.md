@@ -90,11 +90,11 @@ Le schéma d'architecture applicative global distingue trois couches : l'interfa
 
 ### 2.4.1 Les personas comme socle des décisions d'interface
 
-La conception de l'interface repose sur six profils construits à partir du cahier des charges. Trois d'entre eux posent les tensions structurantes : Emrick (19 ans, étudiant, petites courses rapides depuis mobile), Jean et Monique (65 ans, retraités, interface lisible avec peu d'étapes), et Lucas (préparateur sous pression, outil de travail où chaque geste compte). Ces profils coexistent dans la même application — les décisions d'interface doivent satisfaire simultanément des usages aussi distincts que la commande express et la supervision métier. Cette cartographie précède tout choix de composant.
+La conception de l'interface repose sur six profils construits à partir du cahier des charges. Trois d'entre eux posent les tensions structurantes : Emrick (19 ans, étudiant, petites courses rapides depuis mobile), Jean et Monique (65 ans, retraités, interface lisible avec peu d'étapes), et Lucas (préparateur sous pression, outil de travail où chaque geste compte). Ces profils coexistent dans la même application les décisions d'interface doivent satisfaire simultanément des usages aussi distincts que la commande express et la supervision métier. Cette cartographie précède tout choix de composant.
 
 ### 2.4.2 Userflows et maquettes
 
-Le travail démarre par la formalisation des parcours selon les rôles. Le parcours client couvre sept étapes authentification, choix du magasin, catalogue, panier, créneau, validation, confirmation — avec identification des points de friction (ruptures en cours de panier, créneau saturé au paiement) résolus dans le flux avant d'être codés. Le parcours préparateur est cartographié séparément : plus court mais plus dense en états simultanés.
+Le travail démarre par la formalisation des parcours selon les rôles. Le parcours client couvre sept étapes authentification, choix du magasin, catalogue, panier, créneau, validation, confirmation avec identification des points de friction (ruptures en cours de panier, créneau saturé au paiement) résolus dans le flux avant d'être codés. Le parcours préparateur est cartographié séparément : plus court mais plus dense en états simultanés.
 
 Les maquettes sont produites en alignement avec la Direction Artistique du Pôle Création : palette orange (#F97A0A), bleu (#114FCB), fond blanc cassé (#FFFBE2), typographies Climate Crisis et Montserrat. L'application est conçue en Desktop-first, conformément au cahier des charges, avec déclinaison responsive en adaptation secondaire. Les livrables comprennent wireframes basse fidélité, maquettes haute fidélité écran par écran, et spécifications de comportement (états hover, erreur, chargement) remises à Alex pour l'intégration.
 
@@ -110,7 +110,7 @@ La première est la complexité des états applicatifs. Le panier, le suivi de c
 
 La deuxième est la maintenabilité dans un contexte multi-développeurs avec des interfaces distinctes (client, préparateur, manager). La séparation par composants de React permet à chaque interface d'être développée et testée indépendamment, avec des contrats d'interface API définis en amont. Les maquettes produites par Gwen sont structurées écran par écran avec leurs spécifications de comportement — le modèle de composants React s'aligne naturellement sur cette organisation.
 
-L'outillage complète le choix du framework : Vite est retenu comme environnement de build pour ses temps de compilation quasi-instantanés en développement (Hot Module Replacement natif) et son optimisation du bundle en production. La bibliothèque de composants est structurée en couches — composants atomiques génériques, composants métier spécifiques à Lidl Collect, pages — ce qui rend chaque interface indépendante du point de vue du développement et testable isolément sans nécessiter le démarrage complet de l'application.
+L'outillage complète le choix du framework : Vite est retenu comme environnement de build pour ses temps de compilation quasi-instantanés en développement (Hot Module Replacement natif) et son optimisation du bundle en production. La bibliothèque de composants est structurée en couches composants atomiques génériques, composants métier spécifiques à Lidl Collect, pages ce qui rend chaque interface indépendante du point de vue du développement et testable isolément sans nécessiter le démarrage complet de l'application.
 
 ### 3.2 Backend — API REST
 
@@ -134,7 +134,7 @@ L'instance est hébergée sur Supabase (région Frankfurt, Union Européenne), c
 
 ### 3.4 Authentification et sécurité des accès
 
-**Gestion des sessions — JWT.** La gestion des sessions repose sur deux niveaux de tokens. L'Access Token (15 min pour les clients et opérateurs, 10 min pour les administrateurs) accompagne chaque requête et valide les droits en temps réel. Le Refresh Token différencie la durée par rôle : 7 jours pour un client, 8 heures pour un opérateur ou manager, 4 heures pour un administrateur — calibrage qui reflète le niveau de risque associé à chaque profil. Les tokens sont stockés en cookies `httpOnly` et `Secure`, inaccessibles aux scripts côté navigateur. La révocation est immédiate en cas de compromission, avec déconnexion sur tous les appareils.
+**Gestion des sessions — JWT.** La gestion des sessions repose sur deux niveaux de tokens. L'Access Token (15 min pour les clients et opérateurs, 10 min pour les administrateurs) accompagne chaque requête et valide les droits en temps réel. Le Refresh Token différencie la durée par rôle : 7 jours pour un client, 8 heures pour un opérateur ou manager, 4 heures pour un administrateur calibrage qui reflète le niveau de risque associé à chaque profil. Les tokens sont stockés en cookies `httpOnly` et `Secure`, inaccessibles aux scripts côté navigateur. La révocation est immédiate en cas de compromission, avec déconnexion sur tous les appareils.
 
 **Authentification multi-facteurs (MFA).** La MFA est obligatoire pour les rôles opérateur, manager et administrateur, et déclenchée sur les actions critiques des comptes clients (modification de mot de passe, accès aux données personnelles). Elle repose sur un OTP transmis par SMS ou application d'authentification.
 
@@ -148,7 +148,7 @@ L'instance est hébergée sur Supabase (région Frankfurt, Union Européenne), c
 
 La surface d'attaque de Lidl Collect est large : données personnelles de clients, transactions financières, accès multi-rôles à des données de commandes et de stock. L'approche retenue repose sur une modélisation des menaces STRIDE conduite en amont du développement, couvrant les trois flux applicatifs critiques : authentification, passage de commande, et accès opérateur et administration.
 
-Cette modélisation identifie, pour chaque flux, les vecteurs d'usurpation d'identité, d'altération des données, de répudiation, de divulgation d'information, de déni de service et d'élévation de privilèges. Elle produit une liste de contre-mesures assignées par responsable et priorisées par criticité — les risques classés critiques doivent être traités avant mise en production, les risques élevés avant la version 1.0.
+Cette modélisation identifie, pour chaque flux, les vecteurs d'usurpation d'identité, d'altération des données, de répudiation, de divulgation d'information, de déni de service et d'élévation de privilèges. Elle produit une liste de contre-mesures assignées par responsable et priorisées par criticité les risques classés critiques doivent être traités avant mise en production, les risques élevés avant la version 1.0.
 
 Parmi les points de vigilance structurants : la protection contre les accès croisés entre clients (isolation des ressources par identifiant utilisateur), la prévention des élévations de privilèges par injection de paramètres dans les requêtes (mass assignment, storeId injecté), le rate limiting sur les endpoints d'authentification, et la robustesse de la configuration des tokens face aux attaques de forge de signature.
 
@@ -254,8 +254,8 @@ Un registre des traitements est tenu à jour pour chaque catégorie de donnée, 
 L'équipe s'engage sur les livrables suivants, dans les conditions décrites dans ce rapport :
 
 - Une WebApp fonctionnelle couvrant l'intégralité du périmètre fonctionnel défini en section 2, déployée sur infrastructure conteneurisée avec pipeline CI/CD opérationnel.
-- Un système d'authentification sécurisé : JWT différencié par rôle, MFA obligatoire sur les comptes métier, hachage Bcrypt, révocation immédiate des sessions. Le paiement sera délégué à un prestataire certifié PCI-DSS — aucune donnée bancaire brute ne transitera par l'infrastructure.
+- Un système d'authentification sécurisé : JWT différencié par rôle, MFA obligatoire sur les comptes métier, hachage Bcrypt, révocation immédiate des sessions. Le paiement sera délégué à un prestataire certifié PCI-DSS aucune donnée bancaire brute ne transitera par l'infrastructure.
 - Une conformité RGPD documentée : registre des traitements, politique d'effacement implémentée, durées de conservation définies et appliquées.
 - Une documentation technique complète : Swagger API, MCD/MLD/MPD, Dockerfiles, schéma réseau, matrice RBAC.
 
-Les choix techniques présentés dans ce rapport sont argumentés mais discutables. Plusieurs arbitrages — notamment le choix du prestataire de paiement, la politique de cache catalogue ou la stratégie de déploiement — peuvent être révisés en fonction des contraintes opérationnelles ou contractuelles de Lidl. L'équipe est disponible pour défendre et, si nécessaire, ajuster ses décisions face aux retours du jury.
+Les choix techniques présentés dans ce rapport sont argumentés mais discutables. Plusieurs arbitrages notamment le choix du prestataire de paiement, la politique de cache catalogue ou la stratégie de déploiement peuvent être révisés en fonction des contraintes opérationnelles ou contractuelles de Lidl. L'équipe est disponible pour défendre et, si nécessaire, ajuster ses décisions face aux retours du jury.
