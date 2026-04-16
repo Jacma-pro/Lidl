@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../_style.css">
+
 # **Politique d’authentification - Lidl Collect**
 
 ---

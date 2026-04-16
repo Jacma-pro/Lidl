@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../_style.css">
+
 # Mini-doc technique — solutions retenues / alternatives
 
 ## 1. Hébergement des comptes utilisateurs : Mon Compte Lidl

@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../_style.css">
+
 # Rapport Backend – Lidl Drive (Click & Collect)
 
 **Auteur** : Dorian Jacolin  

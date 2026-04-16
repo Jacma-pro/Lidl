@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../_style.css">
+
 # Dossier de Recherche Préparatoire : Sécurisation de Lidl Collect
 
 Ce document retrace la phase d'investigation, d'analyse et de benchmark qui a permis de définir les standards de sécurité de l'application. Il démontre la cohérence entre les recherches théoriques et la mise en œuvre technique finale.
