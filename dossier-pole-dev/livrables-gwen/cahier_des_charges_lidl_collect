@@ -1,0 +1,90 @@
+# Cahier des Charges UX/UI : Application "Lidl Collect"
+
+## 1. Contexte du Projet & Vision
+Le projet vise à concevoir une webapp dédiée au Click & Collect et Drive pour Lidl. Il s'agit d'un nouveau support, complètement indépendant de l'actuelle application mobile Lidl Plus. 
+L'objectif stratégique est d'accompagner la montée en gamme de la marque (approche "Monoprix 2.0" / "Grand Frais") tout en préservant son ADN fondamental : des prix bas non négociables.
+L'application doit déstigmatiser l'image de l'enseigne, en faire le choix du "Smart shopper" et proposer une expérience premium, moderne et décalée, sans tomber dans un élitisme froid.
+
+## 2. Cibles (Personas)
+L'application s'adresse à une clientèle diversifiée. Les parcours (client et employé) ont été pensés pour répondre à 6 profils clés :
+
+**Côté Clients (Les "Smart Shoppers") :**
+- **Emrick (19 ans, Étudiant) :** Budget limité, très connecté (TikTok/Insta). Il fait des achats rapides et fréquents, cherche des produits sains/sportifs et est très sensible à une image de marque moderne et "cool".
+- **Gwen (24 ans, Jeune active) :** Axée sur l'organisation et l'optimisation. Elle est très sensible à l'image de l'enseigne, déteste l'effet "bazar" et recherche un parcours d'achat fluide, pratique et rapide.
+- **Camille & Thomas (Jeunes actifs, sans enfants) :** Font de gros paniers et planifient leurs repas. Ils exigent un drive "zéro rupture" avec les mêmes prix qu'en magasin. Très friands d'idées de recettes et de promotions sous forme de lots (ex: 3+1 gratuit).
+- **Mégane & David (35 ans, Parents de jumeaux) :** Budget serré et charge mentale élevée. Ils cherchent des formats familiaux/économiques et un "allié du quotidien" pour gagner du temps. Ils ont besoin d'être déculpabilisés ("bien nourrir ses enfants sans se ruiner").
+- **Jean & Monique (65 ans, Retraités) :** Ont adopté le drive pendant le Covid pour le confort (éviter de porter des charges lourdes). Ils ont un budget confortable mais exigent une application ultra-lisible, simple, rassurante et avec très peu d'étapes.
+
+**Côté Employés :**
+- **Lucas (25 ans, Préparateur de commandes) :** Il a besoin d'une interface de travail performante, fluide et simple. L'application doit également aider à valoriser son travail auprès du client final (ex: "Commande préparée avec soin par Lucas") pour lui donner plus de reconnaissance.
+
+## 3. Objectifs de l'Application
+- **Premiumisation de l'expérience :** Interface épurée, fin de l'"effet bazar", navigation intuitive.
+- **Gain de temps :** Parcours "commander – payer – récupérer" sans friction.
+- **Inspiration :** Proposer une réelle aide au quotidien pour l'élaboration des repas.
+- **Transparence :** Rassurer sur la provenance des produits et la protection des données personnelles.
+
+## 4. Fonctionnalités Clés Attendues
+- **Accueil Inspirationnel :** Bandeau épuré et ciblé ("Sélection de nos chefs", "Des idées simples pour bien manger").
+- **Idées Recettes & Menus (Nos Ambiances) :** Valorisation de la section "recettes" déjà présente sur Lidl.fr.Fonctionnalité phare présente sous forme d'un onglet entier depuis l'accueil, et intégrée comme une section visuelle dans les catégories de produits ("Nos ambiances" avec des propositions comme : repas healthy, dîner entre amis, préparation pour bébé...). Les liens redirigeront vers la section recettes du site, mais avec une mise en avant plus qualitative et inspirante (visuels HD, titres accrocheurs, etc.).
+- **Navigation & Catégorisation Claires :** Structuration visuelle des rayons avec des sous-catégories illustrées pour trouver ses produits intuitivement, sans se perdre.
+- **Mise en avant des Promotions ("Le coin des bonnes affaires") :** L'ADN hard-discount est assumé mais présenté de manière non agressive et élégante. Les promotions (ex: "3 + 1 gratuit", offres anti-gaspi de la semaine) doivent être bien visibles mais intégrées harmonieusement.
+- **Garantie Drive :** Affichage du stock en temps réel et prix strictement identiques au magasin.
+- **Espace Fidélité :** Digitalisation de la carte de fidélité existante.
+- **Parcours de Retrait (Double option) :** 
+  - *Click & Collect (Piéton)* : Retrait des courses à un point dédié directement à l'intérieur du magasin.
+  - *Drive (Voiture)* : Stationnement sur des places réservées en extérieur. L'utilisateur scanne un QR code sur une borne depuis son véhicule, ce qui notifie instantanément le préparateur de sa présence.
+
+## 5. Direction Artistique & UI (User Interface)
+- **Couleurs (Issues de la DA "Lidl 2.0") :** 
+  - Orange (Couleur primaire) : `#F97A0A`
+  - Bleu : `#114FCB`
+  - Blanc cassé (Fond/Espaces) : `#FFFBE2`
+- **Typographie :** 
+  - Titres : *Antique Olive Nord D*
+  - Textes courants : *Montserrat Bold*
+  - Textes d'accentuation/secondaires : *Montserrat Italic*
+- **Iconographie :** Lisibles, modernes, épurées (basées sur Material UI).
+- **Ton de voix (UX Writing) :** Humour, ton décalé, audacieux, proche du client et jeune.
+- **Visuels :** Packshot produits travaillés et qualitatifs.
+- **Icônes :** Visuels premium et modernes, inspirés et adaptés à la charte DA Lidl.
+
+## 6. Bonnes Pratiques UX/UI & Accessibilité
+- **Système de Design (Composants) :** Utilisation de la bibliothèque *Material UI* comme base structurelle pour la conception des écrans, adaptée à la charte DA Lidl.
+- **Approche Desktop-First :** Interface optimisée pour les grands écrans (navigation supérieure riche, barre latérale pour les rayons à gauche comme sur l'image d'inspiration, affichage en grille dense mais aérée pour le catalogue produits, utilisation d'états de survol "hover" pour les clics souris). L'outil permettra également une adaptation responsive pour les écrans plus petits (tablettes, mobiles) avec une navigation simplifiée (menu hamburger, affichage en liste pour les produits).
+- **Accessibilité (Normes WCAG) :** 
+  - Contraste suffisant entre le texte et le fond.
+  - Typographie resizable (taille de police ajustable).
+  - Compatibilité avec les lecteurs d'écran (VoiceOver / TalkBack).
+- **Feedback Réactif :** Animations fluides lors de la visite de la webapp.
+- **Transparence et Réassurance :** Mention claire de la politique de confidentialité lors de la création du compte (Privacy by design).
+- **Tap Targets :** Zones de clics suffisamment larges (minimum 44x44 points) pour éviter les erreurs de manipulation.
+
+## 7. Détails des Parcours d'Utilisation (Workflows)
+
+### 7.1. Onboarding & Accueil
+- **Accueil :** Pas de Login wall, l'objectif étant de d'abord répondre aux besoins du client (inspiration, découverte du catalogue) avant de lui demander de créer un compte. L'utilisateur peut flâner dans l'application, consulter les recettes ("Nos Ambiances") et parcourir les rayons sans être forcé de créer un compte immédiatement. La connexion/création de compte sera requise uniquement à l'ajout au panier ou lors du paiement.
+- **Modal :** : Lors de la première visite, une modal demande le magasin de référence (manuellement ou grâce à la géolocalisation) pour afficher les stocks et prix exacts. Cette information permet de garantir la réponse au service demandé (le client ne va pas créer un panier de courses si aucun magasin ne propose le Drive et Click and collect à proximité). La géolocalisation est demandée pour sélectionner le point de retrait le plus proche et garantir l'exactitude des stocks disponibles.
+- **Parcours "Invité" :** L'utilisateur peut flâner dans l'application, consulter les recettes ("Nos Ambiances") et parcourir les rayons sans être forcé de créer un compte immédiatement. La connexion/création de compte sera requise uniquement à l'ajout au panier ou lors du paiement.
+
+### 7.2. Fiche Produit Détaillée & Transparence
+- **Informations Premium :** Affichage clair du Nutri-Score, de l'Eco-Score, de l'origine du produit et de la composition exacte. Cela répond à la demande de transparence des personas.
+- **Cross-Selling & Inspiration :** Suggestions "Souvent acheté avec" ou "Associer ce produit à la recette / ambiance X" pour inciter à la découverte de manière utile.
+- **Visuels HD :** Photos des produits de haute qualité sur fond épuré.
+
+### 7.3. Parcours de Checkout (Tunnel d'Achat)
+- **Choix du magasin (Store) et du créneau (PickupSlot) :**  L'application détecte le magasin via la localisation (sans la stocker) et propose des créneaux de retrait basés sur la capacité maximale et les plannings du magasin.
+- **Révision du panier (CartItem) & Fluidité de paiement :** Les prix sont figés au moment de la mise au panier. Le paiement se fait en ligne (simulé) ou au retrait (In-Store).
+- **Upselling utile (Achat d'impulsion) :** Proposition avant paiement de produits de dernière minute (ex: "Avez-vous oublié le sac poubelle ?", "Offre flash du jour").
+- **Génération du QR Code (Order) :** Une fois la commande validée, le client reçoit un `pickup_code` (QR code ou code court) indispensable pour le retrait.
+
+### 7.4. Gestion des Aléas & Substitutions (Produits en rupture)
+- **Notification de substitution (SubstitutionProposal) :** Fonctionnalité critique. Si un produit commandé est indisponible lors de la préparation (signalé par le préparateur), le client reçoit immédiatement une notification (Push/SMS) lui proposant un produit de remplacement (`proposed_product_id`). Il peut l'accepter ou le refuser directement via l'application avant de se rendre au drive.
+
+### 7.5. Interface Employé (Préparateur & Manager)
+- **Préparateur (Preparer) :** Dispose d'une interface listant les commandes assignées (`IN_PROGRESS`), avec possibilité de signaler des ruptures et de proposer des substitutions. Réception des alertes quand le client scanne sa borne sur le parking.
+- **Manager :** Accès à un tableau de bord (Performance) visualisant le score de ses préparateurs (temps moyen de préparation, taux d'erreur, signalements de ruptures) et gestion des plannings (Schedule) pour adapter l'ouverture des créneaux.
+
+### 7.6. Fidélité & Gamification
+- **Carte Digitale (Client_History) :** Numérisation de la carte pour faire le pont avec le système de fidélité, cumul de points (`loyalty_points`).
+- **Animation de l'app :** Intégration de récompenses et de jauges de fidélité pour les utilisateurs qui commandent fréquemment.
