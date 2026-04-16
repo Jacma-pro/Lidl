@@ -73,7 +73,7 @@ Le schéma d'architecture applicative global distingue trois couches : l'interfa
 │   Auth (JWT) · Logique métier · Gestion commandes       │
 └────┬─────────────┬──────────────┬───────────────────────┘
      │             │              │
-┌────▼────┐  ┌─────▼─────┐  ┌────▼────────────────────┐
+┌────▼────┐  ┌─────▼─────┐  ┌─────▼───────────────────┐
 │   BDD   │  │  Module   │  │   Interfaces métier     │
 │  (PG)   │  │ Paiement  │  │  Préparateur · Manager  │
 └─────────┘  └───────────┘  └─────────────────────────┘
