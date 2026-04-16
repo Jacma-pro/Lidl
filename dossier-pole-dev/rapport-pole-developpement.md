@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="./_cyberleo-style.css">
+<link rel="stylesheet" href="./_style.css">
 
 # Rapport de pôle — Développement
 ## Application Lidl Collect · Drive & Click and Collect
