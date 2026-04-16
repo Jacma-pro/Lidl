@@ -106,9 +106,9 @@ Les maquettes sont produites en alignement avec la Direction Artistique du Pôle
 
 React est retenu pour le frontend de Lidl Collect. Face aux alternatives principales que sont Vue.js et Angular, le choix s'appuie sur deux contraintes spécifiques au projet.
 
-La première est la complexité des états applicatifs. Le panier, le suivi de commande en temps réel, les notifications d'état et la gestion des substitutions génèrent des états concurrents qui doivent rester cohérents sur l'ensemble de l'interface. L'écosystème React notamment via des librairies de gestion d'état matures — est éprouvé sur ce type de complexité. Vue.js aurait été viable sur une application plus simple ; sur Lidl Collect, la richesse de l'outillage React justifie le choix.
+La première est la complexité des états applicatifs. Le panier, le suivi de commande en temps réel, les notifications d'état et la gestion des substitutions génèrent des états concurrents qui doivent rester cohérents sur l'ensemble de l'interface. L'écosystème React notamment via des librairies de gestion d'état matures est éprouvé sur ce type de complexité. Vue.js aurait été viable sur une application plus simple ; sur Lidl Collect, la richesse de l'outillage React justifie le choix.
 
-La deuxième est la maintenabilité dans un contexte multi-développeurs avec des interfaces distinctes (client, préparateur, manager). La séparation par composants de React permet à chaque interface d'être développée et testée indépendamment, avec des contrats d'interface API définis en amont. Les maquettes produites par Gwen sont structurées écran par écran avec leurs spécifications de comportement — le modèle de composants React s'aligne naturellement sur cette organisation.
+La deuxième est la maintenabilité dans un contexte multi-développeurs avec des interfaces distinctes (client, préparateur, manager). La séparation par composants de React permet à chaque interface d'être développée et testée indépendamment, avec des contrats d'interface API définis en amont. Les maquettes produites par Gwen sont structurées écran par écran avec leurs spécifications de comportement le modèle de composants React s'aligne naturellement sur cette organisation.
 
 L'outillage complète le choix du framework : Vite est retenu comme environnement de build pour ses temps de compilation quasi-instantanés en développement (Hot Module Replacement natif) et son optimisation du bundle en production. La bibliothèque de composants est structurée en couches composants atomiques génériques, composants métier spécifiques à Lidl Collect, pages ce qui rend chaque interface indépendante du point de vue du développement et testable isolément sans nécessiter le démarrage complet de l'application.
 
@@ -122,11 +122,11 @@ Le monolithe a été écarté pour une raison de maintenabilité : les interface
 
 Les endpoints critiques en termes de charge liste catalogue, vérification de disponibilité, sont conçus avec une stratégie de cache explicite (TTL court, invalidation sur mise à jour de stock) pour absorber les pics de fréquentation sans solliciter la base de données à chaque requête.
 
-Le framework retenu côté serveur est NestJS, qui structure l'API en modules indépendants alignés sur les domaines métier : authentification, catalogue, commandes, utilisateurs. Cette organisation permet d'isoler les périmètres de responsabilité, de tester chaque domaine séparément, et de faire évoluer un module sans risque de régression sur les autres. Les middlewares globaux — logging, gestion des exceptions, validation des corps de requête via class-validator — sont configurés au niveau de l'application pour garantir un comportement uniforme sur l'ensemble des endpoints.
+Le framework retenu côté serveur est NestJS, qui structure l'API en modules indépendants alignés sur les domaines métier : authentification, catalogue, commandes, utilisateurs. Cette organisation permet d'isoler les périmètres de responsabilité, de tester chaque domaine séparément, et de faire évoluer un module sans risque de régression sur les autres. Les middlewares globaux logging, gestion des exceptions, validation des corps de requête via class-validator sont configurés au niveau de l'application pour garantir un comportement uniforme sur l'ensemble des endpoints.
 
 ### 3.3 Base de données — PostgreSQL
 
-Le modèle relationnel est le seul adapté aux contraintes transactionnelles de Lidl Collect. La gestion d'une commande implique des opérations ACID sur plusieurs tables simultanément : décrémentation du stock, création de la commande, enregistrement du paiement. Une rupture de cohérence dans cette séquence commande enregistrée mais stock non décrémenté, ou paiement validé mais commande absente — est un incident opérationnel majeur.
+Le modèle relationnel est le seul adapté aux contraintes transactionnelles de Lidl Collect. La gestion d'une commande implique des opérations ACID sur plusieurs tables simultanément : décrémentation du stock, création de la commande, enregistrement du paiement. Une rupture de cohérence dans cette séquence commande enregistrée mais stock non décrémenté, ou paiement validé mais commande absente est un incident opérationnel majeur.
 
 PostgreSQL est retenu pour sa conformité ACID native, ses performances sur les requêtes analytiques nécessaires à l'interface manager, et sa robustesse documentée en production sur des charges comparables à celle d'un service de Drive. La modélisation (MCD, MLD, MPD) est documentée et optimisée pour les requêtes critiques : recherche catalogue, récupération d'une commande par QR code, agrégats KPI manager.
 
@@ -134,7 +134,7 @@ L'instance est hébergée sur Supabase (région Frankfurt, Union Européenne), c
 
 ### 3.4 Authentification et sécurité des accès
 
-**Gestion des sessions — JWT.** La gestion des sessions repose sur deux niveaux de tokens. L'Access Token (15 min pour les clients et opérateurs, 10 min pour les administrateurs) accompagne chaque requête et valide les droits en temps réel. Le Refresh Token différencie la durée par rôle : 7 jours pour un client, 8 heures pour un opérateur ou manager, 4 heures pour un administrateur calibrage qui reflète le niveau de risque associé à chaque profil. Les tokens sont stockés en cookies `httpOnly` et `Secure`, inaccessibles aux scripts côté navigateur. La révocation est immédiate en cas de compromission, avec déconnexion sur tous les appareils.
+**Gestion des sessions JWT.** La gestion des sessions repose sur deux niveaux de tokens. L'Access Token (15 min pour les clients et opérateurs, 10 min pour les administrateurs) accompagne chaque requête et valide les droits en temps réel. Le Refresh Token différencie la durée par rôle : 7 jours pour un client, 8 heures pour un opérateur ou manager, 4 heures pour un administrateur calibrage qui reflète le niveau de risque associé à chaque profil. Les tokens sont stockés en cookies `httpOnly` et `Secure`, inaccessibles aux scripts côté navigateur. La révocation est immédiate en cas de compromission, avec déconnexion sur tous les appareils.
 
 **Authentification multi-facteurs (MFA).** La MFA est obligatoire pour les rôles opérateur, manager et administrateur, et déclenchée sur les actions critiques des comptes clients (modification de mot de passe, accès aux données personnelles). Elle repose sur un OTP transmis par SMS ou application d'authentification.
 
@@ -142,7 +142,7 @@ L'instance est hébergée sur Supabase (région Frankfurt, Union Européenne), c
 
 **Politique de mot de passe et verrouillage de compte.** La politique impose un minimum de douze caractères avec combinaison de majuscules, minuscules, chiffres et caractères spéciaux. Un mécanisme de verrouillage temporaire est activé après cinq tentatives d'authentification échouées consécutives, avec notification par email au titulaire du compte. Cette fenêtre de verrouillage est calibrée pour rendre les attaques par force brute économiquement inviables sans pénaliser les utilisateurs légitimes victimes d'erreurs de saisie.
 
-**Paiement.** Le traitement de la carte bancaire est délégué à un prestataire certifié PCI-DSS. L'application ne manipule que des tokens opaques transmis après autorisation — aucune donnée bancaire brute ne transite par l'infrastructure Lidl Collect.
+**Paiement.** Le traitement de la carte bancaire est délégué à un prestataire certifié PCI-DSS. L'application ne manipule que des tokens opaques transmis après autorisation aucune donnée bancaire brute ne transite par l'infrastructure Lidl Collect.
 
 ### 3.5 Cybersécurité
 
