@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../_style.css">
+
 # 📑 Rapport Technique d'Implémentation & Stratégie de Résilience
 **Projet :** Application web Click & Collect Drive (Appel d'offre Lidl)  
 **Stack Technique :** PostgreSQL, Supabase, Prisma, Next.js  

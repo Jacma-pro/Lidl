@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../_style.css">
+
 # Synthèse des Réalisations : Sécurité, Paiement et Développement
 
 Ce document détaille la mise en œuvre technique et stratégique des trois piliers du projet : la politique d'authentification, la sécurisation du tunnel de paiement et le développement de l'interface utilisateur.

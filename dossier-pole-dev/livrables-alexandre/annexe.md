@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../_style.css">
+
 # Lidl Collect : Frontend
 
 La web-app de click & collect, Lidl collect, permettant à un client de sélectionner un magasin, constituer un panier et suivre sa commande.

@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../../_style.css">
+
 # Client
 
 ## 🟢 PHASE 1 : Onboarding (Mise en route)

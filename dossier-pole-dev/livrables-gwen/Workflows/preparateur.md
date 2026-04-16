@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../../_style.css">
+
 # Préparateur
 
 ## 🟢 PHASE 1 : Prise de Poste (Engagement)
