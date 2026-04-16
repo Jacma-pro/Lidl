@@ -88,3 +88,10 @@ L'application s'adresse à une clientèle diversifiée. Les parcours (client et 
 ### 7.6. Fidélité & Gamification
 - **Carte Digitale (Client_History) :** Numérisation de la carte pour faire le pont avec le système de fidélité, cumul de points (`loyalty_points`).
 - **Animation de l'app :** Intégration de récompenses et de jauges de fidélité pour les utilisateurs qui commandent fréquemment.
+
+## 8. Justifications Ergonomiques par Maquette
+L'intégration de la DA et de l'UX a conduit à des choix de layout spécifiques pour chaque page clé de l'application :
+*   **Page Rayons / "Ambiances" :** Refus d'une grille e-commerce classique en "mosaïque de carrés". J'ai opté pour un layout asymétrique orienté "magazine/éditorial" qui valorise visuellement l'offre promotionnelle (bannières) et les catégories.
+*   **La Fiche Produit :** L'interface met graphiquement en confrontation le prix barré (l'avantage hard-discount) et les badges rassurants (qualité premium). L'intégration de cross-selling s'y fait naturellement, sans polluer visuellement le bouton d'ajout au panier.
+*   **Création de Compte :** Pour éviter l'écueil d'une expérience perçue comme bas de gamme via un "formulaire mobile" étiré sur un écran d'ordinateur, j'ai maquetté un grand conteneur horizontal (asymétrie 40/60). Un effet dit "Overlapping Typography" a été appliqué au titre pour qu'il chevauche les colonnes, ancrant définitivement la sensation d'un service digital hautement qualitatif.
+*   **Page "Panier" (Checkout) :** L'ergonomie de l'écran a été traitée pour qu'un bloc visuel permanent et distinct synthétise non pas seulement le total à payer, mais surtout et de façon très contrastée, l'accumulation des "Économies réalisées", transformant le paiement en une expérience gratifiante.
