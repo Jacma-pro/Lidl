@@ -1,15 +1,14 @@
 <link rel="stylesheet" href="./_style.css">
 
-
-
 # Rapport de pôle — Développement
-## Application Lidl Collect · Drive & Click and Collect
+## Application Lidl Collect · Drive / Click & Collect
 **Réponse à l'appel d'offre Lidl France · Pôle Développement · Avril 2026**
 
 <div class="cover-page">
      <img src="./img-front-page.png" alt="Couverture du rapport Lidl Collect" />
 </div>
-<div class="page-break"></div>
+<!--<div class="page-break"></div> -->
+
 
 ---
 
