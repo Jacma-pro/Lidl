@@ -1,11 +1,40 @@
 <link rel="stylesheet" href="./_style.css">
 
+
+
 # Rapport de pôle — Développement
 ## Application Lidl Collect · Drive & Click and Collect
 **Réponse à l'appel d'offre Lidl France · Pôle Développement · Avril 2026**
 
+<div class="cover-page">
+     <img src="./img-front-page.png" alt="Couverture du rapport Lidl Collect" />
+</div>
+<div class="page-break"></div>
+
 ---
 
+## Sommaire
+
+1. **[Synthèse exécutive](#sec-synthese)**  
+     Vision globale du projet, valeur business et livrables clés.
+2. **[Contexte et enjeu business](#sec-contexte)** *(Section 1)*  
+     Pourquoi Lidl Collect est stratégique pour Lidl.
+3. **[Périmètre fonctionnel et parcours utilisateurs](#sec-perimetre)** *(Section 2)*  
+     Ce que le service couvre concrètement côté client, préparateur et manager.
+4. **[Architecture technique et choix structurants](#sec-technique)** *(Section 3)*  
+     Frontend, backend, base de données, sécurité, CI/CD et infrastructure réseau.
+5. **[Organisation projet et gouvernance](#sec-gouvernance)** *(Section 4)*  
+     Répartition des responsabilités, méthode de travail et coordination inter-pôles.
+6. **[Planning et jalons de livraison](#sec-planning)** *(Section 5)*  
+     Calendrier de réalisation, livrables attendus et critères d'acceptation.
+7. **[Gestion des risques et conformité RGPD](#sec-risques-rgpd)** *(Section 6)*  
+     Principaux risques, mesures de mitigation et cadre réglementaire appliqué.
+8. **[Engagements et annexes de référence](#sec-engagements-annexes)** *(Sections 7 et 8)*  
+     Engagements formels de l'équipe et documents PDF d'approfondissement.
+
+---
+
+<a id="sec-synthese"></a>
 ## Synthèse exécutive
 
 Lidl France aborde un tournant stratégique majeur : après deux exercices déficitaires consécutifs et une perte documentée de 400 000 clients entre 2022 et 2025, l'enseigne investit 200 millions d'euros dans la reconquête de sa clientèle et accélère son repositionnement vers un segment discount-premium. Dans ce contexte, l'absence de Drive alimentaire représente une lacune compétitive réelle face à Leclerc Drive, Courses U et Intermarché Drive, opérateurs qui captent une clientèle organisée que Lidl ne peut pas encore fidéliser numériquement.
@@ -16,6 +45,7 @@ L'équipe livre une application sécurisée, conforme RGPD, déployée sur une i
 
 ---
 
+<a id="sec-contexte"></a>
 ## 1. Compréhension du contexte et de l'enjeu
 
 ### 1.1 Ce que le Drive/Click&Collect représente réellement pour Lidl
@@ -36,6 +66,7 @@ Contrairement à une refonte graphique ou à une campagne sociale, une applicati
 
 ---
 
+<a id="sec-perimetre"></a>
 ## 2. Périmètre fonctionnel et architecture de la solution
 
 ### 2.1 Parcours client : de la liste à la confirmation de retrait
@@ -100,6 +131,7 @@ Les maquettes sont produites en alignement avec la Direction Artistique du Pôle
 
 ---
 
+<a id="sec-technique"></a>
 ## 3. Choix techniques et justifications
 
 ### 3.1 Frontend — React
@@ -155,8 +187,6 @@ Parmi les points de vigilance structurants : la protection contre les accès cro
 
 Le projet intègre un module AuditLog en append-only : chaque action sensible connexion, modification de commande, accès aux données personnelles, changement de rôle est enregistrée avec horodatage, identifiant utilisateur et adresse IP. Ce journal est immuable par conception : aucun accès applicatif ne permet de modifier ou supprimer une entrée. Il constitue à la fois un outil de détection des comportements anormaux et une pièce de conformité en cas de contrôle RGPD ou d'audit de sécurité.
 
-Le référent cybersécurité intervient en transverse sur tous les modules manipulant des données sensibles : revue du module d'authentification, validation des schémas de données, audit de la configuration Nginx, et maintien d'un registre de suivi des actions correctives jusqu'à la recette finale. Le modèle de menaces STRIDE est un livrable formel du projet, annexé au dossier de pôle.
-
 ### 3.6 CI/CD — Docker et GitHub Actions
 
 Le premier pilier de cette stratégie est la conteneurisation avec Docker. L'idée est simple : on enferme l'application dans une "boîte" étanche qui contient tout ce dont elle a besoin pour fonctionner. Cela garantit que le logiciel se comportera exactement de la même manière sur l'ordinateur d'un développeur que sur le serveur final. Cette uniformité est une sécurité majeure, car elle évite des erreurs imprévisibles, comme un système de connexion qui fonctionnerait en test mais présenterait une faille une fois en ligne.
@@ -181,6 +211,7 @@ Ce choix répond aussi directement aux contraintes du Drive. Dans ce contexte, l
 
 ---
 
+<a id="sec-gouvernance"></a>
 ## 4. Organisation de l'équipe et gouvernance
 
 ### 4.1 Matrice de responsabilités orientée risques
@@ -210,6 +241,7 @@ Les rituels de synchronisation daily de 15 minutes, rétrospective en fin de spr
 
 ---
 
+<a id="sec-planning"></a>
 ## 5. Planning et jalons de livraison
 
 | Jalon | Période | Livrables | Critères d'acceptation |
@@ -222,6 +254,7 @@ Les rituels de synchronisation daily de 15 minutes, rétrospective en fin de spr
 
 ---
 
+<a id="sec-risques-rgpd"></a>
 ## 6. Gestion des risques et conformité RGPD
 
 ### 6.1 Matrice des risques techniques et opérationnels
@@ -256,6 +289,7 @@ Un registre des traitements est tenu à jour pour chaque catégorie de donnée, 
 
 ---
 
+<a id="sec-engagements-annexes"></a>
 ## 7. Engagements
 
 L'équipe s'engage sur les livrables suivants, dans les conditions décrites dans ce rapport :
@@ -266,3 +300,43 @@ L'équipe s'engage sur les livrables suivants, dans les conditions décrites dan
 - Une documentation technique complète : Swagger API, MCD/MLD/MPD, Dockerfiles, schéma réseau, matrice RBAC.
 
 Les choix techniques présentés dans ce rapport sont argumentés mais discutables. Plusieurs arbitrages notamment le choix du prestataire de paiement, la politique de cache catalogue ou la stratégie de déploiement peuvent être révisés en fonction des contraintes opérationnelles ou contractuelles de Lidl. L'équipe est disponible pour défendre et, si nécessaire, ajuster ses décisions face aux retours du jury.
+
+---
+
+## 8. Annexes
+
+Les annexes ci-dessous regroupent les documents de référence utiles au client et au jury pour approfondir les choix fonctionnels, techniques, sécurité et conformité. Elles complètent le rapport sans en alourdir la lecture principale.
+
+### Annexe A — Cahier des charges UX/UI
+Référence : [livrables-gwen/cahier_des_charges_lidl_collect.pdf](./livrables-gwen/cahier_des_charges_lidl_collect.pdf)
+
+Document de cadrage du produit : personas, parcours, exigences fonctionnelles, principes d'ergonomie et direction artistique. Cette annexe sert de base de traçabilité entre besoin métier et implémentation.
+
+### Annexe B — Rapport technique base de données
+Référence : [livrable-sabry/Rapport Technique.pdf](./livrable-sabry/Rapport%20Technique.pdf)
+
+Synthèse de l'architecture PostgreSQL : modèle relationnel, cohérence transactionnelle, performance des requêtes critiques, contraintes d'intégrité et exploitation opérationnelle.
+
+### Annexe C — Stratégie de sauvegarde et reprise (PITR)
+Référence : [livrable-sabry/Save_Retention_PITR.pdf](./livrable-sabry/Save_Retention_PITR.pdf)
+
+Explication du mécanisme de restauration point-in-time, des objectifs de continuité de service, et des arbitrages de rétention adaptés au contexte Drive.
+
+### Annexe D — Rapport backend API REST
+Référence : [livrables-dorian/RAPPORT_BACKEND.pdf](./livrables-dorian/RAPPORT_BACKEND.pdf)
+
+Description des choix de structuration de l'API (NestJS), des modules métier, de la validation des échanges, de l'intégration BDD et des exigences de déploiement.
+
+### Annexe E — Politique d'authentification et paiement
+Référence : [livrables-willy/politque_authentification_et_pairment.pdf](./livrables-willy/politque_authentification_et_pairment.pdf)
+
+Cadre de sécurité des accès : JWT, MFA, hachage des secrets, gestion de session par rôle et principes de sécurisation du flux de paiement.
+
+### Annexe F — RGPD et conformité cybersécurité
+- Référence : [livrables-leo/registre-traitement.pdf](./livrables-leo/registre-traitement.pdf)
+- Référence : [livrables-leo/matrice-rbac.pdf](./livrables-leo/matrice-rbac.pdf)
+- Référence : [livrables-leo/politique-effacement.pdf](./livrables-leo/politique-effacement.pdf)
+- Référence : [livrables-leo/threat-model.pdf](./livrables-leo/threat-model.pdf)
+- Référence : [livrables-leo/analyse-sous-traitants.pdf](./livrables-leo/analyse-sous-traitants.pdf)
+
+Ce bloc regroupe les pièces de conformité RGPD et de cybersécurité : registre des traitements, contrôle d'accès RBAC, politique d'effacement, modélisation STRIDE et cadre de sous-traitance.
