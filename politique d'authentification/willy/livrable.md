@@ -170,3 +170,8 @@ Pour prouver au jury que le système est sécurisé :
 - Le statut de la vérification **CVV** (réponse de la banque confirmant que le code saisi était correct).
 - Le **Fingerprint** de l'appareil (pour l'outil de détection de fraude).
 - Les **4 derniers chiffres** (pour l'affichage client uniquement).
+
+
+# Page coder front
+
+![page_coder](p_fruit_legume.png)
