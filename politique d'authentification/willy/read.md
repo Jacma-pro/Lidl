@@ -28,6 +28,10 @@ Pour vous permettre de naviguer facilement dans l’application sans avoir à vo
 
 Concrètement, après votre connexion, nous vous attribuons un jeton numérique sécurisé. Ce jeton fonctionne comme un badge temporaire qui prouve votre identité à chaque action.
 
+
+
+![schema_expliquation_jeton](schema.png)
+
 Ce choix repose sur plusieurs raisons.
 
 D’abord, il permet une navigation rapide et fluide, notamment sur mobile. Ensuite, il évite de stocker des sessions côté serveur, ce qui améliore les performances et la stabilité de la plateforme. Enfin, il permet d’intégrer directement votre rôle dans le système, ce qui facilite la gestion des droits.
@@ -115,3 +119,54 @@ Recommandations de ANSSI
 Recommandations de CNIL
 
 Bonnes pratiques de OWASP
+
+
+
+# Partie théorique pour le paiement en ligne
+
+**stockage des données**
+
+**Chiffrement** : Tu gardes le contrôle total des données sur tes propres serveurs( avantage ) incovénient : Si ton serveur est piraté et que la clé de déchiffrement est volée, les pirates lisent toutes les cartes.
+
+**Tokenisation** : la donnée n’existe pas elle est remplacé par un jeton qui n’a pas de valeur ( avantage ) incovénient : Dépendance totale envers ton prestataire de paiement (PSP).
+
+**Le choix pour Lidl Collect :** **La Tokenisation.**
+
+- **Justification :** C'est le standard recommandé par **IBM** et **Stripe**. En cas de fuite de données, Lidl ne perd rien de sensible.
+
+## **Transport et Interface**
+
+**Protocole TLS 1.2+ (HTTPS) :**
+
+- **Rôle :** Chiffre le "tunnel" entre le client et Lidl.
+- **Justification :** Empêche l'interception des données sur le réseau (attaque "Man-in-the-Middle"). Cité par Checkout.com comme la "première ligne de défense".
+
+**Intégration par iFrame (Isolation) :**
+
+- **Rôle :** Utiliser les champs de saisie du prestataire (ex: Stripe Elements).
+- **Justification :** Protège contre le **Formjacking** (virus qui vole ce que l'utilisateur tape). Le numéro de carte ne touche même pas le code de notre site.
+
+**Validation (authentification)**
+
+**. Authentification Forte (3D Secure 2 / 2FA)**
+
+- **Techno :** Vérification via mot de passe, dispositif (téléphone) ou biométrie (empreinte/face ID).
+- **Avantages :** Confirmation que le paiement a été initié avec le consentement réel de l'acheteur.
+- **Justification :** C'est une obligation légale de la **DSP2** pour réduire le risque d'usurpation d'identité.
+
+**Machine Learning / Détection de Fraude :**
+
+- **Rôle :** Algorithmes qui analysent les comportements suspects (ex: 5 achats en 2 minutes).
+- **Justification :** Recommandé par Checkout.com pour bloquer les fraudes avant même qu'elles n'arrivent à l'étape du paiement.
+
+## **Ce que nous "récupérons" et "gardons"**
+
+Pour prouver au jury que le système est sécurisé :
+
+**Nous ne gardons pas :** Le numéro de carte, la date d'expiration complète, et surtout **jamais le CVV** (comme rappelé par Checkout.com, il ne doit pas être stocké).
+
+**Nous récupérons :** Un **Token de paiement** (pour les futurs achats ou remboursements).
+
+- Le statut de la vérification **CVV** (réponse de la banque confirmant que le code saisi était correct).
+- Le **Fingerprint** de l'appareil (pour l'outil de détection de fraude).
+- Les **4 derniers chiffres** (pour l'affichage client uniquement).
