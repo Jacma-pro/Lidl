@@ -169,9 +169,15 @@ Enfin, pour l'hébergement de ce prototype, nous avons sélectionné la platefor
 
 ### 3.7 Infrastructure réseau magasin
 
-La fiabilité de la zone Drive dépend directement de la qualité de l'infrastructure réseau physique. L'architecture retenue sépare les flux par VLAN : terminaux de caisse et bornes Drive sont isolés du réseau d'usage général du magasin, garantissant une bande passante dédiée sans contention.
+L’infrastructure réseau de Lidl Collect a été pensée pour proposer un service national cohérent, tout en restant exploitable dans un magasin en situation réelle. Le choix retenu repose donc sur une architecture centralisée pour les services critiques, complétée par une exécution locale en magasin pour les opérations de retrait et de préparation.
 
-Les bornes extérieures sont couvertes par des points d'accès WiFi 6 industriels (résistants aux intempéries) avec redondance sur deux accès points distincts. En cas de perte de la connexion WAN, un mode dégradé bascule le retrait vers la caisse standard sans interruption visible pour le client.
+Cette orientation s’appuie sur l’étude de l’environnement numérique déjà utilisé par Lidl. Les informations publiques de l’enseigne montrent en effet un fonctionnement basé sur des services centralisés, avec un hébergement réparti entre Microsoft Azure, Google Cloud Platform et Schwarz IT KG, ainsi qu’un compte unique Mon Compte Lidl permettant d’unifier l’accès à plusieurs services Lidl. Ce fonctionnement nous a conduits à concevoir Lidl Collect dans la continuité de cette logique existante, plutôt que comme une infrastructure indépendante magasin par magasin.
+
+Le principe retenu sont les éléments structurants le service : gestion des comptes, commandes, suivi, notifications et supervision - sont pilotés depuis une infrastructure centrale, tandis que le magasin dispose uniquement des accès et outils nécessaires à l’exécution opérationnelle. Ce modèle présente un avantage direct : il garantit une expérience homogène sur l’ensemble du réseau Lidl, tout en simplifiant le déploiement, la maintenance et l’évolution du service.
+
+D’une part, elle améliore la fiabilité globale du service, car le système repose sur un socle commun et maîtrisé, plus facile à superviser et à sécuriser. D’autre part, elle rend le projet réaliste à l’échelle nationale : une même architecture peut être reproduite dans tous les magasins sans reconstruire un système différent à chaque implantation.
+
+Ce choix répond aussi directement aux contraintes du Drive. Dans ce contexte, la performance du service ne dépend pas seulement de l’application, mais de sa capacité à fonctionner rapidement dans un environnement magasin parfois plus contraint, notamment pour les bornes extérieures et les validations de retrait. L’infrastructure réseau a donc été pensée pour soutenir l’exploitation terrain, et non uniquement pour héberger l’application.
 
 ---
 
@@ -198,7 +204,7 @@ La cybersécurité et l'authentification ont un statut transverse : Leo et Willy
 
 La méthode retenue est Scrum avec des sprints de deux semaines. Ce choix répond à une contrainte de parallélisation : les modules frontend, backend et infrastructure peuvent avancer simultanément à condition que les contrats d'interface soient définis et figés au sprint 1. Un contrat d'API modifié en cours de développement sans coordination génère des régressions coûteuses.
 
-La convention adoptée est la suivante : les endpoints API sont définis et documentés (Swagger) avant le début du sprint de développement frontend correspondant. Toute modification de contrat passe par une revue d'impact formelle. Les maquettes de Gwen sont validées avant le début du sprint d'intégration d'Alex.
+La convention adoptée est la suivante : les endpoints API sont définis et documentés (Swagger) avant le début du sprint de développement frontend correspondant. Toute modification de contrat passe par une revue d'impact formelle. Les maquettes sont validées avant le début du sprint d'intégration.
 
 Les rituels de synchronisation daily de 15 minutes, rétrospective en fin de sprint ont pour seul objectif de détecter les dépendances bloquantes au plus tôt. Ils ne remplacent pas la communication bilatérale entre modules couplés.
 
