@@ -1,8 +1,6 @@
-
-***
-
 # **Politique d’authentification - Lidl Collect**
 
+---
 
 ## **Introduction : une sécurité pensée pour tous**
 
@@ -12,43 +10,17 @@ Que vous soyez client, préparateur de commandes ou administrateur, chaque accè
 
 Pour construire cette architecture, nous nous appuyons sur les recommandations d’organismes reconnus comme ANSSI, CNIL et OWASP.
 
+---
 
 ## **Comprendre comment vous vous connectez**
 
-Lorsque vous vous connectez à Lidl Collect, plusieurs éléments permettent de vérifier votre identité. Le premier est votre mot de passe, que vous seul connaissez. C’est ce qu’on appelle un facteur de connaissance.
+Lorsque vous vous connectez à Lidl Collect, plusieurs éléments permettent de vérifier votre identité.
 
-Authentification multi-facteur (MFA) – Renforcement de sécurité
-Afin de renforcer la sécurité des comptes utilisateurs, Lidl Collect met en place un mécanisme d’authentification multi-facteur (MFA), conformément aux recommandations de l’ANSSI et de l’OWASP. Ce dispositif repose sur la combinaison de plusieurs facteurs d’authentification indépendants :
+Le premier est votre mot de passe, que vous seul connaissez. C’est ce qu’on appelle un facteur de connaissance. Dans certains cas, nous demandons également un second élément, comme un code généré sur votre téléphone. Cela correspond à un facteur de possession.
 
-Facteur de connaissance : mot de passe personnel de l’utilisateur.
+Le fait de combiner ces éléments s’appelle l’authentification forte, ou MFA. Elle est recommandée par l’ANSSI pour protéger les accès sensibles, notamment pour les comptes internes.
 
-Facteur de possession : code temporaire à usage unique (OTP) envoyé par SMS, e-mail ou généré via une application d’authentification.
-
-Processus d’authentification
-Lors de la connexion à la plateforme, le processus est le suivant :
-
-L’utilisateur saisit son identifiant et son mot de passe.
-
-Le système vérifie la validité des informations.
-
-Un code temporaire à usage unique (OTP) est généré et transmis à l’utilisateur.
-
-L’utilisateur saisit ce code afin de confirmer son identité.
-
-Une fois la vérification validée, un JWT est émis (Access Token et Refresh Token).
-
-Périmètre d’application
-L’authentification multi-facteur est appliquée dans les cas suivants :
-
-Comptes administrateurs.
-
-Comptes internes (opérateurs, managers).
-
-Actions sensibles telles que : modification de mot de passe, accès aux données critiques, opérations d’administration.
-
-Apports en matière de sécurité
-La mise en place du MFA permet de réduire le risque lié au vol d’identifiants, de limiter l’impact des attaques de type phishing, de renforcer la protection des accès sensibles et de répondre aux exigences de sécurité recommandées par l’ANSSI et l’OWASP.
-
+---
 
 ## **Pourquoi nous utilisons les tokens (JWT)**
 
@@ -56,12 +28,17 @@ Pour vous permettre de naviguer facilement dans l’application sans avoir à vo
 
 Concrètement, après votre connexion, nous vous attribuons un jeton numérique sécurisé. Ce jeton fonctionne comme un badge temporaire qui prouve votre identité à chaque action.
 
+
+
+![schema_expliquation_jeton](schema.png)
+
 Ce choix repose sur plusieurs raisons.
 
 D’abord, il permet une navigation rapide et fluide, notamment sur mobile. Ensuite, il évite de stocker des sessions côté serveur, ce qui améliore les performances et la stabilité de la plateforme. Enfin, il permet d’intégrer directement votre rôle dans le système, ce qui facilite la gestion des droits.
 
 Cette approche est aujourd’hui largement utilisée et recommandée dans les architectures modernes, notamment par les bonnes pratiques de l’OWASP.
 
+---
 
 ## **Une sécurité renforcée grâce à la gestion des sessions**
 
@@ -75,23 +52,9 @@ Pour éviter de vous demander de vous reconnecter en permanence, un second jeton
 
 La durée de ce second jeton est plus longue, mais elle est adaptée selon le niveau de sensibilité du compte. Pour un client, la session peut être maintenue jusqu’à **7 jours**, afin de garantir une expérience utilisateur confortable. En revanche, pour les utilisateurs internes, cette durée est réduite à **8 heures pour les opérateurs et managers**, et à **4 heures pour les administrateurs**, conformément aux recommandations de sécurité renforcée pour les accès sensibles.
 
-
 Ce mécanisme permet de trouver un équilibre entre simplicité d’utilisation et niveau de protection élevé, en accord avec les bonnes pratiques recommandées notamment par l’OWASP et l’ANSSI.
 
-
-![Cycle Sécurisé des Sessions JWT](schéma.png)
-***
-## **Sécurisation des sessions côté navigateur**
-
-Afin de renforcer la sécurité côté utilisateur, les jetons d’authentification sont stockés de manière sécurisée dans des cookies protégés (httpOnly, Secure). Ce mécanisme empêche leur accès par des scripts malveillants exécutés dans le navigateur et limite ainsi les risques d’attaques de type XSS (Cross-Site Scripting), conformément aux bonnes pratiques recommandées par OWASP.
-
-
-### **Analyse visuelle du cycle de vie des sessions**
-
-Le schéma ci-dessus illustre la synergie entre l'interface utilisateur développée sous React et l'infrastructure serveur de Lidl Collect. Ce cycle garantit que l'accès aux services reste fluide pour l'utilisateur légitime tout en maintenant une barrière de sécurité constante. Le processus débute par une connexion via un tunnel sécurisé HTTPS, protégeant les identifiants contre toute interception. Une fois la vérification effectuée par le serveur à l'aide du hachage Bcrypt, deux jetons sont émis pour segmenter les responsabilités de sécurité et de confort.
-
-Le premier jeton, le Jeton d’Accès (Access Token), est le garant de la sécurité immédiate avec une validité courte de 15 minutes. Il accompagne chaque requête de l'utilisateur pour valider ses droits en temps réel. Le second, le Jeton de Renouvellement (Refresh Token), assure la continuité de l'expérience sur 7 jours. Comme le montre la boucle de "Renouvellement Automatique", l'application utilise ce second jeton pour obtenir un nouvel accès de manière transparente dès que le premier expire. Cette architecture permet de déconnecter instantanément un utilisateur en cas d'anomalie tout en offrant une navigation sans interruption lors d'un usage normal.
-
+---
 
 ## **Comment vos mots de passe sont protégés**
 
@@ -105,6 +68,7 @@ Il existe également un algorithme plus récent appelé Argon2, recommandé par 
 
 En complément, nous ajoutons une donnée aléatoire unique appelée “sel” à chaque mot de passe. Cela empêche deux mots de passe identiques d’avoir le même résultat, renforçant encore la sécurité.
 
+---
 
 ## **Des accès adaptés à chaque utilisateur**
 
@@ -116,6 +80,7 @@ Plus le niveau de responsabilité est élevé, plus les mesures de sécurité so
 
 Cette approche suit le principe du moindre privilège recommandé par l’ANSSI et les bonnes pratiques de l’OWASP.
 
+---
 
 ## **Une protection contre les principales menaces**
 
@@ -127,35 +92,15 @@ Les tentatives de fraude, comme le phishing, sont limitées grâce à l’utilis
 
 Enfin, les sessions sont sécurisées grâce à des durées limitées et des mécanismes de renouvellement. Cela réduit fortement les risques liés au vol de session.
 
-
-## **Gestion des incidents de sécurité**
-
-En cas de suspicion de compromission d’un compte, Lidl Collect met en place des mécanismes de réaction immédiats.
-
-Les jetons d’accès actifs peuvent être révoqués à tout moment, ce qui entraîne la déconnexion instantanée de l’utilisateur sur l’ensemble de ses appareils. Le système est également capable de bloquer temporairement un compte et de forcer une réinitialisation du mot de passe.
-
-Ces mesures permettent de limiter l’impact d’une attaque et de reprendre rapidement le contrôle du compte, conformément aux bonnes pratiques recommandées par OWASP.
-
-
 ## **Votre rôle dans la sécurité**
 
-La sécurité du système Lidl Collect ne repose pas uniquement sur la technologie, mais aussi sur la vigilance de ses utilisateurs. Pour garantir une protection optimale, chacun doit respecter des règles de prudence fondamentales.
+La sécurité est aussi une responsabilité partagée.
 
-**1. Pour nos clients : les bonnes pratiques d'hygiène numérique**
-* **Unicité du mot de passe :** Nous recommandons l'utilisation d'un mot de passe unique, non utilisé sur d'autres sites. Cela évite l'effet "domino" : si l'un de vos comptes est piraté ailleurs, votre compte Lidl Collect reste protégé.
-* **Vigilance face aux codes de validation :** Si vous recevez un code de connexion ou une notification de double authentification (MFA) par SMS ou e-mail sans avoir initié de demande, ne le validez sous aucun prétexte. C'est le signe d'une tentative de fraude.
-* **Détection du Phishing :** Lidl ne vous demandera jamais votre mot de passe par e-mail ou par téléphone. Vérifiez toujours que vous êtes sur l'application officielle ou sur le domaine lidl.fr avant de saisir vos identifiants.
+Nous vous recommandons d’utiliser un mot de passe unique pour votre compte Lidl Collect et de ne jamais le partager. Si vous recevez une demande de code de connexion sans en être à l’origine, il est important de ne pas la valider.
 
-**2. Pour les utilisateurs internes : la charte de comportement professionnel**
-En tant qu'acteur du réseau Lidl Collect, votre accès est une porte d'entrée vers nos systèmes. Des règles strictes s'appliquent :
-* **Gestion des accès personnels :** Vos identifiants sont strictement personnels. Le partage de compte entre préparateurs ou managers, même pour "gagner du temps", est une faille majeure et est formellement interdit.
-* **Sécurisation immédiate du poste :** Le verrouillage de session (raccourci Windows + L) est obligatoire dès que vous vous éloignez de votre terminal de préparation ou de votre ordinateur, afin d'empêcher toute manipulation par un tiers.
-* **Utilisation des outils homologués :** L'accès aux interfaces d'administration et de gestion des commandes doit se faire exclusivement via les appareils fournis et sécurisés par Lidl (PDT, terminaux mobiles, PC fixes de l'entrepôt).
-* **Remontée d'incidents :** Tout comportement anormal du système (lenteur inhabituelle, fenêtres surgissantes, demandes de droits administrateur) doit être immédiatement signalé au responsable d'infrastructure ou au pôle sécurité.
+Pour les utilisateurs internes, certaines règles supplémentaires s’appliquent, notamment l’utilisation d’outils sécurisés et le respect des procédures en cas de doute.
 
-**3. Engagement et Confidentialité**
-Tout manquement à ces règles peut compromettre l'intégrité des données de milliers de clients. Le respect de ces consignes est un gage de professionnalisme et une condition sine qua non pour l'utilisation des services Lidl Collect.
-
+---
 
 ## **Conclusion : une sécurité simple et efficace**
 
@@ -165,11 +110,68 @@ Grâce à l’utilisation de technologies reconnues comme les JWT, le hachage Bc
 
 Notre approche repose sur un principe simple : rendre la sécurité invisible pour l’utilisateur légitime, tout en restant robuste face aux menaces.
 
+---
 
 ## **Sources**
 
 Recommandations de ANSSI
+
 Recommandations de CNIL
+
 Bonnes pratiques de OWASP
-Norme IETF
-Norme IETF
+
+
+
+# Partie théorique pour le paiement en ligne
+
+**stockage des données**
+
+**Chiffrement** : Tu gardes le contrôle total des données sur tes propres serveurs( avantage ) incovénient : Si ton serveur est piraté et que la clé de déchiffrement est volée, les pirates lisent toutes les cartes.
+
+**Tokenisation** : la donnée n’existe pas elle est remplacé par un jeton qui n’a pas de valeur ( avantage ) incovénient : Dépendance totale envers ton prestataire de paiement (PSP).
+
+**Le choix pour Lidl Collect :** **La Tokenisation.**
+
+- **Justification :** C'est le standard recommandé par **IBM** et **Stripe**. En cas de fuite de données, Lidl ne perd rien de sensible.
+
+## **Transport et Interface**
+
+**Protocole TLS 1.2+ (HTTPS) :**
+
+- **Rôle :** Chiffre le "tunnel" entre le client et Lidl.
+- **Justification :** Empêche l'interception des données sur le réseau (attaque "Man-in-the-Middle"). Cité par Checkout.com comme la "première ligne de défense".
+
+**Intégration par iFrame (Isolation) :**
+
+- **Rôle :** Utiliser les champs de saisie du prestataire (ex: Stripe Elements).
+- **Justification :** Protège contre le **Formjacking** (virus qui vole ce que l'utilisateur tape). Le numéro de carte ne touche même pas le code de notre site.
+
+**Validation (authentification)**
+
+**. Authentification Forte (3D Secure 2 / 2FA)**
+
+- **Techno :** Vérification via mot de passe, dispositif (téléphone) ou biométrie (empreinte/face ID).
+- **Avantages :** Confirmation que le paiement a été initié avec le consentement réel de l'acheteur.
+- **Justification :** C'est une obligation légale de la **DSP2** pour réduire le risque d'usurpation d'identité.
+
+**Machine Learning / Détection de Fraude :**
+
+- **Rôle :** Algorithmes qui analysent les comportements suspects (ex: 5 achats en 2 minutes).
+- **Justification :** Recommandé par Checkout.com pour bloquer les fraudes avant même qu'elles n'arrivent à l'étape du paiement.
+
+## **Ce que nous "récupérons" et "gardons"**
+
+Pour prouver au jury que le système est sécurisé :
+
+**Nous ne gardons pas :** Le numéro de carte, la date d'expiration complète, et surtout **jamais le CVV** (comme rappelé par Checkout.com, il ne doit pas être stocké).
+
+**Nous récupérons :** Un **Token de paiement** (pour les futurs achats ou remboursements).
+
+- Le statut de la vérification **CVV** (réponse de la banque confirmant que le code saisi était correct).
+- Le **Fingerprint** de l'appareil (pour l'outil de détection de fraude).
+- Les **4 derniers chiffres** (pour l'affichage client uniquement).
+
+
+# Page coder front
+
+![page_coder](p_fruit_legume.png)
