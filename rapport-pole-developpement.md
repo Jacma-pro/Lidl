@@ -18,9 +18,9 @@ L'équipe livre une application sécurisée, conforme RGPD, déployée sur une i
 
 ## 1. Compréhension du contexte et de l'enjeu
 
-### 1.1 Ce que le Drive/Click&Collect représente réellement pour Lidl
+### 1.1 Ce que le Drive représente réellement pour Lidl
 
-La demande de Drive et de click&collect alimentaire chez Lidl ne naît pas d'une opportunité digitale abstraite. Elle répond à une pression concurrentielle concrète et à un comportement client en rupture avec le modèle historique de l'enseigne. Les profils identifiés: familles avec contrainte de temps, jeunes actifs avec liste préparée, retraités habitués au numérique depuis le Covid partagent un point commun : ils ont développé une pratique du Drive chez la concurrence qu'aucune action marketing ne remplacera tant qu'une solution équivalente n'existera pas chez Lidl.
+La demande de Drive alimentaire chez Lidl ne naît pas d'une opportunité digitale abstraite. Elle répond à une pression concurrentielle concrète et à un comportement client en rupture avec le modèle historique de l'enseigne. Les profils identifiés: familles avec contrainte de temps, jeunes actifs avec liste préparée, retraités habitués au numérique depuis le Covid partagent un point commun : ils ont développé une pratique du Drive chez la concurrence qu'aucune action marketing ne remplacera tant qu'une solution équivalente n'existera pas chez Lidl.
 
 Le magasin de Saint-Martin-d'Hères illustre bien cette tension. Avec 35 % de 15-29 ans dans sa zone de chalandise, 20 000 étudiants sur le campus UGA et un taux de pauvreté de 19 %, il dessert une clientèle structurellement sensible au prix mais exigeante sur la fluidité du service. Cette clientèle fréquente le Lidl pour ses prix ; elle fréquentera l'Intermarché Hyper voisin pour son Drive, à moins que Lidl Collect existe.
 
@@ -48,11 +48,11 @@ La gestion des ruptures de stock fait partie du flux nominal, pas de l'exception
 
 ### 2.2 Parcours opérationnel magasin
 
-L'interface préparateur est conçue pour l'efficacité en conditions réelles : écran vertical, lecture rapide des listes de préparation, scan produit pour validation, signalement des ruptures en un geste. Les commandes arrivent par ordre de créneau de retrait et sont priorisées automatiquement. Le préparateur n'a pas à gérer la logique métier, il exécute une liste structurée que le système a déjà ordonnancée.
+L'interface préparateur est conçue pour l'efficacité en conditions réelles : écran vertical, lecture rapide des listes de préparation, scan produit pour validation, signalement des ruptures en un geste. Les commandes arrivent par ordre de créneau de retrait et sont priorisées automatiquement. Le préparateur n'a pas à gérer la logique métier il exécute une liste structurée que le système a déjà ordonnancée.
 
 L'interface manager donne une vision en temps réel : nombre de commandes en cours, taux de préparation, alertes sur les créneaux saturés, gestion du planning des préparateurs. Les KPIs sont accessibles sans manipulation complexe, le manager de magasin n'est pas un analyste data.
 
-La distinction entre ces deux interfaces n'est pas esthétique : elles répondent à des besoins métier différents, avec des droits d'accès distincts et des données exposées différemment. Cette séparation est intégrée dès la conception du modèle de données et de la matrice des rôles.
+La distinction entre ces deux interfaces n'est pas cosmétique : elles répondent à des besoins métier différents, avec des droits d'accès distincts et des données exposées différemment. Cette séparation est intégrée dès la conception du modèle de données et de la matrice des rôles.
 
 ### 2.3 Les deux modes de retrait et leurs contraintes distinctes
 
@@ -90,13 +90,13 @@ Le schéma d'architecture applicative global distingue trois couches : l'interfa
 
 ### 2.4.1 Les personas comme socle des décisions d'interface
 
-La conception de l'interface repose sur six profils construits à partir du cahier des charges. Trois d'entre eux posent les tensions structurantes : Emrick (19 ans, étudiant, petites courses rapides depuis mobile), Jean et Monique (65 ans, retraités, interface lisible avec peu d'étapes), et Lucas (préparateur sous pression, outil de travail où chaque geste compte). Ces profils coexistent dans la même application : les décisions d'interface doivent satisfaire simultanément des usages aussi distincts que la commande express et la supervision métier. Cette cartographie précède tout choix de composant. C'est ce qui a didcté l'approche UX axée sur la bienveillance, la fluidité, et la clarté à chaque étape du parcours. Les éléments d'interface sont pensés pour réduire la charge cognitive de tous les profils.
+La conception de l'interface repose sur six profils construits à partir du cahier des charges. Trois d'entre eux posent les tensions structurantes : Emrick (19 ans, étudiant, petites courses rapides depuis mobile), Jean et Monique (65 ans, retraités, interface lisible avec peu d'étapes), et Lucas (préparateur sous pression, outil de travail où chaque geste compte). Ces profils coexistent dans la même application les décisions d'interface doivent satisfaire simultanément des usages aussi distincts que la commande express et la supervision métier. Cette cartographie précède tout choix de composant.
 
 ### 2.4.2 Userflows et maquettes
 
-Le travail démarre par la formalisation des parcours selon les rôles. Le parcours client couvre sept étapes : authentification, choix du magasin, catalogue, panier, créneau, validation, confirmation, avec identification des points de friction (ruptures en cours de panier, créneau saturé au paiement) résolus dans le flux avant d'être codés. Le parcours préparateur est cartographié séparément : plus court mais plus dense en états simultanés tout en mettant en avant une valorisation de son expertise.
+Le travail démarre par la formalisation des parcours selon les rôles. Le parcours client couvre sept étapes authentification, choix du magasin, catalogue, panier, créneau, validation, confirmation avec identification des points de friction (ruptures en cours de panier, créneau saturé au paiement) résolus dans le flux avant d'être codés. Le parcours préparateur est cartographié séparément : plus court mais plus dense en états simultanés.
 
-Les maquettes sont produites en alignement avec la Direction Artistique du Pôle Création : palette orange (#F97A0A), bleu (#114FCB), fond blanc cassé (#FFFBE2), typographies Antique Olive Nord D et Montserrat. L'application est conçue en Desktop-first, avec déclinaison responsive en adaptation secondaire. Les livrables comprennent un cahier des charges fonctionnel pour la création de la webapp, des inspiration, des userflows, et des maquettes détaillées pour chaque écran. 
+Les maquettes sont produites en alignement avec la Direction Artistique du Pôle Création : palette orange (#F97A0A), bleu (#114FCB), fond blanc cassé (#FFFBE2), typographies Climate Crisis et Montserrat. L'application est conçue en Desktop-first, conformément au cahier des charges, avec déclinaison responsive en adaptation secondaire. Les livrables comprennent wireframes basse fidélité, maquettes haute fidélité écran par écran, et spécifications de comportement (états hover, erreur, chargement) remises à Alex pour l'intégration.
 
 ---
 
@@ -166,11 +166,27 @@ La stratégie de rollback est définie avant le premier déploiement : chaque im
 
 La stratégie d'environnements distingue trois niveaux : développement local sur Docker Compose, staging avec déploiement automatique sur chaque merge en branche principale, production sur validation manuelle. L'environnement de staging reproduit la configuration de production à l'identique, y compris les variables d'environnement sensibles gérées via des secrets GitHub Actions. Cette parité staging/production est la condition qui rend les tests d'intégration en staging réellement prédictifs du comportement en production et qui justifie d'y exécuter les tests de charge avant tout déploiement.
 
-### 3.7 Infrastructure réseau magasin
+### 3.7 Infrastructure réseau 
 
-La fiabilité de la zone Drive dépend directement de la qualité de l'infrastructure réseau physique. L'architecture retenue sépare les flux par VLAN : terminaux de caisse et bornes Drive sont isolés du réseau d'usage général du magasin, garantissant une bande passante dédiée sans contention.
+La construction de l’infrastructure réseau de Lidl Collect repose sur une idée directrice : le service doit être piloté de manière centrale, mais rester utilisable en magasin dans des conditions réelles. L’objectif n’est donc pas de reproduire toute l’application dans chaque point de vente, mais de construire un réseau capable de relier de façon fiable les magasins au cœur du système.
 
-Les bornes extérieures sont couvertes par des points d'accès WiFi 6 industriels (résistants aux intempéries) avec redondance sur deux accès points distincts. En cas de perte de la connexion WAN, un mode dégradé bascule le retrait vers la caisse standard sans interruption visible pour le client.
+Le fonctionnement retenu est simple. Toute la logique principale du service — gestion des comptes, commandes, paiements, notifications, suivi des retraits — est portée par une infrastructure nationale centralisée. Cela permet de garantir un fonctionnement uniforme sur tous les magasins, de mieux sécuriser les données et de simplifier la maintenance. En d’autres termes, le réseau central sert de point de référence unique pour l’ensemble de l’application.
+
+Le magasin, lui, joue un rôle d’exécution locale. Il ne porte pas le cœur du service, mais il doit pouvoir accéder rapidement aux informations utiles : commandes à préparer, QR codes à valider, état des retraits, alertes éventuelles. Cette organisation est plus cohérente qu’une logique où chaque magasin disposerait de sa propre infrastructure complète. Elle limite les écarts de configuration, réduit les risques d’erreur et facilite le déploiement à grande échelle.
+
+Cette architecture se justifie aussi par la nature même du service. Lidl Collect n’est pas un simple site vitrine ou un outil secondaire : c’est un service opérationnel, utilisé en situation réelle, avec des clients qui attendent un retrait fluide et immédiat. Il faut donc que le réseau soit pensé pour soutenir cette promesse. C’est particulièrement vrai pour les zones Drive, où le retrait dépend d’équipements extérieurs et d’une connexion parfois moins stable qu’à l’intérieur du magasin.
+
+Pour répondre à cette contrainte, le réseau magasin est organisé de manière à séparer les usages. Les équipements liés au Drive, aux caisses et à la préparation ne doivent pas être mélangés avec les autres usages du magasin.
+Le choix retenu repose donc sur une double logique :
+
+centraliser ce qui relève de la décision, de la donnée et de la supervision ;
+isoler localement ce qui relève de l’exécution opérationnelle.
+
+Ce modèle présente plusieurs avantages. D’abord, il rend l’infrastructure plus lisible et plus simple à exploiter. Ensuite, il permet d’assurer une meilleure continuité de service : si un incident survient dans un magasin, il n’affecte pas l’ensemble du système. Enfin, il correspond à la réalité d’un déploiement national : Lidl doit pouvoir reproduire le même modèle d’un magasin à l’autre sans reconstruire une architecture différente à chaque site.
+
+La question du Drive justifie particulièrement ce choix. Le retrait en voiture se fait dans un environnement plus exposé : borne extérieure, mobilité du client, dépendance au scan du QR code, nécessité de réagir vite. Le réseau doit donc être capable d’absorber cette contrainte sans créer de rupture dans l’expérience. C’est pourquoi l’infrastructure est pensée non seulement pour fonctionner en situation idéale, mais aussi pour rester exploitable en cas de dégradation ponctuelle du réseau.
+
+En résumé, la construction de l’infrastructure réseau de Lidl Collect ne consiste pas à empiler des équipements techniques. Elle consiste à mettre en place un cadre fiable, cohérent et reproductible, capable de relier un service numérique national à une réalité terrain très concrète. Ce choix est justifié par trois besoins majeurs : la continuité de service, la sécurité des flux et la capacité à déployer la solution à grande échelle.
 
 ---
 
@@ -182,11 +198,11 @@ L'organisation de l'équipe n'est pas une répartition de tâches arbitraire ell
 
 | Domaine | Responsable | Criticité | Dépendances principales |
 |---------|-------------|-----------|------------------------|
-| UX/UI | Gwendoline | Élevée — bloque le Frontend | Direction artistique Lidl 2.0 |
-| Frontend React | Alexandre-Philippe | Élevée | Maquettes (Gwen) + contrats API (Dorian) |
+| UX/UI | Gwen | Élevée — bloque le Frontend | Direction artistique Lidl 2.0 |
+| Frontend React | Alex | Élevée | Maquettes (Gwen) + contrats API (Dorian) |
 | Backend API REST | Dorian | Critique | BDD (Sabry), Auth (Willy), Sécu (Leo) |
 | Base de données | Sabry | Critique | Backend (Dorian), Sécu (Leo) |
-| Cybersécurité | Léo | Transverse | Tous les modules |
+| Cybersécurité | Leo | Transverse | Tous les modules |
 | Auth & Paiement | Willy | Critique | Backend (Dorian), Sécu (Leo) |
 | Infra CI/CD | David | Élevée | Backend (Dorian), BDD (Sabry) |
 | Réseau magasin | Patrice | Élevée | Indépendant applicatif |
