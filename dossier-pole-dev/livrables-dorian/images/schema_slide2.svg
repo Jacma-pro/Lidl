@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 300" fill="none">
+
+  <!-- ===== BLOC CLIENT ===== -->
+  <rect x="20" y="20" width="240" height="260" rx="14" stroke="#114FCB" stroke-width="3"/>
+  <!-- Icône personne -->
+  <circle cx="140" cy="72" r="22" stroke="#114FCB" stroke-width="2.5"/>
+  <path d="M96 138 C96 110 184 110 184 138" stroke="#114FCB" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Titre -->
+  <text x="140" y="172" text-anchor="middle" font-family="sans-serif" font-size="17" font-weight="700" fill="#114FCB">Client</text>
+  <!-- Séparateur -->
+  <line x1="44" y1="186" x2="236" y2="186" stroke="#114FCB" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <!-- Bullets -->
+  <circle cx="58" cy="208" r="4" fill="#114FCB"/>
+  <text x="72" y="213" font-family="sans-serif" font-size="13" fill="#114FCB">Parcourt le catalogue</text>
+  <circle cx="58" cy="232" r="4" fill="#114FCB"/>
+  <text x="72" y="237" font-family="sans-serif" font-size="13" fill="#114FCB">Passe une commande</text>
+  <circle cx="58" cy="256" r="4" fill="#114FCB"/>
+  <text x="72" y="261" font-family="sans-serif" font-size="13" fill="#114FCB">Suit son retrait</text>
+
+  <!-- ===== BLOC PRÉPARATEUR ===== -->
+  <rect x="310" y="20" width="240" height="260" rx="14" stroke="#114FCB" stroke-width="3"/>
+  <!-- Icône casque / préparateur : personne + badge -->
+  <circle cx="430" cy="72" r="22" stroke="#114FCB" stroke-width="2.5"/>
+  <path d="M386 138 C386 110 474 110 474 138" stroke="#114FCB" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- petit badge clipborad -->
+  <rect x="444" y="52" width="18" height="22" rx="3" stroke="#114FCB" stroke-width="2"/>
+  <line x1="449" y1="61" x2="457" y2="61" stroke="#114FCB" stroke-width="1.5"/>
+  <line x1="449" y1="67" x2="457" y2="67" stroke="#114FCB" stroke-width="1.5"/>
+  <!-- Titre -->
+  <text x="430" y="172" text-anchor="middle" font-family="sans-serif" font-size="17" font-weight="700" fill="#114FCB">Préparateur</text>
+  <!-- Séparateur -->
+  <line x1="334" y1="186" x2="526" y2="186" stroke="#114FCB" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <!-- Bullets -->
+  <circle cx="348" cy="208" r="4" fill="#114FCB"/>
+  <text x="362" y="213" font-family="sans-serif" font-size="13" fill="#114FCB">Reçoit les commandes</text>
+  <circle cx="348" cy="232" r="4" fill="#114FCB"/>
+  <text x="362" y="237" font-family="sans-serif" font-size="13" fill="#114FCB">Prépare les articles</text>
+  <circle cx="348" cy="256" r="4" fill="#114FCB"/>
+  <text x="362" y="261" font-family="sans-serif" font-size="13" fill="#114FCB">Signale les ruptures</text>
+
+  <!-- ===== BLOC GÉRANT ===== -->
+  <rect x="600" y="20" width="240" height="260" rx="14" stroke="#114FCB" stroke-width="3"/>
+  <!-- Icône personne + étoile -->
+  <circle cx="720" cy="72" r="22" stroke="#114FCB" stroke-width="2.5"/>
+  <path d="M676 138 C676 110 764 110 764 138" stroke="#114FCB" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- étoile -->
+  <polygon points="720,44 723,52 732,52 725,57 728,66 720,61 712,66 715,57 708,52 717,52" stroke="#114FCB" stroke-width="1.8" stroke-linejoin="round"/>
+  <!-- Titre -->
+  <text x="720" y="172" text-anchor="middle" font-family="sans-serif" font-size="17" font-weight="700" fill="#114FCB">Gérant</text>
+  <!-- Séparateur -->
+  <line x1="624" y1="186" x2="816" y2="186" stroke="#114FCB" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <!-- Bullets -->
+  <circle cx="638" cy="208" r="4" fill="#114FCB"/>
+  <text x="652" y="213" font-family="sans-serif" font-size="13" fill="#114FCB">Supervise l'activité</text>
+  <circle cx="638" cy="232" r="4" fill="#114FCB"/>
+  <text x="652" y="237" font-family="sans-serif" font-size="13" fill="#114FCB">Gère les préparateurs</text>
+  <circle cx="638" cy="256" r="4" fill="#114FCB"/>
+  <text x="652" y="261" font-family="sans-serif" font-size="13" fill="#114FCB">Accède aux stats</text>
+
+</svg>
