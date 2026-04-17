@@ -1,7 +1,23 @@
 <link rel="stylesheet" href="../_style.css">
 
 # Notes oral – Présentation Backend Lidl Collect
-**Durée totale : 5 min · ~1 min 15 par slide**
+**Durée totale : 6 min 40 · intro pôle dev 1 min 40 + backend 5 min**
+
+---
+
+## Intro — Responsable Pôle Développement (1 min 40)
+
+> *Prise de parole en premier, avant de passer la main aux autres membres du pôle.*
+
+- Poser le contexte du pôle : *"Le pôle Développement avait une mission claire : rendre cette vision concrète et fiable."*
+- Expliquer la philosophie : *"On a abordé la technologie comme un service qui doit s'effacer devant l'usage — l'utilisateur ne doit jamais ressentir la complexité de ce qui tourne derrière."*
+  - Développer : insister sur le fait que la complexité logistique de Lidl (stocks, créneaux, multi-profils) est réelle, et que le défi c'est de la rendre invisible pour le client final.
+- Présenter ce qu'on a construit : *"On a développé une application complète de Drive et Click & Collect, pensée pour absorber la logistique de Lidl sans jamais la faire peser sur le client."*
+  - Développer : citer rapidement les trois grandes briques — le frontend pour l'expérience utilisateur, le backend pour la logique et la sécurité, la base de données pour la donnée.
+- Conclure en passant la main : *"Architecture robuste, données sécurisées, parcours fluide — ce sont les fondations sur lesquelles repose la confiance de vos clients. Et c'est ce que chacun d'entre nous va vous détailler maintenant."*
+  - Développer : montrer que le pôle a travaillé de manière cohérente et coordonnée — chaque partie s'emboîte avec les autres.
+
+---
 
 ---
 
@@ -55,4 +71,17 @@
 ## Transition finale (optionnelle si il reste du temps)
 
 - *"Mon collègue va vous présenter la base de données qui stocke toutes ces informations, et vous verrez comment les deux parties s'articulent."*
+
+---
+
+## Conclusion — Responsable Pôle Développement (1 min)
+
+> *Reprendre la parole après les autres membres du pôle, pour clore.*
+
+- Ouvrir sur le bilan global : *"Au-delà des outils qu'on vient de vous présenter, ce qu'on a construit, c'est un socle technologique durable."*
+  - Développer : rappeler que chaque brique — front, back, base de données — a été pensée pour fonctionner ensemble, pas indépendamment.
+- Insister sur la pérennité : *"Ma priorité a été de faire en sorte que notre expertise soit une force invisible — un moteur fiable, qui tient dans le temps."*
+  - Développer : le système peut évoluer, on peut ajouter des magasins, de nouveaux profils, de nouvelles fonctionnalités sans repartir de zéro.
+- Conclure sur l'ambition Lidl : *"Ce socle est capable de soutenir vos ambitions de croissance nationale et de s'adapter à l'évolution de vos services — sans jamais faillir face à la réalité du terrain."*
+  - Développer : évoquer concrètement ce que "réalité du terrain" veut dire — pics de commandes, ruptures de stock, multi-magasins — autant de situations que le système gère.
 
