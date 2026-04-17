@@ -1,11 +1,40 @@
 <link rel="stylesheet" href="./_style.css">
 
+
+
 # Rapport de pôle — Développement
 ## Application Lidl Collect · Drive & Click and Collect
 **Réponse à l'appel d'offre Lidl France · Pôle Développement · Avril 2026**
 
+<div class="cover-page">
+     <img src="./img-front-page.png" alt="Couverture du rapport Lidl Collect" />
+</div>
+<div class="page-break"></div>
+
 ---
 
+## Sommaire
+
+1. **[Synthèse exécutive](#sec-synthese)**  
+     Vision globale du projet, valeur business et livrables clés.
+2. **[Contexte et enjeu business](#sec-contexte)** *(Section 1)*  
+     Pourquoi Lidl Collect est stratégique pour Lidl.
+3. **[Périmètre fonctionnel et parcours utilisateurs](#sec-perimetre)** *(Section 2)*  
+     Ce que le service couvre concrètement côté client, préparateur et manager.
+4. **[Architecture technique et choix structurants](#sec-technique)** *(Section 3)*  
+     Frontend, backend, base de données, sécurité, CI/CD et infrastructure réseau.
+5. **[Organisation projet et gouvernance](#sec-gouvernance)** *(Section 4)*  
+     Répartition des responsabilités, méthode de travail et coordination inter-pôles.
+6. **[Planning et jalons de livraison](#sec-planning)** *(Section 5)*  
+     Calendrier de réalisation, livrables attendus et critères d'acceptation.
+7. **[Gestion des risques et conformité RGPD](#sec-risques-rgpd)** *(Section 6)*  
+     Principaux risques, mesures de mitigation et cadre réglementaire appliqué.
+8. **[Engagements et annexes de référence](#sec-engagements-annexes)** *(Sections 7 et 8)*  
+     Engagements formels de l'équipe et documents PDF d'approfondissement.
+
+---
+
+<a id="sec-synthese"></a>
 ## Synthèse exécutive
 
 Lidl France aborde un tournant stratégique majeur : après deux exercices déficitaires consécutifs et une perte documentée de 400 000 clients entre 2022 et 2025, l'enseigne investit 200 millions d'euros dans la reconquête de sa clientèle et accélère son repositionnement vers un segment discount-premium. Dans ce contexte, l'absence de Drive alimentaire représente une lacune compétitive réelle face à Leclerc Drive, Courses U et Intermarché Drive, opérateurs qui captent une clientèle organisée que Lidl ne peut pas encore fidéliser numériquement.
@@ -16,11 +45,12 @@ L'équipe livre une application sécurisée, conforme RGPD, déployée sur une i
 
 ---
 
+<a id="sec-contexte"></a>
 ## 1. Compréhension du contexte et de l'enjeu
 
-### 1.1 Ce que le Drive représente réellement pour Lidl
+### 1.1 Ce que le Drive/Click&Collect représente réellement pour Lidl
 
-La demande de Drive alimentaire chez Lidl ne naît pas d'une opportunité digitale abstraite. Elle répond à une pression concurrentielle concrète et à un comportement client en rupture avec le modèle historique de l'enseigne. Les profils identifiés: familles avec contrainte de temps, jeunes actifs avec liste préparée, retraités habitués au numérique depuis le Covid partagent un point commun : ils ont développé une pratique du Drive chez la concurrence qu'aucune action marketing ne remplacera tant qu'une solution équivalente n'existera pas chez Lidl.
+La demande de Drive et de click&collect alimentaire chez Lidl ne naît pas d'une opportunité digitale abstraite. Elle répond à une pression concurrentielle concrète et à un comportement client en rupture avec le modèle historique de l'enseigne. Les profils identifiés: familles avec contrainte de temps, jeunes actifs avec liste préparée, retraités habitués au numérique depuis le Covid partagent un point commun : ils ont développé une pratique du Drive chez la concurrence qu'aucune action marketing ne remplacera tant qu'une solution équivalente n'existera pas chez Lidl.
 
 Le magasin de Saint-Martin-d'Hères illustre bien cette tension. Avec 35 % de 15-29 ans dans sa zone de chalandise, 20 000 étudiants sur le campus UGA et un taux de pauvreté de 19 %, il dessert une clientèle structurellement sensible au prix mais exigeante sur la fluidité du service. Cette clientèle fréquente le Lidl pour ses prix ; elle fréquentera l'Intermarché Hyper voisin pour son Drive, à moins que Lidl Collect existe.
 
@@ -36,6 +66,7 @@ Contrairement à une refonte graphique ou à une campagne sociale, une applicati
 
 ---
 
+<a id="sec-perimetre"></a>
 ## 2. Périmètre fonctionnel et architecture de la solution
 
 ### 2.1 Parcours client : de la liste à la confirmation de retrait
@@ -48,11 +79,11 @@ La gestion des ruptures de stock fait partie du flux nominal, pas de l'exception
 
 ### 2.2 Parcours opérationnel magasin
 
-L'interface préparateur est conçue pour l'efficacité en conditions réelles : écran vertical, lecture rapide des listes de préparation, scan produit pour validation, signalement des ruptures en un geste. Les commandes arrivent par ordre de créneau de retrait et sont priorisées automatiquement. Le préparateur n'a pas à gérer la logique métier il exécute une liste structurée que le système a déjà ordonnancée.
+L'interface préparateur est conçue pour l'efficacité en conditions réelles : écran vertical, lecture rapide des listes de préparation, scan produit pour validation, signalement des ruptures en un geste. Les commandes arrivent par ordre de créneau de retrait et sont priorisées automatiquement. Le préparateur n'a pas à gérer la logique métier, il exécute une liste structurée que le système a déjà ordonnancée.
 
 L'interface manager donne une vision en temps réel : nombre de commandes en cours, taux de préparation, alertes sur les créneaux saturés, gestion du planning des préparateurs. Les KPIs sont accessibles sans manipulation complexe, le manager de magasin n'est pas un analyste data.
 
-La distinction entre ces deux interfaces n'est pas cosmétique : elles répondent à des besoins métier différents, avec des droits d'accès distincts et des données exposées différemment. Cette séparation est intégrée dès la conception du modèle de données et de la matrice des rôles.
+La distinction entre ces deux interfaces n'est pas esthétique : elles répondent à des besoins métier différents, avec des droits d'accès distincts et des données exposées différemment. Cette séparation est intégrée dès la conception du modèle de données et de la matrice des rôles.
 
 ### 2.3 Les deux modes de retrait et leurs contraintes distinctes
 
@@ -73,7 +104,7 @@ Le schéma d'architecture applicative global distingue trois couches : l'interfa
 │   Auth (JWT) · Logique métier · Gestion commandes       │
 └────┬─────────────┬──────────────┬───────────────────────┘
      │             │              │
-┌────▼────┐  ┌─────▼─────┐  ┌────▼────────────────────┐
+┌────▼────┐  ┌─────▼─────┐  ┌─────▼───────────────────┐
 │   BDD   │  │  Module   │  │   Interfaces métier     │
 │  (PG)   │  │ Paiement  │  │  Préparateur · Manager  │
 └─────────┘  └───────────┘  └─────────────────────────┘
@@ -90,28 +121,30 @@ Le schéma d'architecture applicative global distingue trois couches : l'interfa
 
 ### 2.4.1 Les personas comme socle des décisions d'interface
 
-La conception de l'interface repose sur six profils construits à partir du cahier des charges. Trois d'entre eux posent les tensions structurantes : Emrick (19 ans, étudiant, petites courses rapides depuis mobile), Jean et Monique (65 ans, retraités, interface lisible avec peu d'étapes), et Lucas (préparateur sous pression, outil de travail où chaque geste compte). Ces profils coexistent dans la même application les décisions d'interface doivent satisfaire simultanément des usages aussi distincts que la commande express et la supervision métier. Cette cartographie précède tout choix de composant.
+La conception de l'interface repose sur six profils construits à partir du cahier des charges. Trois d'entre eux posent les tensions structurantes : Emrick (19 ans, étudiant, petites courses rapides depuis mobile), Jean et Monique (65 ans, retraités, interface lisible avec peu d'étapes), et Lucas (préparateur sous pression, outil de travail où chaque geste compte). Ces profils coexistent dans la même application : les décisions d'interface doivent satisfaire simultanément des usages aussi distincts que la commande express et la supervision métier. Cette cartographie précède tout choix de composant. C'est ce qui a didcté l'approche UX axée sur la bienveillance, la fluidité, et la clarté à chaque étape du parcours. Les éléments d'interface sont pensés pour réduire la charge cognitive de tous les profils.
 
 ### 2.4.2 Userflows et maquettes
 
-Le travail démarre par la formalisation des parcours selon les rôles. Le parcours client couvre sept étapes authentification, choix du magasin, catalogue, panier, créneau, validation, confirmation avec identification des points de friction (ruptures en cours de panier, créneau saturé au paiement) résolus dans le flux avant d'être codés. Le parcours préparateur est cartographié séparément : plus court mais plus dense en états simultanés.
+Le travail démarre par la formalisation des parcours selon les rôles. Le parcours client couvre sept étapes : authentification, choix du magasin, catalogue, panier, créneau, validation, confirmation, avec identification des points de friction (ruptures en cours de panier, créneau saturé au paiement) résolus dans le flux avant d'être codés. Le parcours préparateur est cartographié séparément : plus court mais plus dense en états simultanés tout en mettant en avant une valorisation de son expertise.
 
-Les maquettes sont produites en alignement avec la Direction Artistique du Pôle Création : palette orange (#F97A0A), bleu (#114FCB), fond blanc cassé (#FFFBE2), typographies Climate Crisis et Montserrat. L'application est conçue en Desktop-first, conformément au cahier des charges, avec déclinaison responsive en adaptation secondaire. Les livrables comprennent wireframes basse fidélité, maquettes haute fidélité écran par écran, et spécifications de comportement (états hover, erreur, chargement) remises à Alex pour l'intégration.
+Les maquettes sont produites en alignement avec la Direction Artistique du Pôle Création : palette orange (#F97A0A), bleu (#114FCB), fond blanc cassé (#FFFBE2), typographies Antique Olive Nord D et Montserrat. L'application est conçue en Desktop-first, avec déclinaison responsive en adaptation secondaire. Les livrables comprennent un cahier des charges fonctionnel pour la création de la webapp, des inspiration, des userflows, et des maquettes détaillées pour chaque écran. 
 
 ---
 
+<a id="sec-technique"></a>
 ## 3. Choix techniques et justifications
 
 ### 3.1 Frontend — React
 
-React est retenu pour le frontend de Lidl Collect. Face aux alternatives principales que sont Vue.js et Angular, le choix s'appuie sur deux contraintes spécifiques au projet.
+React est retenu comme socle frontend face aux deux alternatives principales du marché, Vue.js et Angular. Ce choix découle de deux contraintes propres au projet.
 
-La première est la complexité des états applicatifs. Le panier, le suivi de commande en temps réel, les notifications d'état et la gestion des substitutions génèrent des états concurrents qui doivent rester cohérents sur l'ensemble de l'interface. L'écosystème React notamment via des librairies de gestion d'état matures est éprouvé sur ce type de complexité. Vue.js aurait été viable sur une application plus simple ; sur Lidl Collect, la richesse de l'outillage React justifie le choix.
+La première est la complexité des états. Le panier, le suivi de commande, les notifications… génèrent des informations simultanées qui doivent rester cohérentes sur l'ensemble de l'interface. L'écosystème React, s'appuie sur des outils de gestion d'état éprouvés à grande échelle, et est aujourd'hui la référence sur ce type de complexité. Ainsi, la richesse de l'outillage React justifie le choix sur Lidl Collect.
 
-La deuxième est la maintenabilité dans un contexte multi-développeurs avec des interfaces distinctes (client, préparateur, manager). La séparation par composants de React permet à chaque interface d'être développée et testée indépendamment, avec des contrats d'interface API définis en amont. Les maquettes produites par Gwen sont structurées écran par écran avec leurs spécifications de comportement le modèle de composants React s'aligne naturellement sur cette organisation.
+La seconde est la scalabilité dans un contexte multi-développeurs. Les trois interfaces : client, préparateur et manager sont développées et testées indépendamment, sans qu'une modification de l'une ne puisse impacter les autres. Le modèle de composants React s'aligne naturellement sur l'organisation des maquettes produites avec leurs spécifications : chaque écran correspond à des composants, testable sans démarrer l'application complète. TypeScript vient renforcer cette logique de fiabilité. Là où JavaScript tolère des erreurs, TypeScript les détecte dès la phase de développement. Concrètement, chaque composant expose un contrat explicite quant aux données qu'il attend, leur format, leur caractère obligatoire ou optionnel, ce qui rend impossible l'intégration d'un composant avec des données mal formées. Sur une application à trois interfaces et plusieurs développeurs, cette garantie réduit de ce fait le risque d'anomalies en production.
 
-L'outillage complète le choix du framework : Vite est retenu comme environnement de build pour ses temps de compilation quasi-instantanés en développement (Hot Module Replacement natif) et son optimisation du bundle en production. La bibliothèque de composants est structurée en couches composants atomiques génériques, composants métier spécifiques à Lidl Collect, pages ce qui rend chaque interface indépendante du point de vue du développement et testable isolément sans nécessiter le démarrage complet de l'application.
+L'environnement de build retenu est Vite. Son principal avantage est la rapidité : les modifications apportées sont répercutées quasi instantanément dans le navigateur pendant la phase de développement, sans recompilation complète de l'application. En production, Vite optimise automatiquement le poids des fichiers livrés à l'utilisateur, ce qui contribue directement aux temps de chargement de l'application.
 
+La web-app intègre également une fonctionnalité PWA (Progressive Web App). Concrètement, cela permet à un utilisateur d'installer Lidl Collect directement depuis son navigateur, comme une application native, sans passer par l'App Store ou le Google Play Store. Ce levier réduit la friction à l'adoption et adresse en particulier les usages mobiles de la génération Z, pour laquelle l'instantanéité de l'accès conditionne l'engagement.
 ### 3.2 Backend — API REST
 
 L'architecture API REST est retenue face à GraphQL et au monolithe. Les raisons sont fonctionnelles avant d'être idéologiques.
@@ -154,8 +187,6 @@ Parmi les points de vigilance structurants : la protection contre les accès cro
 
 Le projet intègre un module AuditLog en append-only : chaque action sensible connexion, modification de commande, accès aux données personnelles, changement de rôle est enregistrée avec horodatage, identifiant utilisateur et adresse IP. Ce journal est immuable par conception : aucun accès applicatif ne permet de modifier ou supprimer une entrée. Il constitue à la fois un outil de détection des comportements anormaux et une pièce de conformité en cas de contrôle RGPD ou d'audit de sécurité.
 
-Le référent cybersécurité intervient en transverse sur tous les modules manipulant des données sensibles : revue du module d'authentification, validation des schémas de données, audit de la configuration Nginx, et maintien d'un registre de suivi des actions correctives jusqu'à la recette finale. Le modèle de menaces STRIDE est un livrable formel du projet, annexé au dossier de pôle.
-
 ### 3.6 CI/CD — Docker et GitHub Actions
 
 Le premier pilier de cette stratégie est la conteneurisation avec Docker. L'idée est simple : on enferme l'application dans une "boîte" étanche qui contient tout ce dont elle a besoin pour fonctionner. Cela garantit que le logiciel se comportera exactement de la même manière sur l'ordinateur d'un développeur que sur le serveur final. Cette uniformité est une sécurité majeure, car elle évite des erreurs imprévisibles, comme un système de connexion qui fonctionnerait en test mais présenterait une faille une fois en ligne.
@@ -168,12 +199,19 @@ Enfin, pour l'hébergement de ce prototype, nous avons sélectionné la platefor
 
 ### 3.7 Infrastructure réseau magasin
 
-La fiabilité de la zone Drive dépend directement de la qualité de l'infrastructure réseau physique. L'architecture retenue sépare les flux par VLAN : terminaux de caisse et bornes Drive sont isolés du réseau d'usage général du magasin, garantissant une bande passante dédiée sans contention.
+L’infrastructure réseau de Lidl Collect a été pensée pour proposer un service national cohérent, tout en restant exploitable dans un magasin en situation réelle. Le choix retenu repose donc sur une architecture centralisée pour les services critiques, complétée par une exécution locale en magasin pour les opérations de retrait et de préparation.
 
-Les bornes extérieures sont couvertes par des points d'accès WiFi 6 industriels (résistants aux intempéries) avec redondance sur deux accès points distincts. En cas de perte de la connexion WAN, un mode dégradé bascule le retrait vers la caisse standard sans interruption visible pour le client.
+Cette orientation s’appuie sur l’étude de l’environnement numérique déjà utilisé par Lidl. Les informations publiques de l’enseigne montrent en effet un fonctionnement basé sur des services centralisés, avec un hébergement réparti entre Microsoft Azure, Google Cloud Platform et Schwarz IT KG, ainsi qu’un compte unique Mon Compte Lidl permettant d’unifier l’accès à plusieurs services Lidl. Ce fonctionnement nous a conduits à concevoir Lidl Collect dans la continuité de cette logique existante, plutôt que comme une infrastructure indépendante magasin par magasin.
+
+Le principe retenu sont les éléments structurants le service : gestion des comptes, commandes, suivi, notifications et supervision - sont pilotés depuis une infrastructure centrale, tandis que le magasin dispose uniquement des accès et outils nécessaires à l’exécution opérationnelle. Ce modèle présente un avantage direct : il garantit une expérience homogène sur l’ensemble du réseau Lidl, tout en simplifiant le déploiement, la maintenance et l’évolution du service.
+
+D’une part, elle améliore la fiabilité globale du service, car le système repose sur un socle commun et maîtrisé, plus facile à superviser et à sécuriser. D’autre part, elle rend le projet réaliste à l’échelle nationale : une même architecture peut être reproduite dans tous les magasins sans reconstruire un système différent à chaque implantation.
+
+Ce choix répond aussi directement aux contraintes du Drive. Dans ce contexte, la performance du service ne dépend pas seulement de l’application, mais de sa capacité à fonctionner rapidement dans un environnement magasin parfois plus contraint, notamment pour les bornes extérieures et les validations de retrait. L’infrastructure réseau a donc été pensée pour soutenir l’exploitation terrain, et non uniquement pour héberger l’application.
 
 ---
 
+<a id="sec-gouvernance"></a>
 ## 4. Organisation de l'équipe et gouvernance
 
 ### 4.1 Matrice de responsabilités orientée risques
@@ -182,11 +220,11 @@ L'organisation de l'équipe n'est pas une répartition de tâches arbitraire ell
 
 | Domaine | Responsable | Criticité | Dépendances principales |
 |---------|-------------|-----------|------------------------|
-| UX/UI | Gwen | Élevée — bloque le Frontend | Direction artistique Lidl 2.0 |
-| Frontend React | Alex | Élevée | Maquettes (Gwen) + contrats API (Dorian) |
+| UX/UI | Gwendoline | Élevée — bloque le Frontend | Direction artistique Lidl 2.0 |
+| Frontend React | Alexandre-Philippe | Élevée | Maquettes (Gwen) + contrats API (Dorian) |
 | Backend API REST | Dorian | Critique | BDD (Sabry), Auth (Willy), Sécu (Leo) |
 | Base de données | Sabry | Critique | Backend (Dorian), Sécu (Leo) |
-| Cybersécurité | Leo | Transverse | Tous les modules |
+| Cybersécurité | Léo | Transverse | Tous les modules |
 | Auth & Paiement | Willy | Critique | Backend (Dorian), Sécu (Leo) |
 | Infra CI/CD | David | Élevée | Backend (Dorian), BDD (Sabry) |
 | Réseau magasin | Patrice | Élevée | Indépendant applicatif |
@@ -197,12 +235,13 @@ La cybersécurité et l'authentification ont un statut transverse : Leo et Willy
 
 La méthode retenue est Scrum avec des sprints de deux semaines. Ce choix répond à une contrainte de parallélisation : les modules frontend, backend et infrastructure peuvent avancer simultanément à condition que les contrats d'interface soient définis et figés au sprint 1. Un contrat d'API modifié en cours de développement sans coordination génère des régressions coûteuses.
 
-La convention adoptée est la suivante : les endpoints API sont définis et documentés (Swagger) avant le début du sprint de développement frontend correspondant. Toute modification de contrat passe par une revue d'impact formelle. Les maquettes de Gwen sont validées avant le début du sprint d'intégration d'Alex.
+La convention adoptée est la suivante : les endpoints API sont définis et documentés (Swagger) avant le début du sprint de développement frontend correspondant. Toute modification de contrat passe par une revue d'impact formelle. Les maquettes sont validées avant le début du sprint d'intégration.
 
 Les rituels de synchronisation daily de 15 minutes, rétrospective en fin de sprint ont pour seul objectif de détecter les dépendances bloquantes au plus tôt. Ils ne remplacent pas la communication bilatérale entre modules couplés.
 
 ---
 
+<a id="sec-planning"></a>
 ## 5. Planning et jalons de livraison
 
 | Jalon | Période | Livrables | Critères d'acceptation |
@@ -215,6 +254,7 @@ Les rituels de synchronisation daily de 15 minutes, rétrospective en fin de spr
 
 ---
 
+<a id="sec-risques-rgpd"></a>
 ## 6. Gestion des risques et conformité RGPD
 
 ### 6.1 Matrice des risques techniques et opérationnels
@@ -249,6 +289,7 @@ Un registre des traitements est tenu à jour pour chaque catégorie de donnée, 
 
 ---
 
+<a id="sec-engagements-annexes"></a>
 ## 7. Engagements
 
 L'équipe s'engage sur les livrables suivants, dans les conditions décrites dans ce rapport :
@@ -259,3 +300,43 @@ L'équipe s'engage sur les livrables suivants, dans les conditions décrites dan
 - Une documentation technique complète : Swagger API, MCD/MLD/MPD, Dockerfiles, schéma réseau, matrice RBAC.
 
 Les choix techniques présentés dans ce rapport sont argumentés mais discutables. Plusieurs arbitrages notamment le choix du prestataire de paiement, la politique de cache catalogue ou la stratégie de déploiement peuvent être révisés en fonction des contraintes opérationnelles ou contractuelles de Lidl. L'équipe est disponible pour défendre et, si nécessaire, ajuster ses décisions face aux retours du jury.
+
+---
+
+## 8. Annexes
+
+Les annexes ci-dessous regroupent les documents de référence utiles au client et au jury pour approfondir les choix fonctionnels, techniques, sécurité et conformité. Elles complètent le rapport sans en alourdir la lecture principale.
+
+### Annexe A — Cahier des charges UX/UI
+Référence : [livrables-gwen/cahier_des_charges_lidl_collect.pdf](./livrables-gwen/cahier_des_charges_lidl_collect.pdf)
+
+Document de cadrage du produit : personas, parcours, exigences fonctionnelles, principes d'ergonomie et direction artistique. Cette annexe sert de base de traçabilité entre besoin métier et implémentation.
+
+### Annexe B — Rapport technique base de données
+Référence : [livrable-sabry/Rapport Technique.pdf](./livrable-sabry/Rapport%20Technique.pdf)
+
+Synthèse de l'architecture PostgreSQL : modèle relationnel, cohérence transactionnelle, performance des requêtes critiques, contraintes d'intégrité et exploitation opérationnelle.
+
+### Annexe C — Stratégie de sauvegarde et reprise (PITR)
+Référence : [livrable-sabry/Save_Retention_PITR.pdf](./livrable-sabry/Save_Retention_PITR.pdf)
+
+Explication du mécanisme de restauration point-in-time, des objectifs de continuité de service, et des arbitrages de rétention adaptés au contexte Drive.
+
+### Annexe D — Rapport backend API REST
+Référence : [livrables-dorian/RAPPORT_BACKEND.pdf](./livrables-dorian/RAPPORT_BACKEND.pdf)
+
+Description des choix de structuration de l'API (NestJS), des modules métier, de la validation des échanges, de l'intégration BDD et des exigences de déploiement.
+
+### Annexe E — Politique d'authentification et paiement
+Référence : [livrables-willy/politque_authentification_et_pairment.pdf](./livrables-willy/politque_authentification_et_pairment.pdf)
+
+Cadre de sécurité des accès : JWT, MFA, hachage des secrets, gestion de session par rôle et principes de sécurisation du flux de paiement.
+
+### Annexe F — RGPD et conformité cybersécurité
+- Référence : [livrables-leo/registre-traitement.pdf](./livrables-leo/registre-traitement.pdf)
+- Référence : [livrables-leo/matrice-rbac.pdf](./livrables-leo/matrice-rbac.pdf)
+- Référence : [livrables-leo/politique-effacement.pdf](./livrables-leo/politique-effacement.pdf)
+- Référence : [livrables-leo/threat-model.pdf](./livrables-leo/threat-model.pdf)
+- Référence : [livrables-leo/analyse-sous-traitants.pdf](./livrables-leo/analyse-sous-traitants.pdf)
+
+Ce bloc regroupe les pièces de conformité RGPD et de cybersécurité : registre des traitements, contrôle d'accès RBAC, politique d'effacement, modélisation STRIDE et cadre de sous-traitance.

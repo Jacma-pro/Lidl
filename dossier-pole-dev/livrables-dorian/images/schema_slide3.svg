@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 160" fill="none">
+
+  <!-- ===== ÉTAT 1 : En attente ===== -->
+  <rect x="20" y="40" width="160" height="60" rx="30" stroke="#114FCB" stroke-width="3"/>
+  <text x="100" y="75" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="600" fill="#114FCB">En attente</text>
+
+  <!-- Flèche 1→2 -->
+  <line x1="183" y1="70" x2="247" y2="70" stroke="#114FCB" stroke-width="2.5"/>
+  <polygon points="247,63 263,70 247,77" fill="#114FCB"/>
+
+  <!-- ===== ÉTAT 2 : En préparation ===== -->
+  <rect x="265" y="40" width="180" height="60" rx="30" stroke="#114FCB" stroke-width="3"/>
+  <text x="355" y="75" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="600" fill="#114FCB">En préparation</text>
+
+  <!-- Flèche 2→3 -->
+  <line x1="448" y1="70" x2="512" y2="70" stroke="#114FCB" stroke-width="2.5"/>
+  <polygon points="512,63 528,70 512,77" fill="#114FCB"/>
+
+  <!-- ===== ÉTAT 3 : Prête ===== -->
+  <rect x="530" y="40" width="160" height="60" rx="30" stroke="#114FCB" stroke-width="3"/>
+  <text x="610" y="75" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="600" fill="#114FCB">Prête</text>
+
+  <!-- Flèche 3→4 -->
+  <line x1="693" y1="70" x2="757" y2="70" stroke="#114FCB" stroke-width="2.5"/>
+  <polygon points="757,63 773,70 757,77" fill="#114FCB"/>
+
+  <!-- ===== ÉTAT 4 : Retirée ===== -->
+  <rect x="775" y="40" width="105" height="60" rx="30" stroke="#114FCB" stroke-width="3"/>
+  <text x="827" y="75" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="600" fill="#114FCB">Retirée</text>
+
+  <!-- ===== ÉTAT ANNULÉE (branche basse depuis état 1) ===== -->
+  <!-- ligne verticale vers le bas depuis état 1 -->
+  <line x1="100" y1="100" x2="100" y2="130" stroke="#114FCB" stroke-width="2" stroke-dasharray="5 4"/>
+  <!-- ligne horizontale -->
+  <line x1="100" y1="130" x2="355" y2="130" stroke="#114FCB" stroke-width="2" stroke-dasharray="5 4"/>
+  <!-- flèche vers le bas sur état 2 -->
+  <line x1="355" y1="130" x2="355" y2="104" stroke="#114FCB" stroke-width="2" stroke-dasharray="5 4"/>
+  <polygon points="348,104 355,100 362,104" fill="#114FCB"/>
+  <!-- label -->
+  <text x="220" y="148" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#114FCB">Annulée (possible depuis plusieurs états)</text>
+
+</svg>
