@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 260" fill="none">
+
+  <!-- BLOC 1 : Interface (Front) -->
+  <rect x="20" y="80" width="200" height="100" rx="12" stroke="#114FCB" stroke-width="3"/>
+  <!-- Icône écran -->
+  <rect x="80" y="96" width="80" height="52" rx="6" stroke="#114FCB" stroke-width="2.5"/>
+  <line x1="120" y1="148" x2="120" y2="162" stroke="#114FCB" stroke-width="2.5"/>
+  <line x1="104" y1="162" x2="136" y2="162" stroke="#114FCB" stroke-width="2.5"/>
+  <!-- Label -->
+  <text x="120" y="198" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="600" fill="#114FCB">Interface</text>
+  <text x="120" y="216" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#114FCB">(Frontend)</text>
+
+  <!-- Flèche droite 1 -->
+  <line x1="224" y1="130" x2="288" y2="130" stroke="#114FCB" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <polygon points="288,123 302,130 288,137" fill="#114FCB"/>
+  <!-- Flèche gauche 1 -->
+  <line x1="288" y1="140" x2="224" y2="140" stroke="#114FCB" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <polygon points="224,133 210,140 224,147" fill="#114FCB"/>
+  <!-- Label flèche -->
+  <text x="256" y="118" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#114FCB">Requêtes</text>
+  <text x="256" y="158" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#114FCB">Réponses</text>
+
+  <!-- BLOC 2 : API (Backend) -->
+  <rect x="300" y="70" width="200" height="120" rx="12" stroke="#114FCB" stroke-width="3"/>
+  <!-- Icône engrenage simplifié (cercle + dents) -->
+  <circle cx="400" cy="122" r="22" stroke="#114FCB" stroke-width="2.5"/>
+  <circle cx="400" cy="122" r="10" stroke="#114FCB" stroke-width="2"/>
+  <!-- dents -->
+  <rect x="396" y="93" width="8" height="10" rx="2" fill="#114FCB"/>
+  <rect x="396" y="141" width="8" height="10" rx="2" fill="#114FCB"/>
+  <rect x="367" y="118" width="10" height="8" rx="2" fill="#114FCB"/>
+  <rect x="423" y="118" width="10" height="8" rx="2" fill="#114FCB"/>
+  <!-- Label -->
+  <text x="400" y="210" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="600" fill="#114FCB">API</text>
+  <text x="400" y="228" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#114FCB">(Backend NestJS)</text>
+
+  <!-- Flèche droite 2 -->
+  <line x1="504" y1="130" x2="568" y2="130" stroke="#114FCB" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <polygon points="568,123 582,130 568,137" fill="#114FCB"/>
+  <!-- Flèche gauche 2 -->
+  <line x1="568" y1="140" x2="504" y2="140" stroke="#114FCB" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <polygon points="504,133 490,140 504,147" fill="#114FCB"/>
+  <!-- Label flèche -->
+  <text x="536" y="118" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#114FCB">Lectures</text>
+  <text x="536" y="158" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#114FCB">Écritures</text>
+
+  <!-- BLOC 3 : Base de données -->
+  <rect x="580" y="80" width="200" height="100" rx="12" stroke="#114FCB" stroke-width="3"/>
+  <!-- Icône cylindre BDD -->
+  <ellipse cx="680" cy="110" rx="36" ry="10" stroke="#114FCB" stroke-width="2.5"/>
+  <line x1="644" y1="110" x2="644" y2="138" stroke="#114FCB" stroke-width="2.5"/>
+  <line x1="716" y1="110" x2="716" y2="138" stroke="#114FCB" stroke-width="2.5"/>
+  <ellipse cx="680" cy="138" rx="36" ry="10" stroke="#114FCB" stroke-width="2.5"/>
+  <!-- Label -->
+  <text x="680" y="198" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="600" fill="#114FCB">Base de données</text>
+  <text x="680" y="216" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#114FCB">(PostgreSQL)</text>
+
+</svg>
